@@ -24,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -120,6 +120,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "rnapolis-frontend"
+    }
+  },
+  "defaultProject": "rnapolis-frontend",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

@@ -5,12 +5,16 @@ import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing-module';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { AwardsTimelineComponent } from './components/award-section/awards-timeline/awards-timeline.component';
+import { AwardsPageComponent } from './components/award-section/awards-page/awards-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    MenuComponent
+    MenuComponent,
+    AwardsTimelineComponent,
+    AwardsPageComponent
   ],
   imports: [
     BrowserModule,

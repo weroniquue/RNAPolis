@@ -10,14 +10,21 @@ export class AwardsTimelineComponent implements OnInit {
   awards: Award[];
 
   constructor() {
-    this.awards = [new Award(2017, 'opis'), new Award(2017, 'opis')];
+    this.awards = [new Award(2019, 'Rector scientific award for "New computational methods in RNA structural bioinformatics" granted to Marta Szachniuk, Maciej Antczak and Tomasz Zok by the Rector of Poznan University of Technology '),
+      new Award(2019, 'Scientific award of "Polityka" journal granted to Maciej Antczak for outstanding achievements in the field of technical sciences '),
+      new Award(2019, 'Award for PhD thesis "Algorithmic aspects of RNA structure similarity analysis" written by Tomasz Zok, awarded by the Scientific Council of the Faculty of Computing, Poznan University of Technology '),
+      new Award(2019, 'Award for outstanding PhD thesis granted to Tomasz Zok for PhD thesis "Algorithmic Aspects of RNA Structure Similarity Analysis" by the City of Poznan '),
+      new Award(2018, 'Scientific Award of the IBCh PAS Research Council for pseudoknot-annotating algorithms selected the best experimental work of the year 2018 (to Marta Szachniuk, Mariusz Popenda, Ryszard W. Adamiak)')];
   }
+
 
   ngOnInit() {
     this.onScrollEvent();
   }
 
+  @HostListener('window:resize', ['$event'])
   @HostListener('window:load', ['$event'])
+  @HostListener('window:reload', ['$event'])
   @HostListener('window:scroll', ['$event']) onScrollEvent() {
     document.querySelectorAll('#timeline li').forEach(item => {
       function isInViewport(element: Element) {
@@ -30,6 +37,7 @@ export class AwardsTimelineComponent implements OnInit {
           rect.right <= (window.innerWidth || document.documentElement.clientWidth)
         );
       }
+
       if (isInViewport(item)) {
         item.classList.add('show');
       }

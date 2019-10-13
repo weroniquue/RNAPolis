@@ -16,7 +16,7 @@
         position: relative;
         bottom: 0;
         width: 400px;
-        height: 300px;
+        height: 350px;
         padding: 1rem;
         background: #ffffff;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
@@ -24,13 +24,15 @@
         visibility: hidden;
         opacity: 0;
 
+        font-family: $main-font;
+        color: $deep-purple;
+
         h3 {
-          font-family: $main-font;
-          color: $deep-purple;
           font-size: 2em;
           padding-top: 20px;
-          padding-bottom: 20px ;
-          &::before{
+          padding-bottom: 20px;
+
+          &::before {
             margin-bottom: -8px;
             content: "";
             display: inline-block;
@@ -39,6 +41,20 @@
             margin-right: -50%;
             border-bottom: 9px solid $light-purple;
           }
+        }
+
+        p {
+          font-size: 1em;
+          text-align: justify;
+          padding: 0 1em;
+        }
+
+        i {
+          display: block;
+          font-size: 4em;
+          text-align: center;
+          color: gold;
+          margin: 0.5em auto;
         }
       }
 
@@ -76,14 +92,11 @@
         content: '';
         position: absolute;
         left: 50%;
-        //bottom: 0;
-        top: 50%; //kropka na środku
+        top: 50%;
         width: 50px;
         height: 50px;
-        background: var(--secondary-color);
         transform: translateX(-50%);
         border-radius: 50%;
-        //transform-style: background 0.5s ease-in-out;
       }
 
       &.show {
@@ -105,10 +118,74 @@
       content: '';
       position: absolute;
       bottom: 45%;
-      //bottom: 5px;
       width: 0;
       height: 0;
       border-style: solid;
     }
+  }
+}
+
+@media screen and (max-width: $medium-screen) {
+  #timeline ul li {
+    div {
+      width: 250px;
+
+      i {
+        font-size: 3em;
+      }
+    }
+
+    &:nth-child(even) div {
+      left: -340px;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen) {
+  #timeline ul li {
+    margin-left: 1.5em;
+
+    div {
+      height: auto;
+
+      p {
+        text-align: left;
+      }
+
+      i {
+        font-size: 2em;
+      }
+    }
+
+    &:nth-child(odd) div {
+      left: 4em;
+      transform: translate(-100px, 0);
+    }
+
+    &:nth-child(even) div {
+      left: 4em;
+
+      &::before {
+        left: -32px;
+        border-width: 16px 32px 16px 0;
+        border-color: transparent #ffffff transparent transparent;
+        -webkit-filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, .16));
+        filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, .16));
+      }
+    }
+
+    &.show {
+      div {
+        transform: none;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $extra-small-screen) {
+  #timeline ul li div {
+    width: 200px;
   }
 }

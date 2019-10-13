@@ -1,6 +1,6 @@
 <section id="timeline">
   <ul>
-    <li *ngFor="let award of awards">
+    <li *ngFor="let award of awards ; first as isFirst" [ngClass]="{'show': isFirst}">
       <div>
         <h3>{{award.year}}</h3>
         <p>{{award.description}}</p>

@@ -8,8 +8,10 @@ import {Award} from '../../../entity/award';
 })
 export class AwardsTimelineComponent implements OnInit {
   awards: Award[];
+  canEdit: boolean;
 
   constructor() {
+    this.canEdit = false;
     this.awards = [new Award(2019, 'Rector scientific award for "New computational methods in RNA structural bioinformatics" granted to Marta Szachniuk, Maciej Antczak and Tomasz Zok by the Rector of Poznan University of Technology '),
       new Award(2019, 'Scientific award of "Polityka" journal granted to Maciej Antczak for outstanding achievements in the field of technical sciences '),
       new Award(2019, 'Award for PhD thesis "Algorithmic aspects of RNA structure similarity analysis" written by Tomasz Zok, awarded by the Scientific Council of the Faculty of Computing, Poznan University of Technology '),
@@ -42,6 +44,25 @@ export class AwardsTimelineComponent implements OnInit {
         item.classList.add('show');
       }
     });
+  }
+
+  changeCanEdit() {
+    this.canEdit = true;
+  }
+
+  save() {
+    console.log(this.awards);
+    this.canEdit = false;
+  }
+
+  deleteElement(award: Award) {
+    this.awards.splice(this.awards.indexOf(award), 1);
+  }
+
+  addAward() {
+    this.awards.push(new Award(new Date().getFullYear(), ''));
+    const timelineId = document.getElementById('timeline');
+    timelineId.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'end'});
   }
 }
 

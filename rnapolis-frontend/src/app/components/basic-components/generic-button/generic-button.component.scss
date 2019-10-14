@@ -1,0 +1,47 @@
+@import "../../../style-utils/colors";
+
+/*.basic-btn {
+  color: $deep-purple;
+  transition: 0.25s;
+
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+
+  &:hover,
+  &:focus {
+    background-color: $light-purple;
+
+  }
+}*/
+$button-spacing: 1.5rem;
+
+.basic-btn {
+  display: inline-block;
+  margin: $button-spacing / 2;
+  padding: ($button-spacing / 2) $button-spacing;
+  border: ($button-spacing / 8) solid $deep-purple;
+  border-radius: $button-spacing / 8;
+  outline: none;
+  background-color: transparent;
+
+  color: $deep-purple;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: $button-spacing;
+  text-decoration: none;
+  text-align: center;
+
+  cursor: pointer;
+  transition: all 150ms ease-out;
+
+  &:hover{
+    background-color: $light-purple;
+    border: ($button-spacing / 8) double $deep-purple;
+  }
+}
+

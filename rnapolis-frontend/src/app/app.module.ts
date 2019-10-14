@@ -11,7 +11,8 @@ import {FormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from "@angular/material";
-import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
+import { DeleteButtonComponent } from './components/basic-components/delete-button/delete-button.component';
+import { GenericButtonComponent } from './components/basic-components/generic-button/generic-button.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DeleteButtonComponent } from './components/delete-button/delete-button.
     MenuComponent,
     AwardsTimelineComponent,
     AwardsPageComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    GenericButtonComponent
   ],
   imports: [
     BrowserModule,

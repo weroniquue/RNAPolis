@@ -1,0 +1,13 @@
+<app-menu></app-menu>
+<app-header content="RNA polis" imagePath="../../../assets/team.png"></app-header>
+
+<section>
+  <div *ngFor="let teamMember of team ; first as isFirst" [ngClass]="{'show': isFirst}">
+    <div class="box">
+      <i class="fas fa-portrait"></i>
+      <h3>{{teamMember.name}} {{teamMember.surname}}</h3>
+      <h5>{{teamMember.position}}</h5>
+      <p>{{teamMember.description}}</p>
+    </div>
+  </div>
+</section>

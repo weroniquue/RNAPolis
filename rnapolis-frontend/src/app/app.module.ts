@@ -1,11 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing-module';
 import {MainPageComponent} from './components/main-page/main-page.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { FooterComponent } from './components/footer/footer.component';
+import {MenuComponent} from './components/menu/menu.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,4 +21,5 @@ import { FooterComponent } from './components/footer/footer.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

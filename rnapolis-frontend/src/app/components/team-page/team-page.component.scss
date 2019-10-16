@@ -1,0 +1,50 @@
+@import "../../style-utils/colors.scss";
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px 5%;
+  padding: 80px 10%;
+  grid-auto-rows: minmax(550px, auto);
+
+  .box {
+    text-align: center;
+    height: 100%;
+    border: $purple solid 2px;
+    padding: 45px;
+
+    .team-image {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    h3 {
+      &:first-of-type {
+        margin-top: 45px;
+      }
+
+      font-size: 1.375em;
+      font-family: "Raleway", sans-serif;
+    }
+
+    p {
+      margin-top: 25px;
+      font-size: 1em;
+      font-family: "Didact Gothic", sans-serif;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 450px) and (max-width: 900px) {
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

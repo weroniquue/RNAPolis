@@ -1,11 +1,11 @@
 <app-menu></app-menu>
 
-<section>
-  <div *ngFor="let teamMember of team ; first as isFirst" [ngClass]="{'show': isFirst}">
+<section class="board">
+  <div *ngFor="let teamMember of team">
     <div class="box">
-      <i class="fas fa-portrait"></i>
-      <h3>{{teamMember.name}} {{teamMember.surname}}</h3>
-      <h5>{{teamMember.position}}</h5>
+      <img class="team-image" src="{{teamMember.imagePath}}" alt="Random person" (error)="setDefaultImage(teamMember)">
+      <h3>{{teamMember.name.toUpperCase()}} {{teamMember.surname.toUpperCase()}}</h3>
+      <h3>{{teamMember.position}}</h3>
       <p>{{teamMember.description}}</p>
     </div>
   </div>

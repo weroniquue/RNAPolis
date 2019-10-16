@@ -2,7 +2,7 @@ matrix:
   include:
     - language: java
       jdk:
-        - "11"
+        - oraclejdk11
       before_script:
         - cd rnapolis-backend/
       script:

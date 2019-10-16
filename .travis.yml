@@ -1,6 +1,6 @@
 matrix:
   include:
-    - language: Java
+    - language: java
       jdk:
         - "11"
       before_script:

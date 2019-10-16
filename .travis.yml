@@ -1,0 +1,33 @@
+matrix:
+  include:
+    - language: java
+      jdk:
+        - oraclejdk11
+      before_script:
+        - cd rnapolis-backend/
+      script:
+        - mvn clean install
+
+    - language: node_js
+      dist: trusty
+      sudo: required
+      cache:
+        directories:
+          - ./node_modules
+      node_js:
+        - "10.16.0"
+      before_script:
+        - cd rnapolis-frontend/
+        - npm install -g @angular/cli
+      script:
+        - npm install
+        - ng lint
+        - npm run test-headless
+        - ng build --prod --base-href https://weroniquue.github.io/RNAPolis/
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        local_dir: rnapolis-frontend/dist/rnapolis-frontend
+        on:
+          branch: master

@@ -1,4 +1,4 @@
-@import "../../style-utils/colors.scss";
+@import "../../style-utils/consts.scss";
 
 .board {
   display: grid;
@@ -37,13 +37,13 @@
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: $small-screen) {
   .board {
     grid-template-columns: 1fr;
   }
 }
 
-@media only screen and (min-width: 450px) and (max-width: 900px) {
+@media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
   .board {
     grid-template-columns: repeat(2, 1fr);
   }

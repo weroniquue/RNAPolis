@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing-module';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {MenuComponent} from './components/menu/menu.component';
+import {FooterComponent} from './components/footer/footer.component';
 import {TeamPageComponent} from "./components/team-page/team-page.component";
 
 @NgModule({
@@ -12,6 +13,7 @@ import {TeamPageComponent} from "./components/team-page/team-page.component";
     AppComponent,
     MainPageComponent,
     MenuComponent,
+    FooterComponent,
     TeamPageComponent
   ],
   imports: [

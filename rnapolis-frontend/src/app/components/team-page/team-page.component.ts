@@ -21,32 +21,10 @@ export class TeamPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.onScrollEvent()
   }
 
-  setDefaultImage(teamMember: TeamMember){
+  setDefaultImage(teamMember: TeamMember) {
     teamMember.imagePath = "../../../../assets/not-found.jpg"
-  }
-
-  @HostListener('window:resize', ['$event'])
-  @HostListener('window:load', ['$event'])
-  @HostListener('window:reload', ['$event'])
-  @HostListener('window:scroll', ['$event']) onScrollEvent() {
-    document.querySelectorAll('.div').forEach(item => {
-      function isInViewport(element: Element) {
-        const rect = element.getBoundingClientRect();
-        return (
-          rect.top >= 0
-          && rect.left >= 0
-          && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-          && rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-      }
-
-      if (isInViewport(item)) {
-        item.classList.add('show');
-      }
-    });
   }
 
 }

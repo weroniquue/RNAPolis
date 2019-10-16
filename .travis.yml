@@ -28,6 +28,6 @@ matrix:
         provider: pages
         skip_cleanup: true
         github_token: $GITHUB_TOKEN
-        local_dir: dist/rnapolis-frontend
+        local_dir: rnapolis-frontend/dist/rnapolis-frontend
         on:
           branch: master

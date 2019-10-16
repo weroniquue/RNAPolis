@@ -15,7 +15,7 @@ matrix:
         directories:
           - ./node_modules
       node_js:
-        - "12.10.0"
+        - "10.16.0"
       before_script:
         - cd rnapolis-frontend/
         - npm install -g @angular/cli

@@ -3,6 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MainPageComponent} from './main-page.component';
 import {MenuComponent} from '../menu/menu.component';
 import {RouterTestingModule} from '@angular/router/testing';
+import {FooterComponent} from '../footer/footer.component';
 
 
 describe('MainPageComponent', () => {
@@ -13,7 +14,9 @@ describe('MainPageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         MainPageComponent,
-        MenuComponent ],
+        MenuComponent,
+        FooterComponent
+      ],
       imports: [
         RouterTestingModule
       ]

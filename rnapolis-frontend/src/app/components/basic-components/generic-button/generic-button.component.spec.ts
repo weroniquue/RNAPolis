@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GenericButtonComponent } from './generic-button.component';
+import {GenericButtonComponent} from './generic-button.component';
+import {FormsModule} from '@angular/forms';
 
 describe('GenericButtonComponent', () => {
   let component: GenericButtonComponent;
@@ -8,9 +9,10 @@ describe('GenericButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericButtonComponent ]
+      declarations: [GenericButtonComponent],
+      imports: [FormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing-module';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {MenuComponent} from './components/menu/menu.component';
 import {FooterComponent} from './components/footer/footer.component';
-import { PageNotFoundComponent } from './components/basic-components/page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [

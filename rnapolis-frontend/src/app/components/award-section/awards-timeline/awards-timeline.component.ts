@@ -65,10 +65,10 @@ export class AwardsTimelineComponent implements OnInit {
     this.onScrollEvent();
   }
 
-  @HostListener('window:resize', ['$event'])
-  @HostListener('window:load', ['$event'])
-  @HostListener('window:reload', ['$event'])
-  @HostListener('window:scroll', ['$event']) onScrollEvent() {
+  @HostListener('window:resize', [])
+  @HostListener('window:load', [])
+  @HostListener('window:reload', [])
+  @HostListener('window:scroll', []) onScrollEvent() {
     document.querySelectorAll('#timeline li').forEach(item => {
       function isInViewport(element: Element) {
         const rect = element.getBoundingClientRect();

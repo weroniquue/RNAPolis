@@ -1,5 +1,5 @@
 <div id="manager">
-  <app-generic-button content="Edit" (click)="changeCanEdit()" *ngIf="!canEdit"></app-generic-button>
+  <app-generic-button content="Edit" *ngIf="!canEdit" (click)="changeCanEdit()"></app-generic-button>
   <app-generic-button content="Save" *ngIf="canEdit" (click)="save()"></app-generic-button>
   <app-generic-button content="Add" *ngIf="canEdit" (click)="addAward()"></app-generic-button>
 </div>

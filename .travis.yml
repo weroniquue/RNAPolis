@@ -23,9 +23,7 @@ matrix:
         - npm install
         - ng lint
         - npm run test-headless
-        - ng build --prod --output-path dist --base-href RNAPolis
-        - cd dist/rnapolis-frontend
-        - cp index.html 404.html
+        - ng build --prod --base-href https://weroniquue.github.io/RNAPolis/
       deploy:
         provider: pages
         skip_cleanup: true

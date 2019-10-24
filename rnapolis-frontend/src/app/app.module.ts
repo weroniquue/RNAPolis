@@ -14,12 +14,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {DeleteButtonComponent} from './components/basic-components/delete-button/delete-button.component';
 import {GenericButtonComponent} from './components/basic-components/generic-button/generic-button.component';
 import {FooterComponent} from './components/footer/footer.component';
+import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     MenuComponent,
+    FooterComponent,
+    PageNotFoundComponent,
     AwardsTimelineComponent,
     AwardsPageComponent,
     DeleteButtonComponent,

@@ -24,6 +24,8 @@ matrix:
         - ng lint
         - npm run test-headless
         - ng build --prod --base-href https://weroniquue.github.io/RNAPolis/
+        - cd rnapolis-frontend/dist/rnapolis-frontend
+        - cp index.html 404.html
       deploy:
         provider: pages
         skip_cleanup: true

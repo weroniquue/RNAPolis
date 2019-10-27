@@ -15,6 +15,7 @@ import {DeleteButtonComponent} from './components/basic-components/delete-button
 import {GenericButtonComponent} from './components/basic-components/generic-button/generic-button.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
+import {HeaderComponent} from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,7 @@ import {PageNotFoundComponent} from './components/basic-components/page-not-foun
     AwardsPageComponent,
     DeleteButtonComponent,
     GenericButtonComponent,
-    MenuComponent,
-    FooterComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

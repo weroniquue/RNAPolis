@@ -1,0 +1,47 @@
+@import "../../style-utils/consts";
+#showcase {
+  color: #fff;
+  height: 100vh;
+  position: relative;
+  &:before{
+    content: '';
+    background: url(~src/assets/header.jpg) no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+    z-index: -1;
+  }
+
+  .showcase-container {
+    width: 50%; //na mobilne wywalić
+    padding: 3em; //na mobilne wywalić
+    display: flex;
+    flex-direction: column;
+    //align-items: center; //to dodac na mobilke
+    justify-content: center;
+    //text-align: center; //to też dodać
+    height: 100%;
+  }
+
+  h1, p {
+    font-family: $main-font;
+  }
+
+  h1 {
+    font-size: 4rem;
+    margin: 0.5em 0;
+    font-weight: $font-regular;
+  }
+
+  p {
+    font-size: 1.3em;
+    font-weight: $font-medium;
+    letter-spacing: 0.5px;
+  }
+
+}

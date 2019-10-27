@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  ESC = 'Escape';
+  isChecked: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === this.ESC && this.isChecked) {
+        this.isChecked = false;
+    }
+  }
 }

@@ -1,13 +1,12 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TeamPageComponent} from './team-page.component';
-import {DeleteButtonComponent} from "../basic-components/delete-button/delete-button.component";
-import {GenericButtonComponent} from "../basic-components/generic-button/generic-button.component";
-import {MenuComponent} from "../menu/menu.component";
-import {FooterComponent} from "../footer/footer.component";
-import {MatInputModule} from "@angular/material/input";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {DeleteButtonComponent} from '../basic-components/delete-button/delete-button.component';
+import {GenericButtonComponent} from '../basic-components/generic-button/generic-button.component';
+import {MenuComponent} from '../menu/menu.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
@@ -18,8 +17,7 @@ describe('TeamPageComponent', () => {
       declarations: [TeamPageComponent,
         DeleteButtonComponent,
         GenericButtonComponent,
-        MenuComponent,
-        FooterComponent],
+        MenuComponent],
       imports: [MatInputModule,
         MatFormFieldModule,
         FormsModule]

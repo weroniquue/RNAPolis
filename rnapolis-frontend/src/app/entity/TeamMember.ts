@@ -5,7 +5,7 @@ export class TeamMember {
   description: string;
   imagePath: string;
 
-  constructor(name: string, surname: string, position: string, description: string, image: string){
+  constructor(name: string, surname: string, position: string, description: string, image: string) {
     this.name = name;
     this.surname = surname;
     this.position = position;

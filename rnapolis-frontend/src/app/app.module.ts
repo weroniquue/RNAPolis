@@ -27,7 +27,6 @@ import {PageNotFoundComponent} from './components/basic-components/page-not-foun
     AwardsPageComponent,
     DeleteButtonComponent,
     GenericButtonComponent,
-    MenuComponent,
     FooterComponent
   ],
   imports: [

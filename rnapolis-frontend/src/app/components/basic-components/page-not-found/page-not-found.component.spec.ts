@@ -1,21 +1,17 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {MainPageComponent} from './main-page.component';
-import {MenuComponent} from '../menu/menu.component';
+import {PageNotFoundComponent} from './page-not-found.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {FooterComponent} from '../footer/footer.component';
+import {MenuComponent} from '../../menu/menu.component';
 
-
-describe('MainPageComponent', () => {
-  let component: MainPageComponent;
-  let fixture: ComponentFixture<MainPageComponent>;
+describe('PageNotFoundComponent', () => {
+  let component: PageNotFoundComponent;
+  let fixture: ComponentFixture<PageNotFoundComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        MainPageComponent,
-        MenuComponent,
-        FooterComponent
+      declarations: [PageNotFoundComponent,
+        MenuComponent
       ],
       imports: [
         RouterTestingModule
@@ -25,7 +21,7 @@ describe('MainPageComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPageComponent);
+    fixture = TestBed.createComponent(PageNotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

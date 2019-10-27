@@ -1,5 +1,5 @@
 <div class="menu-wrap">
-  <input type="checkbox" class="toggler">
+  <input type="checkbox" class="toggler" [checked]="isChecked" (change)="isChecked = !isChecked">
   <div class="hamburger">
     <div></div>
   </div>
@@ -10,7 +10,7 @@
           <li><a routerLink="/"><i class="fas fa-home"></i>HOME</a></li>
           <li><a routerLink="/team"><i class="fas fa-user-friends"></i>RNAPOLIS TEAM</a></li>
           <li><a href="#"><i class="fas fa-book"></i>PUBLICATIONS</a></li>
-          <li><a href="#"><i class="fas fa-award"></i>AWARDS</a></li>
+          <li><a routerLink="/award"><i class="fas fa-award"></i>AWARDS</a></li>
         </ul>
       </div>
     </div>

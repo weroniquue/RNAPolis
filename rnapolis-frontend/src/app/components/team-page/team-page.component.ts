@@ -1,5 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, NgZone} from '@angular/core';
 import {TeamMember} from "../../entity/TeamMember";
+import {CdkTextareaAutosize} from "@angular/cdk/text-field";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-team-page',
@@ -8,8 +10,9 @@ import {TeamMember} from "../../entity/TeamMember";
 })
 export class TeamPageComponent implements OnInit {
   team: TeamMember[];
+  canEdit: boolean;
 
-  constructor() {
+  constructor(private _ngZone: NgZone) {
     this.team = [
       new TeamMember('Natalia', 'Łukasiewicz', 'student', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium sunt nisi vitae et quia possimus unde tempora, sapiente rem aliquid assumenda nostrum sint nulla aspernatur, molestias cum quae. Tempora, illo.', "../../../../assets/random-photo-2.jpg"),
       new TeamMember('Weronika', 'Orczyk', 'doktorant', 'Nuancado suprenstreko antaŭpriskribo iel il, mis tohuo pleja iliard mo, fin ol numeralo finnlando mallongigoj. Povi povus artefarita nia no, sen ej ekesti neoficiala. Op hot mezurunuo mallongigo. Aj ruli mekao titolo esk, trafe frazelemento jes eg, gv deka laŭlonge kromakcento fin.\n', "../../../../assets/random-photo-3.jpg"),
@@ -20,11 +23,44 @@ export class TeamPageComponent implements OnInit {
     ]
   }
 
+  @ViewChild('autosize', {static: false}) autosize: CdkTextareaAutosize;
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this._ngZone.onStable.pipe(take(1))
+      .subscribe(() => this.autosize.resizeToFitContent(true));
+  }
+
   ngOnInit() {
   }
 
-  setDefaultImage(teamMember: TeamMember) {
-    teamMember.imagePath = "../../../../assets/not-found.jpg"
+  changeCanEdit() {
+    this.canEdit = true;
   }
 
+  save() {
+    console.log(this.team);
+    this.canEdit = false;
+    // TODO save data in db
+  }
+
+  deleteElement(member: TeamMember) {
+    this.team.splice(this.team.indexOf(member), 1);
+    // TODO save data in db
+  }
+
+  addElement() {
+    this.team.unshift(new TeamMember('','','','',''));
+  }
+
+  onChange(event, teamMember) { // called each time file input changes
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = e => teamMember.imagePath = reader.result;
+
+      reader.readAsDataURL(file);
+    }
+  }
 }

@@ -4,37 +4,51 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px 5%;
-  padding: 80px 10%;
+  padding: 40px 10%;
   grid-auto-rows: minmax(550px, auto);
+}
 
-  .box {
-    text-align: center;
-    height: 100%;
-    border: $purple solid 2px;
-    padding: 45px;
+.box {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  border: $primary-color solid 2px;
+  padding: 10%;
 
-    .team-image {
-      height: 200px;
-      width: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    h3 {
-      &:first-of-type {
-        margin-top: 45px;
-      }
-
-      font-size: 1.375em;
-      font-family: "Raleway", sans-serif;
-    }
-
-    p {
-      margin-top: 25px;
-      font-size: 1em;
-      font-family: "Didact Gothic", sans-serif;
-    }
+  .input-image{
+    margin: 0 auto;
+    padding: 10% 0;
+    width: 100%;
   }
+
+  .mat-form-field{
+    width: 100%;
+  }
+
+  h3 {
+    &:first-of-type {
+      margin-top: 15%;
+    }
+
+    font-size: 1.375em;
+    font-family: "Raleway", sans-serif;
+  }
+
+  p {
+    margin-top: 5%;
+    font-size: 1em;
+    font-family: "Didact Gothic", sans-serif;
+  }
+}
+
+.team-image {
+  border-radius: 50%;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size:cover;
 }
 
 @media only screen and (max-width: $small-screen) {
@@ -46,5 +60,13 @@
 @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
   .board {
     grid-template-columns: repeat(2, 1fr);
+    font-size: 90% ;
   }
+}
+
+app-delete-button{
+  position: relative;
+  right: -4em;
+  top: -4em;
+  float: right;
 }

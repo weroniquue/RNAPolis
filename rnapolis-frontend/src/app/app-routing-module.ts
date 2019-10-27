@@ -1,16 +1,19 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {MainPageComponent} from './components/main-page/main-page.component';
+import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
+import {AwardsPageComponent} from './components/award-section/awards-page/awards-page.component';
 import {TeamPageComponent} from "./components/team-page/team-page.component";
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
-  {path: 'team', component: TeamPageComponent}
-  // { path: '**', component: PageNotFoundComponent }
+  {path: 'team', component: TeamPageComponent},
+  {path: 'award', component: AwardsPageComponent},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

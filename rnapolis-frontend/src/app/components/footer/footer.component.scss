@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5rem;
-  width: 50%;
+  max-width: 50%;
   margin: 25px auto auto;
   align-items: center;
 }
@@ -31,14 +31,14 @@
 
 @media screen and (max-width: $medium-screen) and (min-width: $small-screen) {
   .footer-container {
-    width: 90%;
+    max-width: 90%;
   }
 }
 
 @media screen and (max-width: $small-screen) {
   .footer-container {
     display: block;
-    width: 100%;
+    max-width: 100%;
     margin: 0.5em;
 
     > img {

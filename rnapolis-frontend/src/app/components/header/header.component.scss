@@ -9,22 +9,19 @@
     background-size: cover;
     overflow: hidden;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    opacity: 0.7;
     z-index: -1;
   }
 
   .showcase-container {
-    width: 50%; //na mobilne wywalić
-    padding: 3em; //na mobilne wywalić
+    width: 75%;
+    padding: 3em;
     display: flex;
     flex-direction: column;
-    //align-items: center; //to dodac na mobilke
     justify-content: center;
-    //text-align: center; //to też dodać
     height: 100%;
   }
 
@@ -33,15 +30,76 @@
   }
 
   h1 {
-    font-size: 4rem;
+    font-size: $header-size;
     margin: 0.5em 0;
     font-weight: $font-regular;
   }
 
   p {
-    font-size: 1.3em;
+    font-size: $paragraph-size;
     font-weight: $font-medium;
     letter-spacing: 0.5px;
   }
 
+  #triple-arrows {
+    width: 75px;
+    height: 65px;
+    position: absolute;
+    bottom: 0;
+    margin: 0.5rem 0;
+    right: calc(50% - 35.5px);
+    &:hover {
+      cursor: pointer;
+      polygon {
+        fill: #FFF;
+        transition: all .2s ease-out;
+
+        &.arrow-bottom {
+          transform: translateY(-18px);
+        }
+        &.arrow-top {
+          transform: translateY(18px);
+        }
+      }
+    }
+  }
+  polygon {
+    fill: #FFF;
+    transition: all .2s ease-out;
+
+    &.arrow-middle {
+      opacity: 0.75;
+    }
+
+    &.arrow-top {
+      opacity: 0.5
+    }
+  }
 }
+
+@media screen and (max-width: $medium-screen) {
+  #showcase .showcase-container {
+    width: 100%;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: $medium-screen) and (min-width: $small-screen) {
+
+}
+
+@media screen and (max-width: $small-screen) {
+  #showcase .showcase-container {
+    h1 {
+      font-size: $header-size-mobile;
+    }
+
+    p {
+      margin: 0 1em;
+    }
+  }
+}
+
+

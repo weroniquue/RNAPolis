@@ -6,9 +6,9 @@ import {AwardsPageComponent} from './components/award-section/awards-page/awards
 
 
 const routes: Routes = [
-  {path: '', component: MainPageComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: MainPageComponent},
   {path: 'award', component: AwardsPageComponent},
-  {path: '', component: MainPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

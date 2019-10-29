@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import * as smoothscroll from 'smoothscroll-polyfill';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    smoothscroll.polyfill();
+  }
 
   ngOnInit() {
   }
 
+  scroll() {
+    const el = document.getElementById('main-section');
+    el.scrollIntoView({behavior: 'smooth'});
+  }
 }

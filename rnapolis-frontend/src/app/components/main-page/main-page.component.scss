@@ -1,0 +1,73 @@
+@import "../../style-utils/consts";
+
+@mixin align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-section {
+  @include align-center;
+  padding: 10em 0;
+
+  .rectangle {
+    width: 60vw;
+    height: 60vh;
+    background-color: $light-purple;
+    position: relative;
+    left: 7vw;
+  }
+
+  .description {
+    @include align-center;
+    position: absolute;
+    z-index: 1;
+    width: 75%;
+
+    img {
+      object-fit: cover;
+      height: 400px;
+      width: 45%;
+    }
+
+    div {
+      padding: 1.5em;
+      font-family: $main-font;
+      color: $primary-color;
+
+      h2 {
+        font-size: $smaller-header-size;
+        text-transform: uppercase;
+      }
+      p {
+        margin: 2em 0;
+        font-size: $paragraph-size;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen) {
+  .details-section {
+    padding: 0 0 2em 0;
+    .rectangle{
+      display: none;
+    }
+
+    .description {
+      display: block;
+      width: 100%;
+      position: inherit;
+
+      img {
+        width: 100%;
+        height: 45vh;
+      }
+
+      div h2 {
+        font-size: $header-size-mobile;
+      }
+    }
+  }
+}
+

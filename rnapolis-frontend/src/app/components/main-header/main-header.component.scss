@@ -1,9 +1,11 @@
 @import "../../style-utils/consts";
+
 #showcase {
   color: #fff;
   height: 100vh;
   position: relative;
-  &:before{
+
+  &:before {
     content: '';
     background: url(~src/assets/header.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -48,8 +50,10 @@
     bottom: 0;
     margin: 0.5rem 0;
     right: calc(50% - 35.5px);
+
     &:hover {
       cursor: pointer;
+
       polygon {
         fill: #FFF;
         transition: all .2s ease-out;
@@ -57,12 +61,14 @@
         &.arrow-bottom {
           transform: translateY(-18px);
         }
+
         &.arrow-top {
           transform: translateY(18px);
         }
       }
     }
   }
+
   polygon {
     fill: #FFF;
     transition: all .2s ease-out;
@@ -86,14 +92,10 @@
   }
 }
 
-@media screen and (max-width: $medium-screen) and (min-width: $small-screen) {
-
-}
-
 @media screen and (max-width: $small-screen) {
   #showcase .showcase-container {
     h1 {
-      font-size: $header-size-mobile;
+      font-size: $smaller-header-size;
     }
 
     p {

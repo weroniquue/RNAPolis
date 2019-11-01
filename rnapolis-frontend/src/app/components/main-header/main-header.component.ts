@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import * as smoothscroll from 'smoothscroll-polyfill';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-main-header',
+  templateUrl: './main-header.component.html',
+  styleUrls: ['./main-header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class MainHeaderComponent implements OnInit {
 
   constructor() {
     smoothscroll.polyfill();

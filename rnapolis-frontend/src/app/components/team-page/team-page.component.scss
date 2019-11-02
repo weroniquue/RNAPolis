@@ -5,23 +5,32 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px 5%;
   padding: 40px 10%;
-  grid-auto-rows: minmax(550px, auto);
 }
 
 .box {
   text-align: center;
   height: 100%;
+  min-height: 550px;
   width: 100%;
   border: $primary-color solid 2px;
   padding: 10%;
 
-  .input-image{
+  app-delete-button {
+    position: relative;
+    right: 2.25em;
+    top: -4em;
+    width: 0;
+    height: 0;
+    float: right;
+  }
+
+  .input-image {
     margin: 0 auto;
     padding: 10% 0;
     width: 100%;
   }
 
-  .mat-form-field{
+  .mat-form-field {
     width: 100%;
   }
 
@@ -30,43 +39,46 @@
       margin-top: 15%;
     }
 
-    font-size: 1.375em;
-    font-family: "Raleway", sans-serif;
+    font-size: $title-size;
+    font-family: $team-member-title-font
   }
 
   p {
     margin-top: 5%;
-    font-size: 1em;
-    font-family: "Didact Gothic", sans-serif;
+    font-size: $normal-size;
+    font-family: $team-member-description-font
   }
 }
 
-.team-image {
+.member-image {
+  width: 15vw;
+  height: 15vw;
+  object-fit: cover;
   border-radius: 50%;
-  width: 100%;
-  padding-bottom: 100%;
-  position: relative;
-  background-position:center center;
-  background-repeat:no-repeat;
-  background-size:cover;
 }
 
 @media only screen and (max-width: $small-screen) {
   .board {
     grid-template-columns: 1fr;
+
+    .box {
+      min-height: auto;
+    }
+  }
+
+  .member-image {
+    width: 40vw;
+    height: 40vw;
   }
 }
 
 @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
   .board {
     grid-template-columns: repeat(2, 1fr);
-    font-size: 90% ;
   }
-}
 
-app-delete-button{
-  position: relative;
-  right: -4em;
-  top: -4em;
-  float: right;
+  .member-image {
+    width: 25vw;
+    height: 25vw;
+  }
 }

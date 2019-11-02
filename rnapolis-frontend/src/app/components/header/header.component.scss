@@ -1,6 +1,5 @@
-@import "../../style-utils/colors";
-@import "../../style-utils/styles";
-@import "../../style-utils/dimens";
+@import "../../style-utils/consts";
+
 
 #basic-header {
   height: 350px;
@@ -10,9 +9,9 @@
   align-items: center;
   justify-content: center;
 
-  &::before {
+  div {
     content: '';
-    background: attr(data-image url) no-repeat center center/cover;
+    background: no-repeat center center/cover;
     opacity: 0.5;
     position: absolute;
     top: 0;

@@ -40,12 +40,19 @@
         text-transform: uppercase;
       }
       p {
-        margin: 2em 0;
+        margin-top: 2em;
         font-size: $paragraph-size;
       }
     }
   }
 }
+@media screen and (max-width: $medium-screen) and (min-width: $small-screen) {
+  .details-section .rectangle {
+   width: 60vw;
+   height: 95vh;
+ }
+}
+
 
 @media screen and (max-width: $small-screen) {
   .details-section {

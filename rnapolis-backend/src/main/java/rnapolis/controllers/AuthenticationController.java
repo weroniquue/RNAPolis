@@ -1,8 +1,7 @@
 package rnapolis.controllers;
 
-
 import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,12 +17,10 @@ import rnapolis.security.JwtTokenProvider;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/auth")
+@AllArgsConstructor
 public class AuthenticationController {
 
-    @Autowired
     AuthenticationManager authenticationManager;
-
-    @Autowired
     JwtTokenProvider jwtTokenProvider;
 
   @PostMapping("/login")

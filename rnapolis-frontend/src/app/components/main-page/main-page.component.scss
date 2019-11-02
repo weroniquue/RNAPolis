@@ -9,6 +9,8 @@
 .details-section {
   @include align-center;
   padding: 10em 0;
+  width: 100%;
+  height: 100%;
 
   .rectangle {
     width: 60vw;
@@ -26,7 +28,7 @@
 
     img {
       object-fit: cover;
-      height: 400px;
+      height: 50vh;
       width: 45%;
     }
 
@@ -47,9 +49,18 @@
   }
 }
 @media screen and (max-width: $medium-screen) and (min-width: $small-screen) {
-  .details-section .rectangle {
-   width: 60vw;
-   height: 95vh;
+  .details-section {
+    .rectangle {
+      width: 60vw;
+      height: 70vh;
+    }
+    .description {
+      div {
+        h2 {
+          font-size: $header-size-mobile;
+        }
+      }
+    }
  }
 }
 

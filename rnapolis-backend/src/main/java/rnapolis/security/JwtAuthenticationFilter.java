@@ -17,44 +17,45 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import rnapolis.services.CustomUserDetailsService;
 
-
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private JwtTokenProvider tokenProvider;
+  @Autowired private JwtTokenProvider tokenProvider;
 
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+  @Autowired private CustomUserDetailsService customUserDetailsService;
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
-    private static final String bearerPrefix = "Bearer ";
+  private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
+  private static final String bearerPrefix = "Bearer ";
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        try {
-            String jwt = getJwtFromRequest(request);
+  @Override
+  protected void doFilterInternal(
+      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws ServletException, IOException {
+    try {
+      String jwt = getJwtFromRequest(request);
 
-            if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
-                String username = tokenProvider.getUsernameFromJWT(jwt);
-                UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails.getUsername(), userDetails.getPassword());
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+      if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
+        String username = tokenProvider.getUsernameFromJWT(jwt);
+        UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+        UsernamePasswordAuthenticationToken authentication =
+            new UsernamePasswordAuthenticationToken(
+                userDetails.getUsername(), userDetails.getPassword());
+        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }
-        } catch (Exception ex) {
-            logger.error("Could not set user authentication in security context", ex);
-        }
-
-        filterChain.doFilter(request, response);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+      }
+    } catch (Exception ex) {
+      logger.error("Could not set user authentication in security context", ex);
     }
 
-    private String getJwtFromRequest(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(bearerPrefix)) {
-            return bearerToken.substring(bearerPrefix.length(), bearerToken.length());
-        }
+    filterChain.doFilter(request, response);
+  }
 
-        return "invalid token";
+  private String getJwtFromRequest(HttpServletRequest request) {
+    String bearerToken = request.getHeader("Authorization");
+    if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(bearerPrefix)) {
+      return bearerToken.substring(bearerPrefix.length(), bearerToken.length());
     }
+
+    return "invalid token";
+  }
 }

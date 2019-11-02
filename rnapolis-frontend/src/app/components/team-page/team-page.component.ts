@@ -44,8 +44,8 @@ export class TeamPageComponent implements OnInit {
     this.canEdit = true;
   }
 
-  setDefaultImage(member: TeamMember){
-    member.imagePath = "assets/not-found.jpg"
+  setDefaultImage(member: TeamMember) {
+    member.imagePath = 'assets/not-found.jpg';
   }
 
   save() {

@@ -44,8 +44,8 @@
   }
 
   #triple-arrows {
-    width: 75px;
-    height: 65px;
+    width: 4.6875em;
+    height: 4.0625em;
     position: absolute;
     bottom: 0;
     margin: 0.5rem 0;
@@ -59,11 +59,11 @@
         transition: all .2s ease-out;
 
         &.arrow-bottom {
-          transform: translateY(-18px);
+          transform: translateY(-1.125em);
         }
 
         &.arrow-top {
-          transform: translateY(18px);
+          transform: translateY(1.125em);
         }
       }
     }

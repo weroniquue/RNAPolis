@@ -13,16 +13,16 @@
   height: 100%;
 
   .rectangle {
-    width: 60vw;
+    width: 55vw;
     height: 75vh;
     background-color: $light-purple;
-    position: relative;
-    left: 7vw;
+    position: absolute;
+    left: 30vw;
+    z-index: -2;
   }
 
   .description {
     @include align-center;
-    position: absolute;
     z-index: 1;
     width: 75%;
 
@@ -41,34 +41,43 @@
         font-size: $smaller-header-size;
         text-transform: uppercase;
       }
+
       p {
         margin-top: 2em;
+        padding-right: 1em;
         font-size: $paragraph-size;
       }
     }
   }
 }
-@media screen and (max-width: $medium-screen) and (min-width: $small-screen) {
+
+@media screen and (max-width: $medium-screen) {
   .details-section {
     .rectangle {
-      width: 60vw;
+      width: 65vw;
       height: 70vh;
+      left: 10em;
     }
+
     .description {
       div {
         h2 {
-          font-size: $header-size-mobile;
+          font-size: $smaller-header-size-mobile;
+        }
+
+        p {
+          font-size: $normal-size;
         }
       }
     }
- }
+  }
 }
-
 
 @media screen and (max-width: $small-screen) {
   .details-section {
     padding: 0 0 2em 0;
-    .rectangle{
+
+    .rectangle {
       display: none;
     }
 
@@ -84,8 +93,8 @@
 
       div h2 {
         font-size: $header-size-mobile;
+        background-color: $light-purple;
       }
     }
   }
 }
-

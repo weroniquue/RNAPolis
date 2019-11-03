@@ -2,20 +2,20 @@
 
 #timeline {
   ul {
-    padding: 50px 0;
+    padding: 4em 0;
 
     li {
       list-style: none;
       position: relative;
       width: 10px;
       margin: 0 auto;
-      padding-top: 50px;
+      padding-top: 4em;
       background: $light-purple;
 
       div {
         position: relative;
         bottom: 0;
-        width: 400px;
+        width: 30vw;
         padding: 1em;
         background: #ffffff;
         box-shadow: 0 0.375em 0.75em rgba(0, 0, 0, 0.16);
@@ -30,13 +30,13 @@
           display: block;
 
           textarea {
-            min-height: 150px;
+            min-height: 8em;
           }
         }
 
         h3 {
           font-size: 2em;
-          padding: 20px 0;
+          padding: 1.25em 0;
 
           &::before {
             margin-bottom: -0.5em;
@@ -72,8 +72,8 @@
 
       &:nth-child(odd) {
         div {
-          left: 100px;
-          transform: translate(200px, 0);
+          left: 6.25em;
+          transform: translate(12.5em, 0);
 
           &::before {
             left: -2em;
@@ -87,8 +87,8 @@
 
       &:nth-child(even) {
         div {
-          left: -500px;
-          transform: translate(-200px, 0);
+          left: calc(-30vw - 6.25em);
+          transform: translate(-12.5em, 0);
 
           &::before {
             right: -2em;
@@ -104,9 +104,9 @@
         content: '';
         position: absolute;
         left: 50%;
-        top: 50%;
-        width: 50px;
-        height: 50px;
+        top: 52%;
+        width: 3.125em;
+        height: 3.125em;
         transform: translateX(-50%);
         border-radius: 50%;
       }
@@ -137,36 +137,20 @@
   }
 }
 
-
 @media screen and (max-width: $medium-screen) {
   #timeline ul li {
-    div {
-      width: 250px;
-
-      i {
-        font-size: 3em;
-      }
-    }
-
-    &:nth-child(even) div {
-      left: -340px;
-    }
-  }
-}
-
-@media screen and (max-width: $small-screen) {
-  #timeline ul li {
-    margin-left: 1.5em;
+    margin-left: 2.5em;
 
     div {
       height: auto;
+      width: 70vw;
 
       p {
         text-align: left;
       }
 
       i {
-        font-size: 2em;
+        font-size: 3em;
       }
     }
 
@@ -197,8 +181,18 @@
   }
 }
 
-@media screen and (max-width: $extra-small-screen) {
-  #timeline ul li div {
-    width: 200px;
+@media screen and (max-width: $small-screen) {
+  #timeline ul li {
+    margin-left: 1.5em;
+
+    div {
+      p {
+        text-align: left;
+      }
+
+      i {
+        font-size: 2em;
+      }
+    }
   }
 }

@@ -14,9 +14,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {DeleteButtonComponent} from './components/basic-components/delete-button/delete-button.component';
 import {GenericButtonComponent} from './components/basic-components/generic-button/generic-button.component';
 import {FooterComponent} from './components/footer/footer.component';
+import {TeamPageComponent} from './components/team-page/team-page.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
+import {MatButtonModule} from '@angular/material/button';
 import {MainHeaderComponent} from './components/main-header/main-header.component';
 import {ToolComponent} from './components/main-page/tool/tool.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import {ToolComponent} from './components/main-page/tool/tool.component';
     DeleteButtonComponent,
     GenericButtonComponent,
     MainHeaderComponent,
-    ToolComponent
+    ToolComponent,
+    TeamPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import {ToolComponent} from './components/main-page/tool/tool.component';
     FormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

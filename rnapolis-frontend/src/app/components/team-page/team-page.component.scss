@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 4vw;
-  padding: 2vh 10vw;
+  padding: 10vh 10vw;
 }
 
 .box {
@@ -14,7 +14,7 @@
   min-height: 550px;
   width: 100%;
   border: $primary-color solid 2px;
-  padding: 4vw;
+  padding: 4vh 4vw;
 
   app-delete-button {
     position: absolute;

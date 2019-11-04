@@ -3,30 +3,30 @@
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 40px 5%;
-  padding: 40px 10%;
+  grid-gap: 4vw;
+  padding: 2vh 10vw;
 }
 
 .box {
+  position: relative;
   text-align: center;
   height: 100%;
   min-height: 550px;
   width: 100%;
   border: $primary-color solid 2px;
-  padding: 10%;
+  padding: 4vw;
 
   app-delete-button {
-    position: relative;
-    right: 2.25em;
-    top: -4em;
-    width: 0;
+    position: absolute;
+    right: -2em;
+    top: -2em;
     height: 0;
     float: right;
   }
 
   .input-image {
     margin: 0 auto;
-    padding: 10% 0;
+    padding: 10px 0;
     width: 100%;
   }
 
@@ -34,9 +34,13 @@
     width: 100%;
   }
 
+  ::ng-deep .mat-form-field-infix {
+    width: auto;
+  }
+
   h3 {
     &:first-of-type {
-      margin-top: 15%;
+      margin-top: 15px;
     }
 
     font-size: $title-size;
@@ -44,7 +48,7 @@
   }
 
   p {
-    margin-top: 5%;
+    margin-top: 15px;
     font-size: $normal-size;
     font-family: $team-member-description-font
   }
@@ -60,10 +64,12 @@
 @media only screen and (max-width: $small-screen) {
   .board {
     grid-template-columns: 1fr;
+    grid-gap: 5vh;
+  }
 
-    .box {
-      min-height: auto;
-    }
+  .box {
+    padding: 10vw;
+    min-height: auto;
   }
 
   .member-image {
@@ -72,9 +78,17 @@
   }
 }
 
-@media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+@media only screen and (min-width: $small-screen+1) and (max-width: $medium-screen) {
   .board {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 6vw;
+  }
+
+  .box {
+    padding: 6vw;
+    min-height: 450px;
+
+    font-size: 85%;
   }
 
   .member-image {

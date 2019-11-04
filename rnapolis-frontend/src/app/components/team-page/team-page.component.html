@@ -9,18 +9,14 @@
 <section class="board">
   <div *ngFor="let teamMember of team">
     <div class="box">
+      <img class="member-image" src="{{teamMember.imagePath}}" alt="Team member picture" (error)="setDefaultImage(teamMember)">
       <div *ngIf="!canEdit">
-        <img class="member-image" src="{{teamMember.imagePath}}" alt="Team member picture" (error)="setDefaultImage(teamMember)">
-<!--        <div class="team-image" [ngStyle]="{'background-image': 'url(' + teamMember.imagePath + ') , url( ../../../../assets/not-found.jpg )'}"></div>-->
         <h3>{{teamMember.name.toUpperCase()}} {{teamMember.surname.toUpperCase()}}</h3>
         <h3>{{teamMember.position}}</h3>
         <p>{{teamMember.description}}</p>
       </div>
 
       <div class="edit" *ngIf="canEdit">
-        <app-delete-button (click)="deleteElement(teamMember)"></app-delete-button>
-        <img class="member-image" src="{{teamMember.imagePath}}" alt="Team member picture" (error)="setDefaultImage(teamMember)">
-        <!--        <div class="team-image" [ngStyle]="{'background-image': 'url(' + teamMember.imagePath + ') , url( ../../../../assets/not-found.jpg )'}"></div>-->
         <input class="input-image" type='file' (change)="onChange($event, teamMember)">
         <mat-form-field>
           <input matInput type="text" placeholder="Name" [(ngModel)]="teamMember.name">
@@ -36,6 +32,7 @@
                     #autosize="cdkTextareaAutosize"
                     [(ngModel)]="teamMember.description"></textarea>
         </mat-form-field>
+        <app-delete-button (click)="deleteElement(teamMember)"></app-delete-button>
       </div>
     </div>
   </div>

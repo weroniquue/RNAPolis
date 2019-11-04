@@ -1,0 +1,26 @@
+@import "../../../style-utils/font-style";
+@import "../../../style-utils/grid-style";
+@import "../../../style-utils/consts";
+
+.tool {
+  width: 75vw;
+  margin: 5em auto;
+  padding: 2em 0;
+  border: 3px solid $primary-color;
+
+  .tool-name {
+    @include header-with-line;
+    color: $deep-purple;
+  }
+
+  p {
+    width: 60vw;
+    padding: 2em;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  app-generic-button {
+    @include center-items;
+  }
+}

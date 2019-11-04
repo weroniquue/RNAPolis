@@ -1,12 +1,12 @@
 @import "../../../style-utils/consts";
+@import "../../../style-utils/font-style";
+@import "../../../style-utils/grid-style";
 
 #award-header{
+  @include center-items;
   height: 35vh;
   position: relative;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   &::before {
     content: '';
@@ -20,19 +20,15 @@
   }
 
   h1 {
+    @include main-header;
     z-index: 1;
-    color: $deep-purple;
-    font-family: $main-font;
-    font-size: 4em;
   }
 }
 
 @media screen and (max-width: $small-screen){
   #award-header {
-    height: 200px;
-
     h1{
-      font-size: 2em;
+      font-size: $header-size-mobile;
     }
   }
 }

@@ -14,7 +14,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {DeleteButtonComponent} from './components/basic-components/delete-button/delete-button.component';
 import {GenericButtonComponent} from './components/basic-components/generic-button/generic-button.component';
 import {FooterComponent} from './components/footer/footer.component';
+import {TeamPageComponent} from './components/team-page/team-page.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import {PageNotFoundComponent} from './components/basic-components/page-not-foun
     AwardsPageComponent,
     DeleteButtonComponent,
     GenericButtonComponent,
-    FooterComponent
+    TeamPageComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import {PageNotFoundComponent} from './components/basic-components/page-not-foun
     FormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,12 +3,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
 import {AwardsPageComponent} from './components/award-section/awards-page/awards-page.component';
-
+import {TeamPageComponent} from './components/team-page/team-page.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
+  {path: 'team', component: TeamPageComponent},
   {path: 'award', component: AwardsPageComponent},
-  {path: '', component: MainPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -16,4 +16,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

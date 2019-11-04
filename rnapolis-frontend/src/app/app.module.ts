@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing-module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
@@ -17,6 +18,7 @@ import {HeaderComponent} from './components/header/header.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {MenuComponent} from './components/menu/menu.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
+import {TeamPageComponent} from './components/team-page/team-page.component';
 
 @NgModule({
   declarations: [
@@ -29,15 +31,17 @@ import {PageNotFoundComponent} from './components/basic-components/page-not-foun
     HeaderComponent,
     MainPageComponent,
     MenuComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TeamPageComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    MatInputModule,
-    MatFormFieldModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

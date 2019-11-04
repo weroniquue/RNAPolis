@@ -7,6 +7,8 @@ import {MatFormFieldModule, MatInputModule} from '@angular/material';
 import {GenericButtonComponent} from '../../basic-components/generic-button/generic-button.component';
 import {DeleteButtonComponent} from '../../basic-components/delete-button/delete-button.component';
 import {FormsModule} from '@angular/forms';
+import {HeaderComponent} from '../../header/header.component';
+import {MatButtonModule} from '@angular/material/button';
 
 describe('AwardsPageComponent', () => {
   let component: AwardsPageComponent;
@@ -18,9 +20,10 @@ describe('AwardsPageComponent', () => {
         AwardsPageComponent,
         AwardsTimelineComponent,
         MenuComponent,
+        HeaderComponent,
         GenericButtonComponent,
         DeleteButtonComponent],
-      imports: [MatInputModule, MatFormFieldModule, FormsModule]
+      imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule]
     })
       .compileComponents();
   }));

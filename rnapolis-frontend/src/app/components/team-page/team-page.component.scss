@@ -1,0 +1,103 @@
+@import "../../style-utils/consts.scss";
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4vw;
+  padding: 10vh 10vw;
+}
+
+.box {
+  position: relative;
+  text-align: center;
+  height: 100%;
+  min-height: 550px;
+  width: 100%;
+  border: $primary-color solid 2px;
+  padding: 4vh 4vw;
+
+  app-delete-button {
+    position: absolute;
+    right: -2em;
+    top: -2em;
+    height: 0;
+    float: right;
+  }
+
+  button {
+    font-size: 1.125em;
+    margin: 10px 0;
+  }
+
+  .input-image {
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  ::ng-deep .mat-form-field-infix {
+    width: auto;
+  }
+
+  h3 {
+    &:first-of-type {
+      margin-top: 15px;
+    }
+
+    font-size: $title-size;
+    font-family: $team-member-title-font
+  }
+
+  p {
+    margin-top: 15px;
+    font-size: $normal-size;
+    font-family: $team-member-description-font
+  }
+}
+
+.member-image {
+  width: 15vw;
+  height: 15vw;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: $small-screen) {
+  .board {
+    grid-template-columns: 1fr;
+    grid-gap: 5vh;
+  }
+
+  .box {
+    padding: 10vw;
+    min-height: auto;
+  }
+
+  .member-image {
+    width: 40vw;
+    height: 40vw;
+  }
+}
+
+@media only screen and (min-width: $small-screen+1) and (max-width: $medium-screen) {
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 6vw;
+  }
+
+  .box {
+    padding: 6vw;
+    min-height: 450px;
+
+    font-size: 85%;
+  }
+
+  .member-image {
+    width: 25vw;
+    height: 25vw;
+  }
+}

@@ -4,6 +4,11 @@
   color: $deep-purple;
 }
 
+@mixin h1-header {
+  @include main-purple-font;
+  font-size: $header-size;
+}
+
 @mixin main-header {
   @include main-purple-font;
   font-size: $header-size;

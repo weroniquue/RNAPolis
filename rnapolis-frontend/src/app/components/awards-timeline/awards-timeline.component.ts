@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {Award} from '../../../entity/award';
+import {Award} from '../../entity/award';
 
 @Component({
   selector: 'app-awards-timeline',

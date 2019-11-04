@@ -1,0 +1,42 @@
+@import "../../../style-utils/consts";
+@import "../../../style-utils/grid-style";
+@import "../../../style-utils/font-style";
+
+
+#basic-header {
+  @include center-items;
+  height: 30vh;
+  position: relative;
+  width: 100%;
+
+  div {
+    background: no-repeat center center/cover;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  h1 {
+    @include h1-header;
+    z-index: 1;
+  }
+}
+
+@media screen and (min-width: $small-screen) {
+  #basic-header {
+    height: 25vh;
+
+    h1 {
+      font-size: $smaller-header-size;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen) {
+  #basic-header h1 {
+      font-size: $header-size-mobile;
+    }
+}

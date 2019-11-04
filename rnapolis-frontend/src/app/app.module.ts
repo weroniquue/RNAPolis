@@ -7,12 +7,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {AppComponent} from './app.component';
-import {AwardsPageComponent} from './components/award-section/awards-page/awards-page.component';
-import {AwardsTimelineComponent} from './components/award-section/awards-timeline/awards-timeline.component';
+import {AwardsTimelineComponent} from './components/awards-timeline/awards-timeline.component';
 import {DeleteButtonComponent} from './components/basic-components/delete-button/delete-button.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {GenericButtonComponent} from './components/basic-components/generic-button/generic-button.component';
-import {HeaderComponent} from './components/header/header.component';
+import {HeaderComponent} from './components/basic-components/header/header.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {MenuComponent} from './components/menu/menu.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
@@ -23,7 +22,6 @@ import {ToolComponent} from './components/main-page/tool/tool.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AwardsPageComponent,
     AwardsTimelineComponent,
     DeleteButtonComponent,
     FooterComponent,

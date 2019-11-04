@@ -16,6 +16,7 @@ import {GenericButtonComponent} from './components/basic-components/generic-butt
 import {FooterComponent} from './components/footer/footer.component';
 import {TeamPageComponent} from './components/team-page/team-page.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {PageNotFoundComponent} from './components/basic-components/page-not-foun
     FormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

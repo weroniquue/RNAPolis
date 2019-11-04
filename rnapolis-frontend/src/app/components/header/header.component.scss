@@ -27,6 +27,16 @@
   }
 }
 
+@media screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+  #basic-header {
+    height: 250px;
+
+    h1 {
+      font-size: 3em;
+    }
+  }
+}
+
 @media screen and (max-width: $small-screen) {
   #basic-header {
     height: 200px;

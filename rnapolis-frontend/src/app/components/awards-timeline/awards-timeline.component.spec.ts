@@ -5,6 +5,8 @@ import {DeleteButtonComponent} from '../basic-components/delete-button/delete-bu
 import {GenericButtonComponent} from '../basic-components/generic-button/generic-button.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material';
+import {MenuComponent} from '../menu/menu.component';
+import {HeaderComponent} from '../basic-components/header/header.component';
 
 describe('AwardsTimelineComponent', () => {
   let component: AwardsTimelineComponent;
@@ -14,7 +16,10 @@ describe('AwardsTimelineComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AwardsTimelineComponent,
         DeleteButtonComponent,
-        GenericButtonComponent],
+        GenericButtonComponent,
+        MenuComponent,
+        HeaderComponent
+      ],
       imports: [
         MatFormFieldModule,
         FormsModule,

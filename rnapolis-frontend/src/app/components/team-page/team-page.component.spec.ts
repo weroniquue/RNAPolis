@@ -7,7 +7,7 @@ import {MenuComponent} from '../menu/menu.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
-import {HeaderComponent} from '../header/header.component';
+import {HeaderComponent} from '../basic-components/header/header.component';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;

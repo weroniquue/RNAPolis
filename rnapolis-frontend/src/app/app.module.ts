@@ -12,7 +12,7 @@ import {AwardsTimelineComponent} from './components/award-section/awards-timelin
 import {DeleteButtonComponent} from './components/basic-components/delete-button/delete-button.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {GenericButtonComponent} from './components/basic-components/generic-button/generic-button.component';
-import {HeaderComponent} from './components/header/header.component';
+import {HeaderComponent} from './components/basic-components/header/header.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {MenuComponent} from './components/menu/menu.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';

@@ -1,8 +1,8 @@
-@import "../../style-utils/consts";
+@import "../../../style-utils/consts";
 
 
 #basic-header {
-  height: 350px;
+  height: 40vh;
   position: relative;
   width: 100%;
   display: flex;
@@ -27,9 +27,9 @@
   }
 }
 
-@media screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+@media screen and (max-width: $medium-screen) {
   #basic-header {
-    height: 250px;
+    height: 25vh;
 
     h1 {
       font-size: 3em;
@@ -38,11 +38,7 @@
 }
 
 @media screen and (max-width: $small-screen) {
-  #basic-header {
-    height: 200px;
-
-    h1 {
+  #basic-header h1 {
       font-size: 2em;
-    }
   }
 }

@@ -23,7 +23,7 @@
     z-index: 1;
     color: $deep-purple;
     font-family: $main-font;
-    font-size: 4em;
+    font-size: $header-size;
   }
 }
 
@@ -32,13 +32,13 @@
     height: 25vh;
 
     h1 {
-      font-size: 3em;
+      font-size: $smaller-header-size;
     }
   }
 }
 
 @media screen and (max-width: $small-screen) {
   #basic-header h1 {
-      font-size: 2em;
+      font-size: $header-size-mobile;
   }
 }

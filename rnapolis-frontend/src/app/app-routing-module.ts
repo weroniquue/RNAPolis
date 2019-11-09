@@ -4,11 +4,13 @@ import {MainPageComponent} from './components/main-page/main-page.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
 import {AwardsPageComponent} from './components/award-section/awards-page/awards-page.component';
 import {TeamPageComponent} from './components/team-page/team-page.component';
+import {LoginComponent} from './components/login/login.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
   {path: 'team', component: TeamPageComponent},
   {path: 'award', component: AwardsPageComponent},
+  {path: 'login', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

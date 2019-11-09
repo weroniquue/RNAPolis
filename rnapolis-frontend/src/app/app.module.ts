@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing-module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -19,6 +19,9 @@ import {MainPageComponent} from './components/main-page/main-page.component';
 import {MenuComponent} from './components/menu/menu.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
 import {TeamPageComponent} from './components/team-page/team-page.component';
+import {LoginComponent} from './components/login/login.component';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import {TeamPageComponent} from './components/team-page/team-page.component';
     MainPageComponent,
     MenuComponent,
     PageNotFoundComponent,
-    TeamPageComponent
+    TeamPageComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
@@ -41,7 +45,9 @@ import {TeamPageComponent} from './components/team-page/team-page.component';
     FormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, NgZone} from '@angular/core';
 import {TeamMember} from '../../entity/TeamMember';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import {take} from 'rxjs/operators';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-team-page',
@@ -14,7 +15,7 @@ export class TeamPageComponent implements OnInit {
 
   @ViewChild('autosize', {static: false}) autosize: CdkTextareaAutosize;
 
-  constructor(private ngZone: NgZone) {
+  constructor(private ngZone: NgZone, private authenticationService: AuthenticationService) {
     this.team = [
       new TeamMember('Natalia', 'Łukasiewicz', 'student',
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium sunt nisi vitae et quia possimus unde tempora, sapiente rem',
@@ -38,6 +39,7 @@ export class TeamPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.authenticationService.currentUserValue);
   }
 
   changeCanEdit() {

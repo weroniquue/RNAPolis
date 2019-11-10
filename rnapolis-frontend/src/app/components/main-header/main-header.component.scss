@@ -7,7 +7,7 @@
 
   &:before {
     content: '';
-    background: url(/assets/header.jpg) no-repeat center center / cover fixed;
+    background: url(~src/assets/header.jpg) no-repeat center center / cover fixed;
     overflow: hidden;
     position: absolute;
     top: 0;

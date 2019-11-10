@@ -1,0 +1,27 @@
+<div class="tool" *ngIf="!canEdit">
+  <h2 class="tool-name">{{tool.toolName}}</h2>
+  <p>{{tool.description}}</p>
+  <app-generic-button content="{{tool.toolName}}" (click)="redirectToUrl(tool.link)"></app-generic-button>
+</div>
+
+<div class="tool tool-edit" *ngIf="canEdit">
+  <mat-form-field>
+    <input matInput [(ngModel)]="tool.toolName" placeholder="Tool name">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="tool.description" type="text"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="tool.link" placeholder="Tool link">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <mat-select [(value)]="selectedCategory">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <app-delete-button (click)="deleteTool(tool)"></app-delete-button>
+  <app-generic-button content="Save" (click)="saveChanges(tool)"></app-generic-button>
+</div>

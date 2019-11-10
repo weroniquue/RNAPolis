@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ToolComponent } from './tool.component';
-import {GenericButtonComponent} from '../../basic-components/generic-button/generic-button.component';
-import {Tool} from '../../../entity/tool';
+import {GenericButtonComponent} from '../../../basic-components/generic-button/generic-button.component';
 
 describe('ToolComponent', () => {
   let component: ToolComponent;
@@ -21,7 +19,7 @@ describe('ToolComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ToolComponent);
     component = fixture.componentInstance;
-    component.tool = new Tool('', '', '');
+    component.tool = {toolName: '', description: '', link: '', category: ''}
     fixture.detectChanges();
   });
 

@@ -5,7 +5,7 @@ import {DeleteButtonComponent} from '../basic-components/delete-button/delete-bu
 import {GenericButtonComponent} from '../basic-components/generic-button/generic-button.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material';
-import {MenuComponent} from '../menu/menu.component';
+import {MenuComponent} from '../basic-components/menu/menu.component';
 import {HeaderComponent} from '../basic-components/header/header.component';
 
 describe('AwardsTimelineComponent', () => {

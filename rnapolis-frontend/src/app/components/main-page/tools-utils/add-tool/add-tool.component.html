@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Add new tools</h1>
+<div [formGroup]="toolForm" mat-dialog-content>
+  <mat-form-field>
+    <input formControlName="toolName" matInput placeholder="Tool name">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea formControlName="description" matInput placeholder="Tool description"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input formControlName="link" matInput placeholder="Tool link">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <mat-select [(value)]="selectedCategory">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>No Thanks</button>
+  <button [mat-dialog-close]="toolForm" cdkFocusInitial mat-button>Ok</button>
+</div>

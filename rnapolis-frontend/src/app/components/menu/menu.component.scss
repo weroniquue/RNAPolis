@@ -12,8 +12,8 @@
     left: 0;
     z-index: 2;
     cursor: pointer;
-    width: 60px;
-    height: 60px;
+    width: $menu-button-size;
+    height: $menu-button-size;
     opacity: 0;
   }
 
@@ -22,10 +22,10 @@
     top: 0;
     left: 0;
     z-index: 1;
-    width: 60px;
-    height: 60px;
+    width: $menu-button-size;
+    height: $menu-button-size;
     padding: 1rem;
-    background: $base-color;
+    background: $deep-purple;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,7 +137,7 @@
             }
 
             &:hover {
-              color: yellow; //var(--secondary-color);
+              color: yellow;
             }
           }
         }

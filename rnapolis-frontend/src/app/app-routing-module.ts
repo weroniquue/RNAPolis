@@ -6,15 +6,15 @@ import {AwardsPageComponent} from './components/award-section/awards-page/awards
 import {TeamPageComponent} from './components/team-page/team-page.component';
 
 const routes: Routes = [
-  {path: '', component: MainPageComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: MainPageComponent},
   {path: 'team', component: TeamPageComponent},
   {path: 'award', component: AwardsPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, {useHash: true, scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

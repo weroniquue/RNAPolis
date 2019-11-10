@@ -1,0 +1,106 @@
+@import "../../style-utils/consts";
+
+#showcase {
+  color: #fff;
+  height: 100vh;
+  position: relative;
+
+  &:before {
+    content: '';
+    background: url(/assets/header.jpg) no-repeat center center / cover fixed;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .showcase-container {
+    width: 75%;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  h1, p {
+    font-family: $main-font;
+  }
+
+  h1 {
+    font-size: $header-size;
+    margin: 0.5em 0;
+    font-weight: $font-regular;
+  }
+
+  p {
+    font-size: $paragraph-size;
+    font-weight: $font-medium;
+    letter-spacing: 0.5px;
+  }
+
+  #triple-arrows {
+    width: 4.6875em;
+    height: 4.0625em;
+    position: absolute;
+    bottom: 0;
+    margin: 0.5rem 0;
+    right: calc(50% - 35.5px);
+
+    &:hover {
+      cursor: pointer;
+
+      polygon {
+        fill: #FFF;
+        transition: all .2s ease-out;
+
+        &.arrow-bottom {
+          transform: translateY(-1.125em);
+        }
+
+        &.arrow-top {
+          transform: translateY(1.125em);
+        }
+      }
+    }
+  }
+
+  polygon {
+    fill: #FFF;
+    transition: all .2s ease-out;
+
+    &.arrow-middle {
+      opacity: 0.75;
+    }
+
+    &.arrow-top {
+      opacity: 0.5
+    }
+  }
+}
+
+@media screen and (max-width: $medium-screen) {
+  #showcase .showcase-container {
+    width: 100%;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: $small-screen) {
+  #showcase .showcase-container {
+    h1 {
+      font-size: $smaller-header-size;
+    }
+
+    p {
+      margin: 0 1em;
+    }
+  }
+}
+
+

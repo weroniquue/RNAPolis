@@ -1,0 +1,11 @@
+@import "../../../style-utils/consts";
+
+@media screen and (max-width: $small-screen){
+  #award-header {
+    height: 200px;
+
+    h1{
+      font-size: 2em;
+    }
+  }
+}

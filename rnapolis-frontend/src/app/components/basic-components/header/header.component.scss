@@ -1,13 +1,13 @@
 @import "../../../style-utils/consts";
-@import "../../../style-utils/grid-style";
-@import "../../../style-utils/font-style";
 
 
 #basic-header {
-  @include center-items;
-  height: 30vh;
+  height: 40vh;
   position: relative;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   div {
     background: no-repeat center center/cover;
@@ -20,12 +20,14 @@
   }
 
   h1 {
-    @include h1-header;
     z-index: 1;
+    color: $deep-purple;
+    font-family: $main-font;
+    font-size: $header-size;
   }
 }
 
-@media screen and (min-width: $small-screen) {
+@media screen and (max-width: $medium-screen) {
   #basic-header {
     height: 25vh;
 
@@ -38,5 +40,5 @@
 @media screen and (max-width: $small-screen) {
   #basic-header h1 {
       font-size: $header-size-mobile;
-    }
+  }
 }

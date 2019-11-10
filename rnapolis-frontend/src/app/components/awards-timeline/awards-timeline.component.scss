@@ -1,4 +1,3 @@
-@import "../../style-utils/consts";
 @import "../../style-utils/font-style";
 
 #timeline {
@@ -45,7 +44,7 @@
 
         i {
           display: block;
-          font-size: 4em;
+          font-size: $header-size;
           text-align: center;
           color: gold;
           margin: 0.5em auto;
@@ -138,13 +137,13 @@
       }
 
       i {
-        font-size: 3em;
+        font-size: $smaller-header-size;
       }
     }
 
     &:nth-child(odd) div {
       left: 4em;
-      transform: translate(-100px, 0);
+      transform: translate(-6.25em, 0);
     }
 
     &:nth-child(even) div {

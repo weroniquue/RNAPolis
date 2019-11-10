@@ -26,11 +26,11 @@ import {ToolComponent} from './components/main-page/tool/tool.component';
     DeleteButtonComponent,
     FooterComponent,
     GenericButtonComponent,
+    MainHeaderComponent,
     HeaderComponent,
     MainPageComponent,
     MenuComponent,
     PageNotFoundComponent,
-    MainHeaderComponent,
     ToolComponent,
     TeamPageComponent
   ],

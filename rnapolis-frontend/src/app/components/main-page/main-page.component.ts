@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Tool} from '../../entity/tool';
-import {MatDialog} from "@angular/material";
-import {AddToolComponent} from "./tools-utils/add-tool/add-tool.component";
+import {MatDialog} from '@angular/material';
+import {AddToolComponent} from './tools-utils/add-tool/add-tool.component';
 
 @Component({
   selector: 'app-main-page',
@@ -13,7 +13,7 @@ export class MainPageComponent implements OnInit {
   tools: Tool[];
   categories: string[];
   selectedCategory: string;
-  canEdit = false;
+  canEdit = true;
 
   constructor(public dialog: MatDialog) {
     this.tools = [
@@ -54,23 +54,20 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeCanEdit() {
-    this.canEdit = true;
-  }
-
-  save() {
-  }
-
   addTool(): void {
     const dialogRef = this.dialog.open(AddToolComponent, {
-      // width: '250px',
+      width: '80vw',
+      panelClass: 'custom-dialog-container',
       data: this.categories
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
-        console.log(result.value);
-        this.tools.push(result.value);
+        this.tools.push(result);
       }
     });
+  }
+
+  removeTool(tool: Tool) {
+    this.tools.splice(this.tools.indexOf(tool), 1);
   }
 }

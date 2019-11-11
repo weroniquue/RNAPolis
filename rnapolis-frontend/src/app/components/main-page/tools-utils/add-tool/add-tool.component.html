@@ -2,25 +2,27 @@
 <div [formGroup]="toolForm" mat-dialog-content>
   <mat-form-field>
     <input formControlName="toolName" matInput placeholder="Tool name">
+    <mat-error *ngIf="hasError('toolName', 'required')">Tool name is required</mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea formControlName="description" matInput placeholder="Tool description"></textarea>
+    <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input formControlName="link" matInput placeholder="Tool link">
+    <mat-error *ngIf="hasError('link', 'required')">Link is required</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <mat-select [(value)]="selectedCategory">
+    <mat-select formControlName="category">
       <mat-option *ngFor="let category of categories" [value]="category">
         {{category}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-
 </div>
 
 <div mat-dialog-actions>
-  <button (click)="onNoClick()" mat-button>No Thanks</button>
-  <button [mat-dialog-close]="toolForm" cdkFocusInitial mat-button>Ok</button>
+  <button (click)="onNoClick()" mat-button>Cancel</button>
+  <button (click)="save()" mat-button>Ok</button>
 </div>

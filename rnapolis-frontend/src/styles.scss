@@ -21,3 +21,17 @@ app-root {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.custom-dialog-container {
+  .mat-form-field {
+    display: block;
+
+    textarea {
+      min-height: 8em;
+    }
+  }
+
+  .mat-dialog-actions {
+    float: right;
+  }
+}

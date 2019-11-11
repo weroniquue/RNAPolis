@@ -14,7 +14,6 @@
     </div>
   </section>
 
-
   <section id="tools">
     <mat-form-field>
       <mat-label>Filter</mat-label>
@@ -26,12 +25,9 @@
       </mat-select>
     </mat-form-field>
 
-    <div id="manager">
-      <app-generic-button content="Edit" *ngIf="!canEdit" (click)="changeCanEdit()"></app-generic-button>
-      <app-generic-button content="Add" *ngIf="canEdit" (click)="addTool()"></app-generic-button>
-      <app-generic-button content="Save" *ngIf="canEdit" (click)="save()"></app-generic-button>
-    </div>
+    <app-generic-button (click)="addTool()" *ngIf="canEdit" content="Add"></app-generic-button>
 
-    <app-tool *ngFor="let tool of tools | toolFilter: selectedCategory" [tool]="tool" [categories]="categories"></app-tool>
+    <app-tool (toolChanged)="removeTool($event)" *ngFor="let tool of tools | toolFilter: selectedCategory" [categories]="categories"
+              [tool]="tool"></app-tool>
   </section>
 </div>

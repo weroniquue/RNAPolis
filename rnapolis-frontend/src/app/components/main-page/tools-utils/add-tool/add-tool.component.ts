@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-tool',
@@ -11,7 +11,6 @@ export class AddToolComponent implements OnInit {
 
   toolForm: FormGroup;
   categories: string[];
-  selectedCategory: string;
 
   constructor(
     private fromBuilder: FormBuilder,
@@ -23,17 +22,25 @@ export class AddToolComponent implements OnInit {
 
   ngOnInit() {
     this.toolForm = this.fromBuilder.group({
-      toolName: '',
-      description: '',
-      link: '',
-      category: null,
+      toolName: ['', Validators.required],
+      description: ['', Validators.required],
+      link: ['', Validators.required],
+      category: [null, Validators.required],
     });
   }
+
   save() {
-    this.dialogRef.close(this.toolForm.value);
+    console.log(this.toolForm);
+    if (this.toolForm.valid) {
+      this.dialogRef.close(this.toolForm.value);
+    }
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.toolForm.controls[controlName].hasError(errorName);
   }
 }

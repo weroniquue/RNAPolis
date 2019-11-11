@@ -1,27 +1,29 @@
-<div class="tool" *ngIf="!canEdit">
+<div *ngIf="!canEdit" class="tool">
+  <app-generic-button (click)="changeCanEdit()" *ngIf="!canEdit" content="Edit"></app-generic-button>
+
   <h2 class="tool-name">{{tool.toolName}}</h2>
   <p>{{tool.description}}</p>
-  <app-generic-button content="{{tool.toolName}}" (click)="redirectToUrl(tool.link)"></app-generic-button>
+  <app-generic-button (click)="redirectToUrl(tool.link)" content="{{tool.toolName}}"></app-generic-button>
 </div>
 
-<div class="tool tool-edit" *ngIf="canEdit">
+<div *ngIf="canEdit" class="tool tool-edit">
   <mat-form-field>
-    <input matInput [(ngModel)]="tool.toolName" placeholder="Tool name">
+    <input [(ngModel)]="tool.toolName" matInput placeholder="Tool name">
   </mat-form-field>
   <mat-form-field>
-    <textarea matInput [(ngModel)]="tool.description" type="text"></textarea>
+    <textarea [(ngModel)]="tool.description" matInput type="text"></textarea>
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="tool.link" placeholder="Tool link">
+    <input [(ngModel)]="tool.link" matInput placeholder="Tool link">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <mat-select [(value)]="selectedCategory">
+    <mat-select [(ngModel)]="tool.category">
       <mat-option *ngFor="let category of categories" [value]="category">
         {{category}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <app-delete-button (click)="deleteTool(tool)"></app-delete-button>
-  <app-generic-button content="Save" (click)="saveChanges(tool)"></app-generic-button>
+  <app-delete-button (click)="deleteTool()"></app-delete-button>
+  <app-generic-button (click)="saveChanges()" content="Save"></app-generic-button>
 </div>

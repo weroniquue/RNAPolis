@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Tool} from '../../../../entity/tool';
 import {DOCUMENT} from '@angular/common';
 
@@ -10,9 +10,8 @@ import {DOCUMENT} from '@angular/common';
 export class ToolComponent implements OnInit {
   @Input() tool: Tool;
   @Input() categories: string[];
-  canEdit = true;
-  selectedCategory: string;
-
+  @Output() toolChanged = new EventEmitter<Tool>();
+  canEdit = false;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
   }
@@ -24,11 +23,17 @@ export class ToolComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  deleteTool(tool: Tool): void {
-    console.log(tool);
+  deleteTool(): void {
+    //TODO remove from db
+    this.toolChanged.emit(this.tool);
   }
 
-  saveChanges(tool: Tool): void {
-    console.log(tool);
+  saveChanges(): void {
+    //TODO save to db
+    this.canEdit = false;
+  }
+
+  changeCanEdit() {
+    this.canEdit = true;
   }
 }

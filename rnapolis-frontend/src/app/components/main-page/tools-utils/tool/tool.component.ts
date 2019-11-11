@@ -24,12 +24,12 @@ export class ToolComponent implements OnInit {
   }
 
   deleteTool(): void {
-    //TODO remove from db
+    // TODO remove from db
     this.toolChanged.emit(this.tool);
   }
 
   saveChanges(): void {
-    //TODO save to db
+    // TODO save to db
     this.canEdit = false;
   }
 

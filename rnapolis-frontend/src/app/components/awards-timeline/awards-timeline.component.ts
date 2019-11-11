@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Award} from '../../entity/award';
-import {yearsPerPage} from "@angular/material";
+import {yearsPerPage} from '@angular/material';
 
 @Component({
   selector: 'app-awards-timeline',

@@ -8,7 +8,7 @@ import {
   MatSelectModule
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
 
 describe('ToolComponent', () => {
   let component: ToolComponent;

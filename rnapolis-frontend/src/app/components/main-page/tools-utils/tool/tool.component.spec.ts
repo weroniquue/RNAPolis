@@ -1,9 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ToolComponent} from './tool.component';
 import {GenericButtonComponent} from '../../../basic-components/generic-button/generic-button.component';
-import {DeleteButtonComponent} from '../../../basic-components/delete-button/delete-button.component';
 import {
-  MatFormFieldModule, MatInputModule,
+  MAT_DIALOG_DATA, MatDialogModule,
+  MatDialogRef,
+  MatFormFieldModule, MatIconModule, MatInputModule,
   MatOptionModule,
   MatSelectModule
 } from '@angular/material';
@@ -19,14 +20,20 @@ describe('ToolComponent', () => {
       declarations: [
         ToolComponent,
         GenericButtonComponent,
-        DeleteButtonComponent
       ],
       imports: [
         NoopAnimationsModule,
         MatSelectModule,
+        MatInputModule,
+        MatIconModule,
         MatFormFieldModule,
         MatOptionModule,
-        FormsModule
+        FormsModule,
+        MatDialogModule
+      ],
+      providers: [
+        {provide: MatDialogRef, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: []},
       ]
     })
       .compileComponents();
@@ -35,7 +42,7 @@ describe('ToolComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ToolComponent);
     component = fixture.componentInstance;
-    component.tool = {toolName: '', description: '', link: '', category: ''};
+    component.tool = {id: 'id', toolName: 'tool', description: 'desc', link: 'https://localshot:3000', category: 'category'};
     fixture.detectChanges();
   });
 

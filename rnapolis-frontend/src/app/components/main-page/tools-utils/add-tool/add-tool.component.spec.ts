@@ -5,7 +5,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogRef,
-  MatFormFieldModule, MatInputModule,
+  MatFormFieldModule, MatIconModule, MatInputModule,
   MatOptionModule,
   MatSelectModule
 } from '@angular/material';
@@ -27,6 +27,7 @@ describe('AddToolComponent', () => {
         MatFormFieldModule,
         MatOptionModule,
         MatInputModule,
+        MatIconModule,
         BrowserModule,
         FormsModule,
         ReactiveFormsModule
@@ -34,7 +35,7 @@ describe('AddToolComponent', () => {
       providers: [
         FormBuilder,
         { provide: MatDialogRef, useValue: {} },
-        { provide: MAT_DIALOG_DATA, useValue: [] },
+        { provide: MAT_DIALOG_DATA, useValue: [[], {}] },
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })

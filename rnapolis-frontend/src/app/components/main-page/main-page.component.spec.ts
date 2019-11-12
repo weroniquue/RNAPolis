@@ -9,7 +9,7 @@ import {GenericButtonComponent} from '../basic-components/generic-button/generic
 import {
   MAT_DIALOG_DATA, MatDialogModule,
   MatDialogRef,
-  MatFormFieldModule, MatInputModule,
+  MatFormFieldModule, MatIconModule, MatInputModule,
   MatOptionModule,
   MatSelectModule
 } from '@angular/material';
@@ -17,7 +17,6 @@ import {AddToolComponent} from './tools-utils/add-tool/add-tool.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ToolFilterPipe} from './tool-filter.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DeleteButtonComponent} from '../basic-components/delete-button/delete-button.component';
 import {BrowserModule} from '@angular/platform-browser';
 
 
@@ -35,8 +34,7 @@ describe('MainPageComponent', () => {
         GenericButtonComponent,
         FooterComponent,
         AddToolComponent,
-        ToolFilterPipe,
-        DeleteButtonComponent
+        ToolFilterPipe
       ],
       imports: [
         RouterTestingModule,
@@ -45,6 +43,7 @@ describe('MainPageComponent', () => {
         MatFormFieldModule,
         MatOptionModule,
         MatInputModule,
+        MatIconModule,
         MatDialogModule,
         FormsModule,
         BrowserModule,

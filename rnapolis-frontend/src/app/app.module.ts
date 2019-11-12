@@ -18,9 +18,10 @@ import {PageNotFoundComponent} from './components/basic-components/page-not-foun
 import {TeamPageComponent} from './components/team-page/team-page.component';
 import {MainHeaderComponent} from './components/main-header/main-header.component';
 import {ToolComponent} from './components/main-page/tools-utils/tool/tool.component';
-import {MatDialogModule, MatSelectModule} from '@angular/material';
+import {MatDialogModule, MatIconModule, MatSelectModule} from '@angular/material';
 import { ToolFilterPipe } from './components/main-page/tool-filter.pipe';
 import { AddToolComponent } from './components/main-page/tools-utils/add-tool/add-tool.component';
+import { ConfirmationDialogComponent } from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AddToolComponent } from './components/main-page/tools-utils/add-tool/ad
     ToolComponent,
     TeamPageComponent,
     ToolFilterPipe,
-    AddToolComponent
+    AddToolComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -49,11 +51,15 @@ import { AddToolComponent } from './components/main-page/tools-utils/add-tool/ad
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddToolComponent]
+  entryComponents: [
+    AddToolComponent,
+    ConfirmationDialogComponent
+  ]
 })
 export class AppModule {
 }

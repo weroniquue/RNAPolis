@@ -51,9 +51,11 @@
 #tools{
   width: 75vw;
   margin: 0 auto;
-  ::ng-deep .mat-select-content{
-    background-color: red;
-    font-size: 1.5em;
+
+  button
+  {
+    display: block;
+    margin: 1em 0;
   }
 }
 

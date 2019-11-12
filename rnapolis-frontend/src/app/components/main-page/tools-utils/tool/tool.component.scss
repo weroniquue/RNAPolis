@@ -6,9 +6,21 @@
   margin: 0 auto 5em auto;
   padding: 2em 0;
   border: 3px solid $primary-color;
-  background: url(../../../../../assets/tool_1.jpg) no-repeat center center scroll;
+  background: url(~src/assets/tool_1.jpg) no-repeat center center scroll;
   background-size: cover;
   position: relative;
+
+  .edit-manager {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+
+    button{
+      margin-bottom: 0.5em;
+    }
+  }
 
   &.tool-edit {
      mat-form-field {

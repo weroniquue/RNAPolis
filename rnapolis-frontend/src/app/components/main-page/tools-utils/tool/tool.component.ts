@@ -1,6 +1,9 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Tool} from '../../../../entity/tool';
 import {DOCUMENT} from '@angular/common';
+import {AddToolComponent} from '../add-tool/add-tool.component';
+import {MatDialog} from '@angular/material';
+import {ConfirmationDialogComponent} from '../../../basic-components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-tool',
@@ -10,10 +13,12 @@ import {DOCUMENT} from '@angular/common';
 export class ToolComponent implements OnInit {
   @Input() tool: Tool;
   @Input() categories: string[];
+  @Output() toolRemoved = new EventEmitter<Tool>();
   @Output() toolChanged = new EventEmitter<Tool>();
   canEdit = false;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  constructor(@Inject(DOCUMENT) private document: Document,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -24,16 +29,29 @@ export class ToolComponent implements OnInit {
   }
 
   deleteTool(): void {
-    // TODO remove from db
-    this.toolChanged.emit(this.tool);
+    const confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      panelClass: 'custom-dialog-container',
+      data: ['Are you sure?', 'Do you want to delete this tool?']
+    });
+    confirmationDialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // TODO remove from db
+        this.toolRemoved.emit(this.tool);
+      }
+    });
   }
 
-  saveChanges(): void {
-    // TODO save to db
-    this.canEdit = false;
-  }
-
-  changeCanEdit() {
-    this.canEdit = true;
+  editTool() {
+    const dialogRef = this.dialog.open(AddToolComponent, {
+      disableClose: true,
+      width: '80vw',
+      panelClass: 'custom-dialog-container',
+      data: [this.categories, this.tool]
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.tool = result;
+      // TODO save changes in db
+      this.toolChanged.emit(this.tool);
+    });
   }
 }

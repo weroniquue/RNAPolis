@@ -22,18 +22,6 @@
     }
   }
 
-  &.tool-edit {
-     mat-form-field {
-       display: block;
-       width: 50vw;
-       margin: 0 auto;
-
-       textarea {
-         min-height: 8em;
-       }
-     }
-   }
-
   .tool-name {
     @include header-with-line;
     color: $deep-purple;
@@ -51,11 +39,6 @@
     @include center-items;
   }
 
-  app-delete-button {
-    position: absolute;
-    top: -3em;
-    right: -3em;
-  }
 }
 @media screen and (max-width: $medium-screen) {
   .tool {
@@ -75,24 +58,6 @@
     border: 0;
     border-top: 3px solid $primary-color;
     margin: 0 auto 2em auto;
-
-    &.tool-edit {
-      margin: 2em 0;
-      padding: 2em;
-      mat-form-field {
-        display: block;
-        width: 75vw;
-
-        textarea {
-          min-height: 8em;
-        }
-      }
-      app-delete-button {
-        position: absolute;
-        top: -3em;
-        right: 0;
-      }
-    }
 
     p {
       width: 100vw;

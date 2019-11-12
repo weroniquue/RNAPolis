@@ -59,7 +59,7 @@ export class MainPageComponent implements OnInit {
   addTool(): void {
     const dialogRef = this.dialog.open(AddToolComponent, {
       width: '80vw',
-      panelClass: 'custom-dialog-container',
+      panelClass: 'add-tool-dialog-container',
       data: [this.categories, {}]
     });
     dialogRef.afterClosed().subscribe(result => {

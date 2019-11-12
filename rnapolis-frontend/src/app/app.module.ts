@@ -19,9 +19,9 @@ import {TeamPageComponent} from './components/team-page/team-page.component';
 import {MainHeaderComponent} from './components/main-header/main-header.component';
 import {ToolComponent} from './components/main-page/tools-utils/tool/tool.component';
 import {MatDialogModule, MatIconModule, MatSelectModule} from '@angular/material';
-import { ToolFilterPipe } from './components/main-page/tool-filter.pipe';
-import { AddToolComponent } from './components/main-page/tools-utils/add-tool/add-tool.component';
-import { ConfirmationDialogComponent } from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
+import {ToolFilterPipe} from './components/main-page/tool-filter.pipe';
+import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-tool.component';
+import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [

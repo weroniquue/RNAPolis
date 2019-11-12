@@ -1,5 +1,4 @@
 <div *ngIf="!canEdit" class="tool">
-<!--  <app-generic-button (click)="editTool()" *ngIf="!canEdit" content="Edit"></app-generic-button>-->
   <div class="edit-manager">
     <button mat-fab color="warn" (click)="deleteTool()" *ngIf="!canEdit">
       <mat-icon>delete</mat-icon>

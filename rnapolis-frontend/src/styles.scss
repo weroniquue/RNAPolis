@@ -22,7 +22,7 @@ app-root {
   min-height: 100vh;
 }
 
-.custom-dialog-container {
+.add-tool-dialog-container {
   .mat-form-field {
     display: block;
 
@@ -30,8 +30,8 @@ app-root {
       min-height: 8em;
     }
   }
+}
 
-  .mat-dialog-actions {
-    float: right;
-  }
+.mat-dialog-actions {
+  float: right;
 }

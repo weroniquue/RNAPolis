@@ -1,9 +1,9 @@
-<div *ngIf="!canEdit" class="tool">
-  <div class="edit-manager">
-    <button mat-fab color="warn" (click)="deleteTool()" *ngIf="!canEdit">
+<div class="tool">
+  <div *ngIf="!canEdit" class="edit-manager">
+    <button (click)="deleteTool()" color="warn" mat-fab>
       <mat-icon>delete</mat-icon>
     </button>
-    <button mat-fab (click)="editTool()" *ngIf="!canEdit">
+    <button (click)="editTool()" mat-fab>
       <mat-icon>edit</mat-icon>
     </button>
   </div>
@@ -12,4 +12,3 @@
   <p>{{tool.description}}</p>
   <app-generic-button (click)="redirectToUrl(tool.link)" content="{{tool.toolName}}"></app-generic-button>
 </div>
-

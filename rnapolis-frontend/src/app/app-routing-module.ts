@@ -7,7 +7,7 @@ import {TeamPageComponent} from './components/team-page/team-page.component';
 import {LoginComponent} from './components/login/login.component';
 
 const routes: Routes = [
-  {path: '', component: MainPageComponent},
+  {path: '',  pathMatch: 'full', component: MainPageComponent},
   {path: 'team', component: TeamPageComponent},
   {path: 'award', component: AwardsPageComponent},
   {path: 'login', component: LoginComponent},

@@ -7,6 +7,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+
 
 import {AppComponent} from './app.component';
 import {AwardsPageComponent} from './components/award-section/awards-page/awards-page.component';
@@ -46,6 +48,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     ReactiveFormsModule,
     HttpClientModule
   ],

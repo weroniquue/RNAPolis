@@ -3,3 +3,13 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin edit-manager {
+  display: flex;
+  flex-direction: column;
+  float: right;
+
+  button{
+    margin-bottom: 0.5em;
+  }
+}

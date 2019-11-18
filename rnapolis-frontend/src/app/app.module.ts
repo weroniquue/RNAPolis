@@ -22,6 +22,7 @@ import {MatDialogModule, MatIconModule, MatSelectModule} from '@angular/material
 import {ToolFilterPipe} from './components/main-page/tool-filter.pipe';
 import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-tool.component';
 import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
+import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit-awards.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {ConfirmationDialogComponent} from './components/basic-components/confirm
     TeamPageComponent,
     ToolFilterPipe,
     AddToolComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    EditAwardsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -58,7 +60,8 @@ import {ConfirmationDialogComponent} from './components/basic-components/confirm
   bootstrap: [AppComponent],
   entryComponents: [
     AddToolComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    EditAwardsComponent
   ]
 })
 export class AppModule {

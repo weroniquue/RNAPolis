@@ -1,4 +1,4 @@
-@import "../../../style-utils/consts";
+@import "../../style-utils/font-style";
 
 #timeline {
   ul {
@@ -13,6 +13,7 @@
       background: $light-purple;
 
       div {
+        @include main-purple-font;
         position: relative;
         bottom: 0;
         width: 30vw;
@@ -23,9 +24,6 @@
         visibility: hidden;
         opacity: 0;
 
-        font-family: $main-font;
-        color: $deep-purple;
-
         &.edit mat-form-field {
           display: block;
 
@@ -35,18 +33,7 @@
         }
 
         h3 {
-          font-size: $header-size-mobile;
-          padding: 1.25em 0;
-
-          &::before {
-            margin-bottom: -0.5em;
-            content: "";
-            display: inline-block;
-            width: 55%;
-            height: 100%;
-            margin-right: -50%;
-            border-bottom: 0.5em solid $light-purple;
-          }
+          @include header-with-line;
         }
 
         p {

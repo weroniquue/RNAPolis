@@ -48,6 +48,17 @@
   }
 }
 
+#tools{
+  width: 75vw;
+  margin: 0 auto;
+
+  button
+  {
+    display: block;
+    margin: 1em 0;
+  }
+}
+
 @media screen and (max-width: $medium-screen) {
   .details-section {
     .rectangle {
@@ -92,6 +103,12 @@
         font-size: $header-size-mobile;
         background-color: $light-purple;
       }
+    }
+  }
+  #tools{
+    width: 100vw;
+    mat-form-field {
+      padding: 0.5em;
     }
   }
 }

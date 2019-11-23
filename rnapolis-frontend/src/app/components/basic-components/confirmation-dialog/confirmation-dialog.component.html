@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+  <p>{{content}}</p>
+</div>
+<div mat-dialog-actions>
+  <button (click)="confirmationClick(false)" mat-button>No</button>
+  <button (click)="confirmationClick(true)" color="primary" mat-raised-button>Yes</button>
+</div>

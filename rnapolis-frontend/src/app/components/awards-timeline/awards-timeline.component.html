@@ -1,3 +1,6 @@
+<app-menu></app-menu>
+<app-header content="Awards" imagePath="assets/awards.png"></app-header>
+
 <div id="manager">
   <app-generic-button content="Edit" *ngIf="!canEdit" (click)="changeCanEdit()"></app-generic-button>
   <app-generic-button content="Save" *ngIf="canEdit" (click)="save()"></app-generic-button>

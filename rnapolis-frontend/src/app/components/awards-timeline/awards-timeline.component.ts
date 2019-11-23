@@ -133,15 +133,30 @@ export class AwardsTimelineComponent implements OnInit {
   }
 
   editAward(award: Award) {
-    const editDialogRef = this.dialog.open(EditAwardsComponent, {
+    const editDialogRef = this.openAwardDialog(award);
+
+    editDialogRef.afterClosed().subscribe(result => {
+      // TODO save data in db
+      this.awards[this.awards.indexOf(award)] = result;
+    });
+  }
+
+  addAward() {
+    const addAwardDialogRef = this.openAwardDialog({year: null, description: ''});
+    addAwardDialogRef.afterClosed().subscribe(result => {
+      // TODO save data in db
+      if (result.year != null) {
+        this.awards.push(result);
+      }
+    });
+  }
+
+  openAwardDialog(award: Award) {
+    return this.dialog.open(EditAwardsComponent, {
+      disableClose: true,
       panelClass: 'form-dialog-container',
       width: '80vw',
       data: award
-    });
-
-    editDialogRef.afterClosed().subscribe(result => {
-      this.awards[this.awards.indexOf(award)] = result;
-      // TODO save data in db
     });
   }
 }

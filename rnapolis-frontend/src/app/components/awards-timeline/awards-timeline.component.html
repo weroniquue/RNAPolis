@@ -2,6 +2,9 @@
 <app-header content="Awards" imagePath="assets/awards.png"></app-header>
 
 <section id="timeline">
+  <button mat-raised-button (click)="addAward()" *ngIf="canEdit">
+    <mat-icon>add</mat-icon> Add award
+  </button>
   <ul>
     <li *ngFor="let award of awards ; first as isFirst" [ngClass]="{'show': isFirst}">
 

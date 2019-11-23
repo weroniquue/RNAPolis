@@ -1,6 +1,10 @@
 @import "../../style-utils/font-style";
 
 #timeline {
+  button {
+    margin: 1em;
+  }
+
   ul {
     padding: 4em 0;
 
@@ -137,6 +141,10 @@
 @media screen and (max-width: $medium-screen) {
   #timeline ul li {
     margin-left: 2.5em;
+
+    .edit-manager button {
+      margin: 0 0 0.5em;
+    }
 
     .award-content {
       height: auto;

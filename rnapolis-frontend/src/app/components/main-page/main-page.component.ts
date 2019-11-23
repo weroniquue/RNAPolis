@@ -65,6 +65,7 @@ export class MainPageComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
+        console.log(result);
         this.tools.push(result);
       }
     });

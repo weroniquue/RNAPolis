@@ -1,2 +1,36 @@
-<p>main-page works!</p>
 <app-menu></app-menu>
+<app-main-header></app-main-header>
+<div id="main-section">
+  <section class="details-section">
+    <div class="rectangle"></div>
+    <div class="description">
+      <img alt="lab-image" src="assets/lab.jpg">
+      <div>
+        <h2>One place</h2>
+        <h2>All desired links</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis cumque delectus dignissimos enim, eum,
+          eveniet ex exercitationem harum</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <mat-select [(value)]="selectedCategory">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="addTool()" *ngIf="canEdit">
+      <mat-icon>add</mat-icon> Add tool
+    </button>
+
+    <app-tool (toolRemoved)="removeTool($event)"(toolChanged)="refreshTool($event)"
+              *ngFor="let tool of tools | toolFilter: selectedCategory"
+              [categories]="categories" [tool]="tool"></app-tool>
+  </section>
+</div>

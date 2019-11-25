@@ -1,8 +1,8 @@
-@import "../../style-utils/consts";
+@import "../../../style-utils/consts";
 
 
 #basic-header {
-  height: 350px;
+  height: 40vh;
   position: relative;
   width: 100%;
   display: flex;
@@ -23,26 +23,22 @@
     z-index: 1;
     color: $deep-purple;
     font-family: $main-font;
-    font-size: 4em;
+    font-size: $header-size;
   }
 }
 
-@media screen and (min-width: $small-screen) and (max-width: $medium-screen) {
+@media screen and (max-width: $medium-screen) {
   #basic-header {
-    height: 250px;
+    height: 25vh;
 
     h1 {
-      font-size: 3em;
+      font-size: $smaller-header-size;
     }
   }
 }
 
 @media screen and (max-width: $small-screen) {
-  #basic-header {
-    height: 200px;
-
-    h1 {
-      font-size: 2em;
-    }
+  #basic-header h1 {
+      font-size: $header-size-mobile;
   }
 }

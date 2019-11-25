@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
-
+@import "app/style-utils/consts";
 
 * {
   margin: 0;
@@ -16,8 +16,22 @@ html, body {
 
 app-root {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: $main-font;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.add-tool-dialog-container {
+  .mat-form-field {
+    display: block;
+
+    textarea {
+      min-height: 8em;
+    }
+  }
+}
+
+.mat-dialog-actions {
+  float: right;
 }

@@ -3,11 +3,11 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {TeamPageComponent} from './team-page.component';
 import {DeleteButtonComponent} from '../basic-components/delete-button/delete-button.component';
 import {GenericButtonComponent} from '../basic-components/generic-button/generic-button.component';
-import {MenuComponent} from '../menu/menu.component';
+import {MenuComponent} from '../basic-components/menu/menu.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
-import {HeaderComponent} from '../header/header.component';
+import {HeaderComponent} from '../basic-components/header/header.component';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;

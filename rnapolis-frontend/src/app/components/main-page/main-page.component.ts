@@ -64,9 +64,9 @@ export class MainPageComponent implements OnInit {
       data: [this.categories, {}]
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result != null) {
+      if (result && result.valid) {
         console.log(result);
-        this.tools.push(result);
+        this.tools.push(result.value);
       }
     });
   }

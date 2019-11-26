@@ -33,7 +33,6 @@ export class AddToolComponent implements OnInit {
   }
 
   save() {
-    console.log(this.toolForm);
     if (this.toolForm.valid) {
       this.dialogRef.close(this.toolForm.value);
     }

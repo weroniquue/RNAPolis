@@ -65,7 +65,8 @@ import {PublicationFormComponent} from './components/publications-page/publicati
   entryComponents: [
     AddToolComponent,
     ConfirmationDialogComponent,
-    EditAwardsComponent
+    EditAwardsComponent,
+    PublicationFormComponent
   ]
 })
 export class AppModule {

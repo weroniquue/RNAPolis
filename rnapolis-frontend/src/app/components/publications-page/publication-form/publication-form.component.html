@@ -2,28 +2,29 @@
 <div [formGroup]="form" mat-dialog-content>
   <mat-form-field>
     <input formControlName="authors" matInput placeholder="Author(s)">
-    <mat-error *ngIf="hasError('authors', 'required')">Year is required</mat-error>
+    <mat-error *ngIf="hasError('authors', 'required')">Author is required</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input formControlName="title" matInput placeholder="Title">
-    <mat-error *ngIf="hasError('title', 'required')">Year is required</mat-error>
+    <mat-error *ngIf="hasError('title', 'required')">Title is required</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input formControlName="journal" matInput placeholder="Journal">
-    <mat-error *ngIf="hasError('journal', 'required')">Year is required</mat-error>
+    <mat-error *ngIf="hasError('journal', 'required')">Journal is required</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input formControlName="volume_issue" matInput placeholder="Volume and issue" >
-    <mat-error *ngIf="hasError('volume_issue', 'required')">Year is required</mat-error>
+    <input formControlName="volumeIssue" matInput placeholder="Volume and issue">
+    <mat-error *ngIf="hasError('volumeIssue', 'required')">Volume is required</mat-error>
   </mat-form-field>
   <mat-form-field>
     <input formControlName="year" matInput placeholder="Year" maxlength="4">
     <mat-error *ngIf="hasError('year', 'required')">Year is required</mat-error>
+    <mat-error *ngIf="hasError('year', 'minlength')">Year must be 4 characters long</mat-error>
     <mat-error *ngIf="hasError('year', 'pattern')">Only digits</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <textarea formControlName="pages" matInput placeholder="Page(s)"></textarea>
-    <mat-error *ngIf="hasError('pages', 'required')">Description is required</mat-error>
+    <input formControlName="pages" matInput placeholder="Page(s)"/>
+    <mat-error *ngIf="hasError('pages', 'required')">Page is required</mat-error>
   </mat-form-field>
 </div>
 

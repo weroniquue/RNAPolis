@@ -29,10 +29,11 @@
   }
 
   p {
-    &:last-of-type{
+    &:last-of-type {
       display: block;
       margin-top: 10px;
     }
+
     display: inline;
     font-family: $publications-font;
     font-size: $paragraph-size;

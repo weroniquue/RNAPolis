@@ -20,7 +20,7 @@ export class PublicationsPageComponent implements OnInit {
         authors: 'Szachniuk M',
         title: 'RNApolis: computational platform for RNA structure analysis',
         journal: 'Foundations of Computing and Decision Sciences',
-        volume_issue: '44(2)',
+        volumeIssue: '44(2)',
         year: 2019,
         pages: '241-257'
       },
@@ -28,7 +28,7 @@ export class PublicationsPageComponent implements OnInit {
         authors: 'Antczak M, Zablocki M, Zok T, Rybarczyk A, Blazewicz J, Szachniuk M',
         title: ' RNAvista: a webserver to assess RNA secondary structures with non-canonical base pairs',
         journal: 'Bioinformatics',
-        volume_issue: '35(1)',
+        volumeIssue: '35(1)',
         year: 2019,
         pages: '152-155'
       },
@@ -37,7 +37,7 @@ export class PublicationsPageComponent implements OnInit {
         title: ' RNAfitme: a webserver for modeling nucleobase and nucleoside residue ' +
           'conformation in fixed-backbone RNA structures',
         journal: 'BMC Bioinformatics',
-        volume_issue: '19(1)',
+        volumeIssue: '19(1)',
         year: 2018,
         pages: '304'
       },
@@ -45,7 +45,7 @@ export class PublicationsPageComponent implements OnInit {
         authors: 'Wiedemann J, Zok T, Milostan M, Szachniuk M',
         title: ' LCS-TA to identify similar fragments in RNA 3D structures',
         journal: 'BMC Bioinformatics',
-        volume_issue: '18',
+        volumeIssue: '18',
         year: 2017,
         pages: '456'
       },
@@ -79,7 +79,14 @@ export class PublicationsPageComponent implements OnInit {
   }
 
   addElement() {
-    const addAwardDialogRef = this.openDialog({authors:'', title:'', journal:'', volume_issue:'', year: null, pages: ''});
+    const addAwardDialogRef = this.openDialog({
+      authors: '',
+      title: '',
+      journal: '',
+      volumeIssue: '',
+      year: null,
+      pages: ''
+    });
     addAwardDialogRef.afterClosed().subscribe(result => {
       // TODO save data in db
       if (result.year != null) {

@@ -1,18 +1,17 @@
 @import "../../style-utils/consts";
+@import "../../style-utils/grid-style";
 
 .box {
   position: relative;
   top: 0;
   opacity: 1;
   float: left;
-  width: 100%;
   background: #fff;
   border-radius: 10px;
   transform: scale(1);
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   z-index: 5;
-  max-width: 40%;
 
   &.back {
     transform: scale(0.95);
@@ -40,13 +39,10 @@
 }
 
 .login-wrapper {
-  height: 100%;
+  @include center-items;
+  background: url("~src/assets/awards.png") no-repeat center;
+  height: calc(100vh - #{$footer-height});
   flex-direction: row;
-  box-sizing: border-box;
-  display: flex;
-  place-content: center;
-  align-items: center;
-  margin: 10vh 0;
 
   .login-form {
     min-width: 100%;

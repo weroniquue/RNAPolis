@@ -3,8 +3,7 @@
   <mat-form-field>
     <input formControlName="year" matInput placeholder="Year" maxlength="4">
     <mat-error *ngIf="hasError('year', 'required')">Year is required</mat-error>
-    <mat-error *ngIf="hasError('year', 'maxLength')">Year must be 4 numeric characters</mat-error>
-    <mat-error *ngIf="hasError('year', 'pattern')">Only digits</mat-error>
+    <mat-error *ngIf="hasError('year', 'pattern')">Year must be 4 numeric characters</mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea formControlName="description" matInput placeholder="Award description"></textarea>

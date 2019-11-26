@@ -21,12 +21,15 @@ export class EditAwardsComponent implements OnInit {
 
   ngOnInit() {
     this.awardForm = this.fromBuilder.group({
-      year: [this.award.year, [Validators.required,
-        Validators.pattern('^[0-9]{4}$'),
-        Validators.maxLength(4)]],
-      description: [this.award.description, Validators.required]
+      year: [this.award.year,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[0-9]{4}$')
+        ])],
+    description: [this.award.description, Validators.required]
   });
   }
+
   save() {
     if (this.awardForm.valid) {
       this.award.year = +this.awardForm.value.year;

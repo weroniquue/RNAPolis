@@ -22,6 +22,8 @@ import {MatDialogModule, MatIconModule, MatSelectModule} from '@angular/material
 import {ToolFilterPipe} from './components/main-page/tool-filter.pipe';
 import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-tool.component';
 import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
+import {PublicationsPageComponent} from './components/publications-page/publications-page.component';
+import {PublicationFormComponent} from './components/publications-page/publication-form/publication-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import {ConfirmationDialogComponent} from './components/basic-components/confirm
     TeamPageComponent,
     ToolFilterPipe,
     AddToolComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    PublicationsPageComponent,
+    PublicationFormComponent
   ],
   imports: [
     AppRoutingModule,

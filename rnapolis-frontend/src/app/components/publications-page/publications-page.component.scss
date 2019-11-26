@@ -1,0 +1,56 @@
+@import "../../style-utils/consts.scss";
+
+.board {
+  padding: 0 10vw;
+
+  .add-button {
+    margin-top: 2vh;
+  }
+}
+
+.box {
+  position: relative;
+  border: $primary-color solid 2px;
+  padding: 2vw;
+  margin: 5vh 0;
+  box-shadow: 0 6px 12px gray;
+
+  .edit-manager {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -0;
+    right: -0;
+    margin: 0.5em;
+
+    button {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  p {
+    &:last-of-type{
+      display: block;
+      margin-top: 10px;
+    }
+    display: inline;
+    font-family: $publications-font;
+    font-size: $paragraph-size;
+  }
+}
+
+@media only screen and (max-width: $small-screen) {
+  .box {
+    margin: 5vw 0;
+    padding: 10vw;
+    font-size: $normal-size;
+  }
+}
+
+@media only screen and (min-width: $small-screen+1) and (max-width: $medium-screen) {
+  .box {
+    margin: 5vw 0;
+    padding: 6vw;
+  }
+}
+

@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<app-header content="Publications" imagePath="assets/publications.png"></app-header>
+
+<section class="board">
+
+  <button mat-raised-button (click)="addElement()" *ngIf="canEdit" class="add-button">
+    <mat-icon>add</mat-icon>
+    Add publication
+  </button>
+
+  <div class="box" *ngFor="let publication of publications" [ngStyle]="{'paddingRight': canEdit ? '70px':'default'}">
+    <div *ngIf="canEdit" class="edit-manager">
+      <button (click)="deleteElement(publication)" color="warn" mat-fab>
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button (click)="editElement(publication)" mat-fab>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <p>{{publication.title}}, </p>
+    <p style="font-style: italic">{{publication.journal}}</p>
+    <p> {{publication.volume_issue}}, </p>
+    <p style="font-weight: bold">{{publication.year.toString()}}</p>
+    <p>, {{publication.pages}}</p>
+    <p>{{publication.authors}}</p>
+  </div>
+</section>

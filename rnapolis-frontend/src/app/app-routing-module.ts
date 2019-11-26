@@ -4,12 +4,14 @@ import {MainPageComponent} from './components/main-page/main-page.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
 import {TeamPageComponent} from './components/team-page/team-page.component';
 import {AwardsTimelineComponent} from './components/awards-timeline/awards-timeline.component';
+import {PublicationsPageComponent} from './components/publications-page/publications-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: MainPageComponent},
   {path: 'team', component: TeamPageComponent},
   {path: 'award', component: AwardsTimelineComponent},
+  {path: 'publications', component: PublicationsPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

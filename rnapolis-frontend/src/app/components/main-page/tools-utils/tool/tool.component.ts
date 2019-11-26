@@ -45,7 +45,7 @@ export class ToolComponent implements OnInit {
     const dialogRef = this.dialog.open(AddToolComponent, {
       disableClose: true,
       width: '80vw',
-      panelClass: 'add-tool-dialog-container',
+      panelClass: 'form-dialog-container',
       data: [this.categories, this.tool]
     });
     dialogRef.afterClosed().subscribe(result => {

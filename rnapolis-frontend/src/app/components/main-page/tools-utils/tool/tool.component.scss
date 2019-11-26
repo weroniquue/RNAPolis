@@ -11,15 +11,10 @@
   position: relative;
 
   .edit-manager {
+    @include edit-manager;
     position: absolute;
     right: 0;
     top: 0;
-    display: flex;
-    flex-direction: column;
-
-    button{
-      margin-bottom: 0.5em;
-    }
   }
 
   .tool-name {

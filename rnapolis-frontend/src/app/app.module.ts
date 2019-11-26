@@ -22,6 +22,7 @@ import {MatDialogModule, MatIconModule, MatSelectModule} from '@angular/material
 import {ToolFilterPipe} from './components/main-page/tool-filter.pipe';
 import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-tool.component';
 import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
+import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit-awards.component';
 import {PublicationsPageComponent} from './components/publications-page/publications-page.component';
 import {PublicationFormComponent} from './components/publications-page/publication-form/publication-form.component';
 
@@ -42,6 +43,7 @@ import {PublicationFormComponent} from './components/publications-page/publicati
     ToolFilterPipe,
     AddToolComponent,
     ConfirmationDialogComponent,
+    EditAwardsComponent,
     PublicationsPageComponent,
     PublicationFormComponent
   ],
@@ -62,7 +64,8 @@ import {PublicationFormComponent} from './components/publications-page/publicati
   bootstrap: [AppComponent],
   entryComponents: [
     AddToolComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    EditAwardsComponent
   ]
 })
 export class AppModule {

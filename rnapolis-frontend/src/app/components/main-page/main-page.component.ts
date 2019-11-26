@@ -17,7 +17,8 @@ export class MainPageComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {
     this.tools = [
-      { id: '1',
+      {
+        id: '1',
         toolName: 'Tool1', description: 'Lorem ipsum dolor sit amet, consectetur ' +
           'adipisicing elit. Ab amet animi aspernatur blanditiis culpa cumque dolores dolorum ' +
           'ducimus esse magnam pariatur, praesentium quae quasi quidem quo quod, ratione recusandae ' +
@@ -59,12 +60,13 @@ export class MainPageComponent implements OnInit {
   addTool(): void {
     const dialogRef = this.dialog.open(AddToolComponent, {
       width: '80vw',
-      panelClass: 'add-tool-dialog-container',
+      panelClass: 'form-dialog-container',
       data: [this.categories, {}]
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result != null) {
-        this.tools.push(result);
+      if (result && result.valid) {
+        console.log(result);
+        this.tools.push(result.value);
       }
     });
   }

@@ -23,22 +23,12 @@
   padding: 4vh 4vw;
 
   .edit-manager {
-    width: 100%;
-    display: inline-block;
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
 
     button{
       margin: 0.5em;
-    }
-
-    #edit {
-      float: left;
-    }
-
-    #delete {
-      float: right;
     }
   }
 

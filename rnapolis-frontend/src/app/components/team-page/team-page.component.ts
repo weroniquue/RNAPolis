@@ -77,9 +77,7 @@ export class TeamPageComponent implements OnInit {
     });
     addTeamMemberDialogRef.afterClosed().subscribe(result => {
       // TODO save data in db
-      if (result.year != null) {
-        this.team.push(result);
-      }
+        this.team.unshift(result);
     });
   }
 

@@ -2,39 +2,24 @@
 
 <app-header content="RNApolis team" imagePath="assets/team.png"></app-header>
 
-<div id="manager">
-  <app-generic-button content="Edit" *ngIf="!canEdit" (click)="changeCanEdit()"></app-generic-button>
-  <app-generic-button content="Save" *ngIf="canEdit" (click)="save()"></app-generic-button>
-  <app-generic-button content="Add" *ngIf="canEdit" (click)="addElement()"></app-generic-button>
-</div>
+<button mat-raised-button (click)="addElement()" *ngIf="canEdit" class="add-button">
+  <mat-icon>add</mat-icon> Add team member
+</button>
 
 <section class="board">
   <div class="box" *ngFor="let teamMember of team">
-    <img class="member-image" src="{{teamMember.imagePath}}" alt="Team member picture" (error)="setDefaultImage(teamMember)">
-    <div *ngIf="!canEdit">
-      <h3>{{teamMember.name.toUpperCase()}} {{teamMember.surname.toUpperCase()}}</h3>
-      <h3>{{teamMember.position}}</h3>
-      <p>{{teamMember.description}}</p>
+    <div *ngIf="canEdit" class="edit-manager">
+      <button id="edit" (click)="editElement(teamMember)" mat-fab>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button id="delete" (click)="deleteElement(teamMember)" color="warn" mat-fab>
+        <mat-icon>delete</mat-icon>
+      </button>
     </div>
 
-    <div class="edit" *ngIf="canEdit">
-      <input #file class="input-image" [hidden]="true" type='file' accept="image/*" (change)="onChange($event, teamMember)">
-      <button mat-stroked-button (click)="file.click()">Select image</button>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Name" [(ngModel)]="teamMember.name">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Surname" [(ngModel)]="teamMember.surname">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Position" [(ngModel)]="teamMember.position">
-      </mat-form-field>
-      <mat-form-field>
-          <textarea matInput cdkTextareaAutosize type="text" placeholder="Description" cdkAutosizeMinRows="1"
-                    #autosize="cdkTextareaAutosize"
-                    [(ngModel)]="teamMember.description"></textarea>
-      </mat-form-field>
-      <app-delete-button (click)="deleteElement(teamMember)"></app-delete-button>
-    </div>
+    <img class="member-image" src="{{teamMember.imagePath}}" alt="Team member picture" (error)="setDefaultImage(teamMember)">
+    <h3>{{teamMember.name.toUpperCase()}} {{teamMember.surname.toUpperCase()}}</h3>
+    <h3>{{teamMember.position}}</h3>
+    <p>{{teamMember.description}}</p>
   </div>
 </section>

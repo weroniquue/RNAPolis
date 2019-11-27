@@ -23,6 +23,7 @@ import {ToolFilterPipe} from './components/main-page/tool-filter.pipe';
 import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-tool.component';
 import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
 import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit-awards.component';
+import {MemberManagerComponent} from './components/team-page/member-manager/member-manager.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit
     ToolFilterPipe,
     AddToolComponent,
     ConfirmationDialogComponent,
-    EditAwardsComponent
+    EditAwardsComponent,
+    MemberManagerComponent
   ],
   imports: [
     AppRoutingModule,
@@ -61,7 +63,8 @@ import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit
   entryComponents: [
     AddToolComponent,
     ConfirmationDialogComponent,
-    EditAwardsComponent
+    EditAwardsComponent,
+    MemberManagerComponent
   ]
 })
 export class AppModule {

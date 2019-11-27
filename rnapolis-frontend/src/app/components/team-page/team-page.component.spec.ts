@@ -1,13 +1,13 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TeamPageComponent} from './team-page.component';
-import {DeleteButtonComponent} from '../basic-components/delete-button/delete-button.component';
-import {GenericButtonComponent} from '../basic-components/generic-button/generic-button.component';
 import {MenuComponent} from '../basic-components/menu/menu.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderComponent} from '../basic-components/header/header.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MemberManagerComponent} from './member-manager/member-manager.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
@@ -15,14 +15,23 @@ describe('TeamPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TeamPageComponent,
-        DeleteButtonComponent,
-        GenericButtonComponent,
+      declarations: [
+        TeamPageComponent,
+        MemberManagerComponent,
         HeaderComponent,
-        MenuComponent],
-      imports: [MatInputModule,
-        MatFormFieldModule,
-        FormsModule]
+        MenuComponent
+      ],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatDialogModule,
+        MatFormFieldModule
+      ],
+      providers: [
+        {provide: MatDialogRef, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: []},
+      ]
     })
       .compileComponents();
   }));

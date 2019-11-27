@@ -79,7 +79,7 @@ export class PublicationsPageComponent implements OnInit {
   }
 
   addElement() {
-    const addAwardDialogRef = this.openDialog({
+    const addPublicationDialogRef = this.openDialog({
       authors: '',
       title: '',
       journal: '',
@@ -87,11 +87,9 @@ export class PublicationsPageComponent implements OnInit {
       year: null,
       pages: ''
     });
-    addAwardDialogRef.afterClosed().subscribe(result => {
+    addPublicationDialogRef.afterClosed().subscribe(result => {
       // TODO save data in db
-      if (result.year != null) {
         this.publications.unshift(result);
-      }
     });
   }
 

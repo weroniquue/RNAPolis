@@ -40,7 +40,7 @@
 
 .login-wrapper {
   @include center-items;
-  background: url("~src/assets/awards.png") no-repeat center;
+  background: url("~src/assets/login-background.png") no-repeat center;
   height: calc(100vh - #{$footer-height});
   flex-direction: row;
 

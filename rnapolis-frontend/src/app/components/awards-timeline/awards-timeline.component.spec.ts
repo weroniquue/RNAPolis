@@ -3,7 +3,14 @@ import {AwardsTimelineComponent} from './awards-timeline.component';
 import {DeleteButtonComponent} from '../basic-components/delete-button/delete-button.component';
 import {GenericButtonComponent} from '../basic-components/generic-button/generic-button.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatFormFieldModule, MatIconModule} from '@angular/material';
+import {
+  MAT_DIALOG_DATA,
+  MatCardModule,
+  MatDialogModule,
+  MatDialogRef,
+  MatFormFieldModule,
+  MatIconModule
+} from '@angular/material';
 import {MenuComponent} from '../basic-components/menu/menu.component';
 import {HeaderComponent} from '../basic-components/header/header.component';
 import {EditAwardsComponent} from './edit-awards/edit-awards.component';
@@ -26,7 +33,8 @@ describe('AwardsTimelineComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         MatIconModule,
-        MatDialogModule
+        MatDialogModule,
+        MatCardModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

@@ -1,6 +1,10 @@
 @import "../../style-utils/font-style";
 
 #timeline {
+  button {
+    margin: 1em;
+  }
+
   ul {
     padding: 4em 0;
 
@@ -12,7 +16,17 @@
       padding-top: 4em;
       background: $light-purple;
 
-      div {
+      .edit-manager {
+        display: flex;
+        flex-direction: column;
+        float: right;
+
+        button {
+          margin-bottom: 0.5em;
+        }
+      }
+
+      .award-content {
         @include main-purple-font;
         position: relative;
         bottom: 0;
@@ -58,7 +72,7 @@
       }
 
       &:nth-child(odd) {
-        div {
+        .award-content {
           left: 6.25em;
           transform: translate(12.5em, 0);
 
@@ -73,7 +87,7 @@
       }
 
       &:nth-child(even) {
-        div {
+        .award-content {
           left: calc(-30vw - 6.25em);
           transform: translate(-12.5em, 0);
 
@@ -99,7 +113,7 @@
       }
 
       &.show {
-        div {
+        .award-content {
           transform: none;
           visibility: visible;
           opacity: 1;
@@ -112,7 +126,7 @@
     }
   }
 
-  div {
+  .award-content {
     &::before {
       content: '';
       position: absolute;
@@ -128,7 +142,11 @@
   #timeline ul li {
     margin-left: 2.5em;
 
-    div {
+    .edit-manager button {
+      margin: 0 0 0.5em;
+    }
+
+    .award-content {
       height: auto;
       width: 70vw;
 
@@ -141,12 +159,12 @@
       }
     }
 
-    &:nth-child(odd) div {
+    &:nth-child(odd) .award-content {
       left: 4em;
       transform: translate(-6.25em, 0);
     }
 
-    &:nth-child(even) div {
+    &:nth-child(even) .award-content {
       left: 4em;
 
       &::before {
@@ -159,7 +177,7 @@
     }
 
     &.show {
-      div {
+      .award-content {
         transform: none;
         visibility: visible;
         opacity: 1;
@@ -172,7 +190,7 @@
   #timeline ul li {
     margin-left: 1.5em;
 
-    div {
+    .award-content {
       p {
         text-align: left;
       }

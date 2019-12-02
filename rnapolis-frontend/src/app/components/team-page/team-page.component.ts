@@ -39,7 +39,6 @@ export class TeamPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.authenticationService.currentUserValue);
   }
 
   changeCanEdit() {
@@ -51,7 +50,6 @@ export class TeamPageComponent implements OnInit {
   }
 
   save() {
-    console.log(this.team);
     this.canEdit = false;
     // TODO save data in db
   }

@@ -1,4 +1,4 @@
-<app-menu></app-menu>
+﻿<app-menu></app-menu>
 
 <div class="login-wrapper">
   <mat-card class="box col-md-9 offset-md-3">
@@ -8,7 +8,7 @@
 
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-card-content>
-        <mat-form-field class="login-full-width">
+        <mat-form-field class="full-width">
           <input matInput
                  placeholder="Username"
                  [formControl]="loginForm.controls.username">
@@ -17,7 +17,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="login-full-width">
+        <mat-form-field class="full-width">
           <input matInput
                  placeholder="Password"
                  type="password"
@@ -28,7 +28,7 @@
         </mat-form-field>
       </mat-card-content>
       <mat-error *ngIf="errorMessage"><p class="error-message">{{errorMessage}}</p></mat-error>
-      <button  mat-raised-button color="primary">Log in</button>
+      <button class="full-width" mat-raised-button>Log in</button>
     </form>
   </mat-card>
 </div>

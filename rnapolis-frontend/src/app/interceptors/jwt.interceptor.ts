@@ -10,7 +10,6 @@ export class JwtInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('interceptor');
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser && currentUser.token) {
       request = request.clone({

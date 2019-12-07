@@ -6,7 +6,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
 import {AppComponent} from './app.component';
 import {AwardsTimelineComponent} from './components/awards-timeline/awards-timeline.component';
 import {DeleteButtonComponent} from './components/basic-components/delete-button/delete-button.component';
@@ -63,7 +62,6 @@ import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit
     MatDialogModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,7 +3,8 @@ import {Award} from '../../entity/award';
 import {MatDialog} from '@angular/material';
 import {ConfirmationDialogComponent} from '../basic-components/confirmation-dialog/confirmation-dialog.component';
 import {EditAwardsComponent} from './edit-awards/edit-awards.component';
-import {AuthenticationService} from "../../services/authentication.service";
+import {AuthenticationService} from '../../services/authentication.service';
+import Utils from '../../services/utils';
 
 @Component({
   selector: 'app-awards-timeline',
@@ -95,6 +96,7 @@ export class AwardsTimelineComponent implements OnInit {
   }
 
   ngOnInit() {
+    Utils.closeMenu();
     this.onScrollEvent();
   }
 

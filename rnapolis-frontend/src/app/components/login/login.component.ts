@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../../services/authentication.service';
+import Utils from '../../services/utils';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    Utils.closeMenu();
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', Validators.required]

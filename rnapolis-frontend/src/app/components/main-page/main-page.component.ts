@@ -3,6 +3,7 @@ import {Tool} from '../../entity/tool';
 import {MatDialog} from '@angular/material';
 import {AddToolComponent} from './tools-utils/add-tool/add-tool.component';
 import {AuthenticationService} from '../../services/authentication.service';
+import Utils from '../../services/utils';
 
 @Component({
   selector: 'app-main-page',
@@ -59,6 +60,7 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    Utils.closeMenu();
   }
 
   addTool(): void {

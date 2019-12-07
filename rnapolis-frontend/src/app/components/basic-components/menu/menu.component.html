@@ -1,5 +1,5 @@
 <div class="menu-wrap">
-  <input (change)="isChecked = !isChecked" [checked]="isChecked" class="toggler" type="checkbox">
+  <input (change)="changeChecked()" [checked]="isChecked" class="toggler" id="close-menu" type="checkbox">
   <div class="hamburger">
     <div></div>
   </div>
@@ -8,7 +8,7 @@
       <div>
         <ul>
           <li>
-            <a routerLink="/home" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLinkActiveOptions]="{exact: true}" routerLink="/home" routerLinkActive="is-active">
               <i class="fas fa-home"></i>HOME</a>
           </li>
           <li>

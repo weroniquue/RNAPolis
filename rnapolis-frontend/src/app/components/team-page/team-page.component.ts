@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, NgZone} from '@angular/core';
 import {TeamMember} from '../../entity/TeamMember';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import {AuthenticationService} from '../../services/authentication.service';
+import Utils from '../../services/utils';
 
 @Component({
   selector: 'app-team-page',
@@ -38,6 +39,7 @@ export class TeamPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    Utils.closeMenu();
   }
 
   changeCanEdit() {

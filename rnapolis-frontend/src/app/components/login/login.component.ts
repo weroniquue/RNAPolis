@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-  errorMessage = '';
+  errorMessage: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.errorMessage = '';
     this.submitted = true;
 
     if (this.loginForm.invalid) {
@@ -49,11 +50,11 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.form.username.value, this.form.password.value)
     .pipe(first())
     .subscribe(
-      data => {
+      () => {
         this.router.navigate(['']);
       },
       errorResponse => {
-        this.errorMessage = errorResponse.error.message;
+        this.errorMessage = errorResponse.statusText;
         this.loading = false;
       });
   }

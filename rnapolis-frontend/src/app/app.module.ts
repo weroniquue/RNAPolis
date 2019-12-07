@@ -20,7 +20,13 @@ import {LoginComponent} from './components/login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MainHeaderComponent} from './components/main-header/main-header.component';
 import {ToolComponent} from './components/main-page/tools-utils/tool/tool.component';
-import {MatCardModule, MatDialogModule, MatIconModule, MatSelectModule} from '@angular/material';
+import {
+  MatCardModule,
+  MatDialogModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatSelectModule
+} from '@angular/material';
 import {ToolFilterPipe} from './components/main-page/tool-filter.pipe';
 import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-tool.component';
 import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
@@ -62,6 +68,7 @@ import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit
     MatDialogModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

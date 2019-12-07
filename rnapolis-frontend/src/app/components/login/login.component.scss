@@ -46,6 +46,13 @@
 
   .login-form {
     max-width: 300px;
+
+    mat-spinner {
+      margin: 1em auto;
+      ::ng-deep circle {
+        stroke: $deep-purple;
+      }
+    }
   }
 
   .full-width {

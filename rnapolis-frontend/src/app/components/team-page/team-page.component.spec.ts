@@ -9,10 +9,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {HeaderComponent} from '../basic-components/header/header.component';
 import {HttpClientModule} from '@angular/common/http';
-import {Router, RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
-import {AppRoutingModule} from '../../app-routing-module';
-import {MainPageComponent} from '../main-page/main-page.component';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;

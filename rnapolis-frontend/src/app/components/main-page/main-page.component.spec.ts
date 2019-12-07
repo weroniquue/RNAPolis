@@ -18,6 +18,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ToolFilterPipe} from './tool-filter.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 
 describe('MainPageComponent', () => {
@@ -47,7 +48,9 @@ describe('MainPageComponent', () => {
         MatDialogModule,
         FormsModule,
         BrowserModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterTestingModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

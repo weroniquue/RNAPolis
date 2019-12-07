@@ -2,7 +2,7 @@
 
 <app-header content="RNApolis team" imagePath="assets/team.png"></app-header>
 
-<div id="manager">
+<div id="manager" *ngIf="authenticationService.currentUserValue">
   <app-generic-button content="Edit" *ngIf="!canEdit" (click)="changeCanEdit()"></app-generic-button>
   <app-generic-button content="Save" *ngIf="canEdit" (click)="save()"></app-generic-button>
   <app-generic-button content="Add" *ngIf="canEdit" (click)="addElement()"></app-generic-button>

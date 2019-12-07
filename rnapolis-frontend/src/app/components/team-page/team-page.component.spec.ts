@@ -8,10 +8,18 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {HeaderComponent} from '../basic-components/header/header.component';
+import {HttpClientModule} from '@angular/common/http';
+import {Router, RouterModule, Routes} from '@angular/router';
+import {AuthenticationService} from '../../services/authentication.service';
+import {AppRoutingModule} from '../../app-routing-module';
+import {MainPageComponent} from '../main-page/main-page.component';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
   let fixture: ComponentFixture<TeamPageComponent>;
+
+  const routes: Routes = [
+    {path: '', redirectTo: '/mock', pathMatch: 'full'}];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,9 +30,12 @@ describe('TeamPageComponent', () => {
         MenuComponent],
       imports: [MatInputModule,
         MatFormFieldModule,
-        FormsModule]
+        FormsModule,
+        HttpClientModule,
+        RouterModule.forRoot(routes)],
+      providers: [AuthenticationService]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {

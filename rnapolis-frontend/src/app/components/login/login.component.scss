@@ -43,7 +43,6 @@
   background: url("~src/assets/login-background.png") no-repeat center;
   height: calc(100vh - #{$footer-size});
   flex-direction: row;
-  font-family: $main-font;
 
   .login-form {
     max-width: 300px;
@@ -58,12 +57,11 @@
     width: 100%;
     display: block;
     font-weight: $font-bold;
-    font-family: $main-font;
 
     mat-card-title {
       font-size: $header-size-mobile;
-      font-family: $main-font;
       margin: 0;
+      padding: 1em;
     }
   }
 
@@ -71,7 +69,6 @@
     background: $light-purple;
     color: $deep-purple;
     width: 100%;
-    font-family: $main-font;
     font-weight: $font-bold;
   }
 
@@ -82,6 +79,5 @@
   .error-message {
     margin-bottom: 5px;
     text-align: center;
-    font-family: $main-font;
   }
 }

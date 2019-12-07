@@ -1,4 +1,4 @@
-@import "../../style-utils/consts.scss";
+@import '../../style-utils/consts.scss';
 
 .board {
   display: grid;
@@ -49,7 +49,6 @@
     }
 
     font-size: $title-size;
-    font-family: $team-member-title-font
   }
 
   p {

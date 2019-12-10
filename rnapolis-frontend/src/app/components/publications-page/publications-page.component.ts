@@ -73,8 +73,10 @@ export class PublicationsPageComponent implements OnInit {
     const editDialogRef = this.openDialog(publication);
 
     editDialogRef.afterClosed().subscribe(result => {
-      this.publications[this.publications.indexOf(publication)] = result;
-      // TODO save data in db
+      if (result != null) {
+        this.publications[this.publications.indexOf(publication)] = result;
+        // TODO save data in db
+      }
     });
   }
 

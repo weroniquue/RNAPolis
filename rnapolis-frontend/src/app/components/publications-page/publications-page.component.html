@@ -18,11 +18,14 @@
       </button>
     </div>
 
-    <p>{{publication.title}}, </p>
-    <p style="font-style: italic">{{publication.journal}}</p>
-    <p> {{publication.volumeIssue}}, </p>
-    <p style="font-weight: bold">{{publication.year.toString()}}</p>
-    <p>, {{publication.pages}}</p>
-    <p>{{publication.authors}}</p>
+
+    <p> {{publication.title}},
+      <span style="font-style: italic">{{publication.journal}}</span>
+      {{publication.volumeIssue}},
+      <span style="font-weight: bold">{{publication.year.toString()}}</span>,
+      {{publication.pages}},
+      {{publication.pages}}
+    </p>
+    <p> {{publication.authors}} </p>
   </div>
 </section>

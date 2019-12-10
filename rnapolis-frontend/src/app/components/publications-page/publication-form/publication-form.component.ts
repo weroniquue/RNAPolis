@@ -32,7 +32,7 @@ export class PublicationFormComponent implements OnInit {
     });
   }
 
-  save() {
+  saveClicked() {
     if (this.form.valid) {
       this.publication.authors = this.form.value.authors;
       this.publication.title = this.form.value.title;
@@ -44,8 +44,8 @@ export class PublicationFormComponent implements OnInit {
     }
   }
 
-  onNoClick(): void {
-    this.dialogRef.close(this.publication);
+  cancelClicked(): void {
+    this.dialogRef.close(null);
   }
 
   public hasError = (controlName: string, errorName: string) => {

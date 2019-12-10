@@ -88,8 +88,10 @@ export class PublicationsPageComponent implements OnInit {
       pages: ''
     });
     addPublicationDialogRef.afterClosed().subscribe(result => {
-      // TODO save data in db
+      if (result != null) {
         this.publications.unshift(result);
+        // TODO save data in db
+      }
     });
   }
 

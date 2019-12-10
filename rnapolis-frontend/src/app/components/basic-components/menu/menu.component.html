@@ -11,6 +11,7 @@
           <li><a routerLink="/team"><i class="fas fa-user-friends"></i>RNAPOLIS TEAM</a></li>
           <li><a href="#"><i class="fas fa-book"></i>PUBLICATIONS</a></li>
           <li><a routerLink="/award"><i class="fas fa-award"></i>AWARDS</a></li>
+          <li *ngIf="currentUser" ><a class="nav-item nav-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>LOGOUT</a></li>
         </ul>
       </div>
     </div>

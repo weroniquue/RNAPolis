@@ -34,7 +34,7 @@ export class MemberManagerComponent implements OnInit {
     });
   }
 
-  save() {
+  saveClicked() {
     if (this.form.valid) {
       this.member.imagePath = this.imageSrc;
       this.member.name = this.form.value.name;
@@ -45,8 +45,8 @@ export class MemberManagerComponent implements OnInit {
     }
   }
 
-  onNoClick(): void {
-    this.dialogRef.close(this.member);
+  cancelClicked(): void {
+    this.dialogRef.close(null);
   }
 
   public hasError = (controlName: string, errorName: string) => {

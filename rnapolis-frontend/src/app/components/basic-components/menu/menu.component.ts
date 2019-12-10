@@ -1,4 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import {AuthenticationService} from '../../../services/authentication.service';
+import {User} from '../../../entity/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,8 +11,13 @@ import {Component, HostListener, OnInit} from '@angular/core';
 export class MenuComponent implements OnInit {
   ESC = 'Escape';
   isChecked: boolean;
+  currentUser: User;
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
   }
 
   ngOnInit() {
@@ -20,5 +28,10 @@ export class MenuComponent implements OnInit {
     if (event.key === this.ESC && this.isChecked) {
         this.isChecked = false;
     }
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/']);
   }
 }

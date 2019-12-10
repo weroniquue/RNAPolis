@@ -7,6 +7,8 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatFormFieldModule, MatI
 import {MenuComponent} from '../basic-components/menu/menu.component';
 import {HeaderComponent} from '../basic-components/header/header.component';
 import {EditAwardsComponent} from './edit-awards/edit-awards.component';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('AwardsTimelineComponent', () => {
   let component: AwardsTimelineComponent;
@@ -26,7 +28,9 @@ describe('AwardsTimelineComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         MatIconModule,
-        MatDialogModule
+        MatDialogModule,
+        HttpClientModule,
+        RouterTestingModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

@@ -3,6 +3,8 @@ import {TeamMember} from '../../entity/TeamMember';
 import {ConfirmationDialogComponent} from '../basic-components/confirmation-dialog/confirmation-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {MemberManagerComponent} from './member-manager/member-manager.component';
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-team-page',
@@ -13,7 +15,7 @@ export class TeamPageComponent implements OnInit {
   team: TeamMember[];
   canEdit: boolean;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public authenticationService: AuthenticationService, public dialog: MatDialog) {
     this.canEdit = true;
     this.team = [
       new TeamMember('Natalia', 'Łukasiewicz', 'student',
@@ -62,8 +64,10 @@ export class TeamPageComponent implements OnInit {
     const editDialogRef = this.openMemberDialog(award);
 
     editDialogRef.afterClosed().subscribe(result => {
-      // TODO save data in db
-      this.team[this.team.indexOf(award)] = result;
+      if(result != null){
+        // TODO save data in db
+        this.team[this.team.indexOf(award)] = result;
+      }
     });
   }
 
@@ -76,8 +80,10 @@ export class TeamPageComponent implements OnInit {
       description: ''
     });
     addTeamMemberDialogRef.afterClosed().subscribe(result => {
-      // TODO save data in db
+      if(result != null){
+        // TODO save data in db
         this.team.unshift(result);
+      }
     });
   }
 

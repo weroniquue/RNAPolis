@@ -14,6 +14,7 @@ export class MemberManagerComponent implements OnInit {
   form: FormGroup;
   member: TeamMember;
   imageSrc: string;
+  reader: FileReader;
 
   @ViewChild('autosize', {static: false}) autosize: CdkTextareaAutosize;
 
@@ -22,11 +23,12 @@ export class MemberManagerComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) data) {
     this.member = data;
     this.imageSrc = this.member.imagePath;
+    this.reader = new FileReader();
   }
 
   ngOnInit() {
     this.form = this.fromBuilder.group({
-      image: [ this.member.imagePath],
+      image: [this.member.imagePath],
       name: [this.member.name, Validators.required],
       surname: [this.member.surname, Validators.required],
       position: [this.member.position, Validators.required],
@@ -57,10 +59,9 @@ export class MemberManagerComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
 
-      const reader = new FileReader();
-      reader.onload = e => this.imageSrc = reader.result.toString();
+      this.reader.onload = e => this.imageSrc = this.reader.result.toString();
 
-      reader.readAsDataURL(file);
+      this.reader.readAsDataURL(file);
     }
   }
 

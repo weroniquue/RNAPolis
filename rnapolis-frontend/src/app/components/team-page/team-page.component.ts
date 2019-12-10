@@ -64,7 +64,7 @@ export class TeamPageComponent implements OnInit {
     const editDialogRef = this.openMemberDialog(award);
 
     editDialogRef.afterClosed().subscribe(result => {
-      if(result != null){
+      if (result != null) {
         // TODO save data in db
         this.team[this.team.indexOf(award)] = result;
       }
@@ -80,7 +80,7 @@ export class TeamPageComponent implements OnInit {
       description: ''
     });
     addTeamMemberDialogRef.afterClosed().subscribe(result => {
-      if(result != null){
+      if (result != null) {
         // TODO save data in db
         this.team.unshift(result);
       }

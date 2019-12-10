@@ -13,6 +13,7 @@ import {Router, RouterModule, Routes} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {AppRoutingModule} from '../../app-routing-module';
 import {MainPageComponent} from '../main-page/main-page.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
@@ -34,7 +35,9 @@ describe('TeamPageComponent', () => {
         ReactiveFormsModule,
         MatIconModule,
         MatDialogModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        RouterTestingModule,
+        HttpClientModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

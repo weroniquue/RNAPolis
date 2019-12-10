@@ -1,0 +1,87 @@
+@import "../../style-utils/consts";
+@import "../../style-utils/grid-style";
+
+.box {
+  position: relative;
+  top: 0;
+  opacity: 1;
+  float: left;
+  background: #fff;
+  border-radius: 10px;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  z-index: 5;
+
+  &.back {
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    top: -20px;
+    opacity: .8;
+    z-index: -1;
+  }
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: -10px;
+    background: rgba(255, 255, 255, 0.6);
+    left: 0;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    z-index: -1;
+  }
+}
+
+.login-wrapper {
+  @include center-items;
+  background: url("~src/assets/login-background.png") no-repeat center;
+  height: calc(100vh - #{$footer-height});
+  flex-direction: row;
+  font-family: $main-font;
+
+  .login-form {
+    max-width: 300px;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  mat-card-header {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-weight: $font-bold;
+    font-family: $main-font;
+
+    mat-card-title {
+      font-size: $header-size-mobile;
+      font-family: $main-font;
+      margin: 0;
+    }
+  }
+
+  .mat-raised-button {
+    background: $light-purple;
+    color: $deep-purple;
+    width: 100%;
+    font-family: $main-font;
+    font-weight: $font-bold;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.8375em 0;
+  }
+
+  .error-message {
+    margin-bottom: 5px;
+    text-align: center;
+    font-family: $main-font;
+  }
+}

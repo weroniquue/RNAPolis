@@ -35,14 +35,6 @@
       @include edit-manager;
     }
   }
-
-  &.edit mat-form-field {
-    display: block;
-
-    textarea {
-      min-height: 8em;
-    }
-  }
 }
 
 @media screen and (max-width: $medium-screen) {

@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Team Member</h1>
+
+<div [formGroup]="form" mat-dialog-content>
+  <input #file id="input-image" [hidden]="true" type='file' accept="image/*" (change)="onChange($event)">
+  <img class="member-image" src="{{imageSrc}}" alt="Team member picture" (error)="setDefaultImage(member)">
+  <button mat-stroked-button (click)="file.click()">Select image</button>
+
+  <mat-form-field>
+    <input formControlName="name" matInput placeholder="Name"/>
+    <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input formControlName="surname" matInput placeholder="Surname">
+    <mat-error *ngIf="hasError('surname', 'required')">Surname is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input formControlName="position" matInput placeholder="Position">
+    <mat-error *ngIf="hasError('position', 'required')">Position is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea formControlName="description" matInput placeholder="Description"></textarea>
+    <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button (click)="cancelClicked()" mat-button>Cancel</button>
+  <button (click)="saveClicked()" color="primary" mat-raised-button>Save</button>
+</div>

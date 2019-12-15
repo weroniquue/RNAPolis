@@ -1,18 +1,19 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TeamPageComponent} from './team-page.component';
-import {DeleteButtonComponent} from '../basic-components/delete-button/delete-button.component';
-import {GenericButtonComponent} from '../basic-components/generic-button/generic-button.component';
 import {MenuComponent} from '../basic-components/menu/menu.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderComponent} from '../basic-components/header/header.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MemberManagerComponent} from './member-manager/member-manager.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {HttpClientModule} from '@angular/common/http';
 import {Router, RouterModule, Routes} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {AppRoutingModule} from '../../app-routing-module';
 import {MainPageComponent} from '../main-page/main-page.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
@@ -23,17 +24,26 @@ describe('TeamPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TeamPageComponent,
-        DeleteButtonComponent,
-        GenericButtonComponent,
+      declarations: [
+        TeamPageComponent,
+        MemberManagerComponent,
         HeaderComponent,
-        MenuComponent],
-      imports: [MatInputModule,
-        MatFormFieldModule,
+        MenuComponent
+      ],
+      imports: [
         FormsModule,
-        HttpClientModule,
-        RouterModule.forRoot(routes)],
-      providers: [AuthenticationService]
+        ReactiveFormsModule,
+        MatIconModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        RouterTestingModule,
+        HttpClientModule
+      ],
+      providers: [
+        {provide: MatDialogRef, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: []},
+        AuthenticationService
+      ]
     })
     .compileComponents();
   }));

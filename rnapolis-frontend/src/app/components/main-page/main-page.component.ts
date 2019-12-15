@@ -20,7 +20,6 @@ export class MainPageComponent implements OnInit {
   constructor(public dialog: MatDialog,
               public authenticationService: AuthenticationService) {
     this.canEdit = this.authenticationService.ifLogin;
-    console.log(this.canEdit);
     this.tools = [
       {
         id: '1',
@@ -71,7 +70,6 @@ export class MainPageComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.valid) {
-        console.log(result);
         this.tools.push(result.value);
       }
     });

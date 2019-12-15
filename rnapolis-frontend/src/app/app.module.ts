@@ -31,6 +31,7 @@ import {ToolFilterPipe} from './components/main-page/tool-filter.pipe';
 import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-tool.component';
 import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
 import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit-awards.component';
+import {MemberManagerComponent} from './components/team-page/member-manager/member-manager.component';
 import {PublicationsPageComponent} from './components/publications-page/publications-page.component';
 import {PublicationFormComponent} from './components/publications-page/publication-form/publication-form.component';
 
@@ -55,7 +56,8 @@ import {PublicationFormComponent} from './components/publications-page/publicati
     ConfirmationDialogComponent,
     EditAwardsComponent,
     PublicationsPageComponent,
-    PublicationFormComponent
+    PublicationFormComponent,
+    MemberManagerComponent
   ],
   imports: [
     AppRoutingModule,
@@ -80,6 +82,7 @@ import {PublicationFormComponent} from './components/publications-page/publicati
     AddToolComponent,
     ConfirmationDialogComponent,
     EditAwardsComponent,
+    MemberManagerComponent,
     PublicationFormComponent
   ]
 })

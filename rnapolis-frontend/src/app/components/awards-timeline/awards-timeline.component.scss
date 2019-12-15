@@ -2,13 +2,14 @@
 @import "../../style-utils/grid-style";
 
 #timeline {
-  button {
-    margin: 1em;
+  width: 75vw;
+  margin: 0 auto;
+
+  .add-button {
+    margin: 1em 0;
   }
 
   mat-card {
-    @include main-purple-font;
-    max-width: 75vw;
     margin: 3em auto;
     border-width: 1em 2em 1em 0;
     border-color: transparent #ffffff transparent transparent;
@@ -66,19 +67,24 @@
 }
 
 @media screen and (max-width: $small-screen) {
-  #timeline mat-card {
-    max-width: 100vw;
-    margin: 1em;
-
-    p {
-      text-align: left;
+  #timeline {
+    width: 100vw;
+    .add-button {
+      margin: 1em;
     }
+    mat-card {
+      margin: 1em;
 
-    h3, i {
-      font-size: $header-size-mobile;
+      p {
+        text-align: left;
+      }
 
-      i {
-        margin-right: 0.25em;
+      h3, i {
+        font-size: $header-size-mobile;
+
+        i {
+          margin-right: 0.25em;
+        }
       }
     }
   }

@@ -27,6 +27,8 @@ import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-
 import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
 import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit-awards.component';
 import {MemberManagerComponent} from './components/team-page/member-manager/member-manager.component';
+import {PublicationsPageComponent} from './components/publications-page/publications-page.component';
+import {PublicationFormComponent} from './components/publications-page/publication-form/publication-form.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import {MemberManagerComponent} from './components/team-page/member-manager/memb
     AddToolComponent,
     ConfirmationDialogComponent,
     EditAwardsComponent,
+    PublicationsPageComponent,
+    PublicationFormComponent,
     MemberManagerComponent
   ],
   imports: [
@@ -72,7 +76,8 @@ import {MemberManagerComponent} from './components/team-page/member-manager/memb
     AddToolComponent,
     ConfirmationDialogComponent,
     EditAwardsComponent,
-    MemberManagerComponent
+    MemberManagerComponent,
+    PublicationFormComponent
   ]
 })
 export class AppModule {

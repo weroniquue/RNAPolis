@@ -1,9 +1,8 @@
-import {Component, OnInit, ViewChild, NgZone} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TeamMember} from '../../entity/TeamMember';
 import {ConfirmationDialogComponent} from '../basic-components/confirmation-dialog/confirmation-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {MemberManagerComponent} from './member-manager/member-manager.component';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
@@ -60,13 +59,13 @@ export class TeamPageComponent implements OnInit {
     });
   }
 
-  editElement(award: TeamMember) {
-    const editDialogRef = this.openMemberDialog(award);
+  editElement(member: TeamMember) {
+    const editDialogRef = this.openMemberDialog(member);
 
     editDialogRef.afterClosed().subscribe(result => {
       if (result != null) {
         // TODO save data in db
-        this.team[this.team.indexOf(award)] = result;
+        this.team[this.team.indexOf(member)] = result;
       }
     });
   }

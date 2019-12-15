@@ -8,7 +8,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {AppComponent} from './app.component';
 import {AwardsTimelineComponent} from './components/awards-timeline/awards-timeline.component';
-import {DeleteButtonComponent} from './components/basic-components/delete-button/delete-button.component';
 import {FooterComponent} from './components/basic-components/footer/footer.component';
 import {GenericButtonComponent} from './components/basic-components/generic-button/generic-button.component';
 import {HeaderComponent} from './components/basic-components/header/header.component';
@@ -39,7 +38,6 @@ import {PublicationFormComponent} from './components/publications-page/publicati
   declarations: [
     AppComponent,
     AwardsTimelineComponent,
-    DeleteButtonComponent,
     FooterComponent,
     GenericButtonComponent,
     MainHeaderComponent,

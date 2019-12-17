@@ -16,52 +16,50 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtTokenProvider {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
+  private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 
-    @Value("${app.jwtSecret}")
-    private String jwtSecret;
+  @Value("${app.jwtSecret}")
+  private String jwtSecret;
 
-    @Value("${app.jwtExpirationInMs}")
-    private int jwtExpirationInMs;
+  @Value("${app.jwtExpirationInMs}")
+  private int jwtExpirationInMs;
 
-    public String generateToken(String username) {
+  public String generateToken(String username) {
 
-        Claims claims = Jwts.claims().setSubject(username);
-        Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
+    Claims claims = Jwts.claims().setSubject(username);
+    Date now = new Date();
+    Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
 
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(expiryDate)
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
-                .compact();
+    return Jwts.builder()
+        .setClaims(claims)
+        .setIssuedAt(now)
+        .setExpiration(expiryDate)
+        .signWith(SignatureAlgorithm.HS512, jwtSecret)
+        .compact();
+  }
+
+  String getUsernameFromJWT(String token) {
+    Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
+
+    return claims.getSubject();
+  }
+
+  boolean validateToken(String token) {
+    try {
+      Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+      return true;
+    } catch (SignatureException ex) {
+      logger.error("Invalid JWT signature");
+    } catch (MalformedJwtException ex) {
+      logger.error("malformed -------12312");
+      logger.error("Invalid JWT token");
+    } catch (ExpiredJwtException ex) {
+      logger.error("Expired JWT token");
+    } catch (UnsupportedJwtException ex) {
+      logger.error("Unsupported JWT token");
+    } catch (IllegalArgumentException ex) {
+      logger.error("JWT claims string is empty.");
     }
-
-    String getUsernameFromJWT(String token) {
-        Claims claims = Jwts.parser()
-            .setSigningKey(jwtSecret)
-            .parseClaimsJws(token)
-            .getBody();
-
-        return claims.getSubject();
-    }
-
-    boolean validateToken(String token) {
-        try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
-            return true;
-        } catch (SignatureException ex) {
-            logger.error("Invalid JWT signature");
-        } catch (MalformedJwtException ex) {
-            logger.error("Invalid JWT token");
-        } catch (ExpiredJwtException ex) {
-            logger.error("Expired JWT token");
-        } catch (UnsupportedJwtException ex) {
-            logger.error("Unsupported JWT token");
-        } catch (IllegalArgumentException ex) {
-            logger.error("JWT claims string is empty.");
-        }
-        return false;
-    }
+    return false;
+  }
 }

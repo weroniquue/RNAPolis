@@ -1,8 +1,9 @@
 package rnapolis.services;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,9 +23,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         userRepository
             .findByUsername(username)
             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    HashSet<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+    ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 
-    return new org.springframework.security.core.userdetails.User(
-        user.getUsername(), user.getPassword(), authorities);
+    authorities.add(new SimpleGrantedAuthority("ADMIN"));
+
+    return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
   }
 }

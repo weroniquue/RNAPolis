@@ -1,8 +1,10 @@
 package rnapolis.config;
 
+import javax.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,7 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import rnapolis.security.JwtAuthenticationEntryPoint;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import rnapolis.security.JwtAuthenticationFilter;
 import rnapolis.services.CustomUserDetailsService;
 
@@ -28,7 +31,6 @@ import rnapolis.services.CustomUserDetailsService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private CustomUserDetailsService customUserDetailsService;
-    private JwtAuthenticationEntryPoint unauthorizedHandler;
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Override
@@ -49,6 +51,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationEntryPoint unauthorizedEntryPoint() {
+        return (request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
+            "Unauthorized");
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -57,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                     .disable()
                 .exceptionHandling()
-                    .authenticationEntryPoint(unauthorizedHandler)
+                    .authenticationEntryPoint(unauthorizedEntryPoint())
                     .and()
                 .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -73,14 +81,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                         .permitAll()
-                    .antMatchers("/api/login")
-                        .permitAll();
-                    // TODO: make other endpoints to require auth
-//                    .anyRequest()
-//                        .authenticated();
+                    .antMatchers(HttpMethod.POST, "/api/auth/login")
+                        .permitAll()
+                    .antMatchers(HttpMethod.GET, "/api/awards/**")
+                        .permitAll()
+                    .anyRequest()
+                        .authenticated();
 
-        // TODO: Add our custom JWT security filter
-//        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import rnapolis.services.CustomUserDetailsService;
+import rnapolis.services.*;
 
 @Component
 @AllArgsConstructor
@@ -36,9 +36,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
       String username = tokenProvider.getUsernameFromJWT(jwt);
       UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+
       UsernamePasswordAuthenticationToken authentication =
-          new UsernamePasswordAuthenticationToken(
-              userDetails.getUsername(), userDetails.getPassword());
+          new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+
       authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
       SecurityContextHolder.getContext().setAuthentication(authentication);

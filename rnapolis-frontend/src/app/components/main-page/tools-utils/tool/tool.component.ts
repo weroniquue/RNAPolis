@@ -13,9 +13,9 @@ import {ConfirmationDialogComponent} from '../../../basic-components/confirmatio
 export class ToolComponent implements OnInit {
   @Input() tool: Tool;
   @Input() categories: string[];
+  @Input() canEdit: boolean;
   @Output() toolRemoved = new EventEmitter<Tool>();
   @Output() toolChanged = new EventEmitter<Tool>();
-  canEdit = false;
 
   constructor(@Inject(DOCUMENT) private document: Document,
               public dialog: MatDialog) {

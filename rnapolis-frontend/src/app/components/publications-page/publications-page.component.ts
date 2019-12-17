@@ -3,6 +3,8 @@ import {Publication} from '../../entity/Publication';
 import {ConfirmationDialogComponent} from '../basic-components/confirmation-dialog/confirmation-dialog.component';
 import {PublicationFormComponent} from './publication-form/publication-form.component';
 import {MatDialog} from '@angular/material/dialog';
+import Utils from '../../services/utils';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-publications-page',
@@ -13,8 +15,8 @@ export class PublicationsPageComponent implements OnInit {
   publications: Publication[];
   canEdit: boolean;
 
-  constructor(public dialog: MatDialog) {
-    this.canEdit = true;
+  constructor(public authenticationService: AuthenticationService, public dialog: MatDialog) {
+    this.canEdit = this.authenticationService.ifLogin;
     this.publications = [
       {
         authors: 'Szachniuk M',
@@ -53,6 +55,7 @@ export class PublicationsPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    Utils.closeMenu();
   }
 
   deleteElement(publication: Publication) {

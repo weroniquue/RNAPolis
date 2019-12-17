@@ -10,6 +10,7 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/
 import {PublicationFormComponent} from './publication-form/publication-form.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
+import {MatCardModule} from '@angular/material';
 
 describe('PublicationsPageComponent', () => {
   let component: PublicationsPageComponent;
@@ -30,7 +31,8 @@ describe('PublicationsPageComponent', () => {
         MatIconModule,
         MatDialogModule,
         HttpClientModule,
-        RouterTestingModule
+        RouterTestingModule,
+        MatCardModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

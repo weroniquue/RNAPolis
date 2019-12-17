@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Tool} from '../../entity/tool';
 import {MatDialog} from '@angular/material';
 import {AddToolComponent} from './tools-utils/add-tool/add-tool.component';
+import {AuthenticationService} from '../../services/authentication.service';
+import Utils from '../../services/utils';
 
 @Component({
   selector: 'app-main-page',
@@ -13,9 +15,11 @@ export class MainPageComponent implements OnInit {
   tools: Tool[];
   categories: string[];
   selectedCategory: string;
-  canEdit = true;
+  canEdit: boolean;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,
+              public authenticationService: AuthenticationService) {
+    this.canEdit = this.authenticationService.ifLogin;
     this.tools = [
       {
         id: '1',
@@ -55,6 +59,7 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    Utils.closeMenu();
   }
 
   addTool(): void {
@@ -65,7 +70,6 @@ export class MainPageComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.valid) {
-        console.log(result);
         this.tools.push(result.value);
       }
     });

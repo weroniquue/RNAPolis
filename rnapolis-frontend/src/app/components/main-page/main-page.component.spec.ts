@@ -29,7 +29,6 @@ describe('MainPageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         MainPageComponent,
-        MenuComponent,
         MainHeaderComponent,
         ToolComponent,
         GenericButtonComponent,

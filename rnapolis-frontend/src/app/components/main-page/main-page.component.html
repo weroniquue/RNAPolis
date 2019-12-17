@@ -1,4 +1,3 @@
-<app-menu></app-menu>
 <app-main-header></app-main-header>
 <div id="main-section">
   <section class="details-section">
@@ -31,6 +30,6 @@
 
     <app-tool (toolRemoved)="removeTool($event)"(toolChanged)="refreshTool($event)"
               *ngFor="let tool of tools | toolFilter: selectedCategory"
-              [categories]="categories" [tool]="tool"></app-tool>
+              [categories]="categories" [tool]="tool" [canEdit]="canEdit"></app-tool>
   </section>
 </div>

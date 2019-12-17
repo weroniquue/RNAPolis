@@ -1,202 +1,76 @@
 @import "../../style-utils/font-style";
+@import "../../style-utils/grid-style";
 
 #timeline {
-  button {
-    margin: 1em;
+  width: 75vw;
+  margin: 0 auto;
+
+  .add-button {
+    margin: 1em 0;
   }
 
-  ul {
-    padding: 4em 0;
+  mat-card {
+    margin: 3em auto;
+    border-width: 1em 2em 1em 0;
+    border-color: transparent #ffffff transparent transparent;
+    -webkit-filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));
+    filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));
 
-    li {
-      list-style: none;
-      position: relative;
-      width: 10px;
-      margin: 0 auto;
-      padding-top: 4em;
-      background: $light-purple;
+    h3 {
+      @include header-with-line;
 
-      .edit-manager {
-        display: flex;
-        flex-direction: column;
-        float: right;
-
-        button {
-          margin-bottom: 0.5em;
-        }
-      }
-
-      .award-content {
-        @include main-purple-font;
-        position: relative;
-        bottom: 0;
-        width: 30vw;
-        padding: 1em;
-        background: #ffffff;
-        box-shadow: 0 0.375em 0.75em rgba(0, 0, 0, 0.16);
-        transition: all 0.5s ease-in-out;
-        visibility: hidden;
-        opacity: 0;
-
-        &.edit mat-form-field {
-          display: block;
-
-          textarea {
-            min-height: 8em;
-          }
-        }
-
-        h3 {
-          @include header-with-line;
-        }
-
-        p {
-          font-size: 1em;
-          text-align: justify;
-          padding: 0 1em;
-        }
-
-        i {
-          display: block;
-          font-size: $header-size;
-          text-align: center;
-          color: gold;
-          margin: 0.5em auto;
-        }
-
-        app-delete-button {
-          position: absolute;
-          right: -3em;
-          top: -3em;
-        }
-      }
-
-      &:nth-child(odd) {
-        .award-content {
-          left: 6.25em;
-          transform: translate(12.5em, 0);
-
-          &::before {
-            left: -2em;
-            border-width: 1em 2em 1em 0;
-            border-color: transparent #ffffff transparent transparent;
-            -webkit-filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));
-            filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));
-          }
-        }
-      }
-
-      &:nth-child(even) {
-        .award-content {
-          left: calc(-30vw - 6.25em);
-          transform: translate(-12.5em, 0);
-
-          &::before {
-            right: -2em;
-            border-width: 1em 0 1em 2em;
-            border-color: transparent transparent transparent #ffffff;
-            -webkit-filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));
-            filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));
-          }
-        }
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 52%;
-        width: 3.125em;
-        height: 3.125em;
-        transform: translateX(-50%);
-        border-radius: 50%;
-      }
-
-      &.show {
-        .award-content {
-          transform: none;
-          visibility: visible;
-          opacity: 1;
-        }
-
-        &:after {
-          background: $deep-purple;
-        }
+      i {
+        color: gold;
+        margin-right: 0.5em;
       }
     }
-  }
 
-  .award-content {
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: 45%;
-      width: 0;
-      height: 0;
-      border-style: solid;
+    p {
+      font-size: $paragraph-size;
+      text-align: justify;
+      padding: 1em;
+    }
+
+    .edit-manager {
+      @include edit-manager;
     }
   }
 }
 
 @media screen and (max-width: $medium-screen) {
-  #timeline ul li {
-    margin-left: 2.5em;
-
+  #timeline {
     .edit-manager button {
       margin: 0 0 0.5em;
     }
 
-    .award-content {
-      height: auto;
-      width: 70vw;
-
+    mat-card {
       p {
         text-align: left;
-      }
-
-      i {
-        font-size: $smaller-header-size;
-      }
-    }
-
-    &:nth-child(odd) .award-content {
-      left: 4em;
-      transform: translate(-6.25em, 0);
-    }
-
-    &:nth-child(even) .award-content {
-      left: 4em;
-
-      &::before {
-        left: -2em;
-        border-width: 1em 2em 1em 0;
-        border-color: transparent #ffffff transparent transparent;
-        -webkit-filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));
-        filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));
-      }
-    }
-
-    &.show {
-      .award-content {
-        transform: none;
-        visibility: visible;
-        opacity: 1;
+        font-size: $normal-size;
       }
     }
   }
 }
 
 @media screen and (max-width: $small-screen) {
-  #timeline ul li {
-    margin-left: 1.5em;
+  #timeline {
+    width: 100vw;
+    .add-button {
+      margin: 1em;
+    }
+    mat-card {
+      margin: 1em;
 
-    .award-content {
       p {
         text-align: left;
       }
 
-      i {
+      h3, i {
         font-size: $header-size-mobile;
+
+        i {
+          margin-right: 0.25em;
+        }
       }
     }
   }

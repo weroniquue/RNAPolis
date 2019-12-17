@@ -1,6 +1,5 @@
 @import "consts";
 @mixin main-purple-font{
-  font-family: $main-font;
   color: $deep-purple;
 }
 
@@ -17,6 +16,7 @@
 @mixin header-with-line {
   font-size: $smaller-header-size;
   padding: 1.25em 0;
+  color: $deep-purple;
 
   &::before {
     margin-bottom: -0.5em;

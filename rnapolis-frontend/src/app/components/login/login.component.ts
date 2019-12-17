@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../../services/authentication.service';
+import Utils from '../../services/utils';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-  errorMessage = '';
+  errorMessage: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    Utils.closeMenu();
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', Validators.required]
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.errorMessage = '';
     this.submitted = true;
 
     if (this.loginForm.invalid) {
@@ -47,11 +50,11 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.form.username.value, this.form.password.value)
     .pipe(first())
     .subscribe(
-      data => {
+      () => {
         this.router.navigate(['']);
       },
       errorResponse => {
-        this.errorMessage = errorResponse.error.message;
+        errorResponse.error.message ? this.errorMessage = errorResponse.error.message : this.errorMessage = errorResponse.statusText;
         this.loading = false;
       });
   }

@@ -34,4 +34,9 @@ export class MenuComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/']);
   }
+
+  changeChecked() {
+    const el = document.getElementById('close-menu') as HTMLInputElement;
+    this.isChecked = el.checked;
+  }
 }

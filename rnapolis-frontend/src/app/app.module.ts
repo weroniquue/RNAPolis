@@ -6,10 +6,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
 import {AppComponent} from './app.component';
 import {AwardsTimelineComponent} from './components/awards-timeline/awards-timeline.component';
-import {DeleteButtonComponent} from './components/basic-components/delete-button/delete-button.component';
 import {FooterComponent} from './components/basic-components/footer/footer.component';
 import {GenericButtonComponent} from './components/basic-components/generic-button/generic-button.component';
 import {HeaderComponent} from './components/basic-components/header/header.component';
@@ -21,7 +19,13 @@ import {LoginComponent} from './components/login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MainHeaderComponent} from './components/main-header/main-header.component';
 import {ToolComponent} from './components/main-page/tools-utils/tool/tool.component';
-import {MatDialogModule, MatIconModule, MatSelectModule} from '@angular/material';
+import {
+  MatCardModule,
+  MatDialogModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatSelectModule
+} from '@angular/material';
 import {ToolFilterPipe} from './components/main-page/tool-filter.pipe';
 import {AddToolComponent} from './components/main-page/tools-utils/add-tool/add-tool.component';
 import {ConfirmationDialogComponent} from './components/basic-components/confirmation-dialog/confirmation-dialog.component';
@@ -34,7 +38,6 @@ import {PublicationFormComponent} from './components/publications-page/publicati
   declarations: [
     AppComponent,
     AwardsTimelineComponent,
-    DeleteButtonComponent,
     FooterComponent,
     GenericButtonComponent,
     MainHeaderComponent,
@@ -68,7 +71,8 @@ import {PublicationFormComponent} from './components/publications-page/publicati
     MatSelectModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -80,5 +84,4 @@ import {PublicationFormComponent} from './components/publications-page/publicati
     PublicationFormComponent
   ]
 })
-export class AppModule {
-}
+export class AppModule {}

@@ -1,7 +1,7 @@
 @import "../../../style-utils/consts";
 
 #footer {
-  border-top: $light-purple 10px solid;
+  border-top: $light-purple $footer-border-size solid;
   background-color: #ffffff;
 }
 

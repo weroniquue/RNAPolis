@@ -41,7 +41,7 @@
 .login-wrapper {
   @include center-items;
   background: url("~src/assets/login-background.png") no-repeat center;
-  height: calc(100vh - #{$footer-size});
+  height: calc(100vh - #{$footer-size} - #{$footer-border-size});
   flex-direction: row;
 
   .login-form {

@@ -45,7 +45,7 @@ public class DatabaseChangelog {
     collection.insert(dbDocuments);
   }
 
-  @ChangeSet(order = "001", id = "initialAwardsData", author = "BlazejPiaskowski", runAlways = true)
+  @ChangeSet(order = "001", id = "initialAwardsData", author = "BlazejPiaskowski")
   public void initialAwardsData(DB db) throws IOException, ParseException {
     importFromFile("data/awards.json", "awards", db);
   }

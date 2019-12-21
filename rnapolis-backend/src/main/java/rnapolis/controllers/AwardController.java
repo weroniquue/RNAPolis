@@ -3,7 +3,6 @@ package rnapolis.controllers;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.val;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,7 +47,7 @@ public class AwardController {
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
   public Award update(@PathVariable String id, @Valid @RequestBody Award updatedAward) {
-    val award = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award", id));
+    Award award = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award", id));
 
     award.setDescription(updatedAward.getDescription());
     award.setYear(updatedAward.getYear());
@@ -58,7 +57,7 @@ public class AwardController {
   @DeleteMapping(value = "/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void delete(@PathVariable("id") String id) {
-    val award = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award", id));
+    Award award = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award", id));
     repository.delete(award);
   }
 }

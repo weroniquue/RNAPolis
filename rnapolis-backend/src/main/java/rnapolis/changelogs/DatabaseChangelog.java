@@ -2,65 +2,51 @@ package rnapolis.changelogs;
 
 import com.github.mongobee.changeset.ChangeLog;
 import com.github.mongobee.changeset.ChangeSet;
-import java.time.Instant;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.util.JSON;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import rnapolis.models.Award;
+import java.util.Objects;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 @ChangeLog
 public class DatabaseChangelog {
 
+  private void importFromFile(String filePath, String collectionName, DB db)
+      throws IOException, ParseException {
+    ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+    File file = new File(Objects.requireNonNull(classLoader.getResource(filePath)).getFile());
+    String jsonString = new String(Files.readAllBytes(file.toPath()));
+
+    JSONObject parsedJson;
+    JSONParser helper = new JSONParser();
+    parsedJson = (JSONObject) helper.parse(jsonString);
+
+    JSONArray array = (JSONArray) parsedJson.get(collectionName);
+
+    DBCollection collection = db.getCollection(collectionName);
+
+    List<DBObject> dbDocuments = new ArrayList<>();
+
+    array.forEach(
+        jsonObject -> {
+          DBObject dbDocument = (DBObject) JSON.parse(jsonObject.toString());
+          dbDocuments.add(dbDocument);
+        });
+
+    collection.insert(dbDocuments);
+  }
+
   @ChangeSet(order = "001", id = "initialAwardsData", author = "BlazejPiaskowski")
-  public void initialAwardsData(MongoTemplate template) {
-
-    List<Award> awardList = new ArrayList<>();
-
-    awardList.add(
-        Award.builder()
-            .description(
-                "Rector scientific award for \"New computational methods in RNA structural bioinformatics\" granted to Marta Szachniuk, Maciej Antczak and Tomasz Zok by the Rector of Poznan University of Technology")
-            .year(2019)
-            .createdDate(Instant.now())
-            .lastModifiedDate(Instant.now())
-            .build());
-
-    awardList.add(
-        Award.builder()
-            .description(
-                "Award for PhD thesis \"Algorithmic aspects of RNA structure similarity analysis\" written by Tomasz Zok, awarded by the Scientific Council of the Faculty of Computing, Poznan University of Technology")
-            .year(2019)
-            .createdDate(Instant.now())
-            .lastModifiedDate(Instant.now())
-            .build());
-
-    awardList.add(
-        Award.builder()
-            .description(
-                "Award for outstanding PhD thesis granted to Tomasz Zok for PhD thesis \"Algorithmic Aspects of RNA Structure Similarity Analysis\" by the City of Poznan")
-            .year(2019)
-            .createdDate(Instant.now())
-            .lastModifiedDate(Instant.now())
-            .build());
-
-    awardList.add(
-        Award.builder()
-            .description(
-                "Scientific Award of the IBCh PAS Research Council for pseudoknot-annotating algorithms selected the best experimental work of the year 2018 (to Marta Szachniuk, Mariusz Popenda, Ryszard W. Adamiak)")
-            .year(2018)
-            .createdDate(Instant.now())
-            .lastModifiedDate(Instant.now())
-            .build());
-
-    awardList.add(
-        Award.builder()
-            .description(
-                "Scholarship of the Minister of Science and Higher Education, Poland for outstanding scientific achievements in structural bioinformatics granted to Michal Zurkowski")
-            .year(2018)
-            .createdDate(Instant.now())
-            .lastModifiedDate(Instant.now())
-            .build());
-
-    template.insertAll(awardList);
+  public void initialAwardsData(DB db) throws IOException, ParseException {
+    importFromFile("data/awards.json", "awards", db);
   }
 }

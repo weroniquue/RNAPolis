@@ -36,7 +36,7 @@ public class AwardController {
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
   public Award findById(@PathVariable String id) {
-    return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award"));
+    return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award", id));
   }
 
   @PostMapping
@@ -48,7 +48,7 @@ public class AwardController {
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
   public Award update(@PathVariable String id, @Valid @RequestBody Award updatedAward) {
-    val award = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award"));
+    val award = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award", id));
 
     award.setDescription(updatedAward.getDescription());
     award.setYear(updatedAward.getYear());
@@ -58,7 +58,7 @@ public class AwardController {
   @DeleteMapping(value = "/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void delete(@PathVariable("id") String id) {
-    val award = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award"));
+    val award = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Award", id));
     repository.delete(award);
   }
 }

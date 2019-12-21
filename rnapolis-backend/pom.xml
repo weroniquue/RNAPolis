@@ -20,6 +20,7 @@
         <lombok.version>1.18.10</lombok.version>
         <junit.version>4.12</junit.version>
         <jjwt.version>0.9.1</jjwt.version>
+        <mongobee.version>0.13</mongobee.version>
     </properties>
 
     <dependencies>
@@ -54,7 +55,7 @@
         <dependency>
             <groupId>com.github.mongobee</groupId>
             <artifactId>mongobee</artifactId>
-            <version>0.13</version>
+            <version>${mongobee.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.mongodb</groupId>

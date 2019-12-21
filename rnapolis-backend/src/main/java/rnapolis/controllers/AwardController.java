@@ -29,8 +29,8 @@ public class AwardController {
 
   @GetMapping("")
   @ResponseStatus(HttpStatus.OK)
-  public List<Award> all() {
-    return repository.findAll();
+  public List<Award> allAward() {
+    return repository.findAllByOrderByYearDesc();
   }
 
   @GetMapping("/{id}")

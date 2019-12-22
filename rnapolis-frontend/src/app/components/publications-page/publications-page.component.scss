@@ -4,6 +4,7 @@
 .board {
   width: 75vw;
   margin: 0 auto;
+  padding: 3em 0;
 
   .add-button {
     margin-top: 2vh;
@@ -12,6 +13,7 @@
   mat-card {
     overflow: hidden;
     padding: 2em;
+    margin: 1em 0;
     border-width: 1em 2em 1em 0;
     border-color: transparent #ffffff transparent transparent;
     -webkit-filter: drop-shadow(0 0 0.75em rgba(0, 0, 0, .16));

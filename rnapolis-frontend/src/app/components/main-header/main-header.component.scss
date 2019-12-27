@@ -84,6 +84,14 @@
     padding: 0;
     align-items: center;
     text-align: center;
+
+    h1 {
+      font-size: $smaller-header-size;
+    }
+
+    p {
+      font-size: $normal-size;
+    }
   }
 }
 

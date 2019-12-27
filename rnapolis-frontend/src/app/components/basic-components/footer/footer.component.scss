@@ -3,6 +3,7 @@
 #footer {
   border-top: $light-purple $footer-border-size solid;
   background-color: #ffffff;
+  flex-shrink: 0;
 }
 
 .footer-container {

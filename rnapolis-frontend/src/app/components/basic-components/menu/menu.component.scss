@@ -40,7 +40,7 @@
       transition: all 0.4s ease;
 
       /*Hamburger line -top and bottom*/
-      &::before, &::after {
+      &:before, &:after {
         content: '';
         position: absolute;
         z-index: 1;
@@ -50,7 +50,7 @@
         background: inherit;
       }
 
-      &::after {
+      &:after {
         top: 10px;
       }
     }
@@ -60,7 +60,7 @@
     + .hamburger > div {
       transform: rotate(135deg);
 
-      &::before, &::after {
+      &:before, &:after {
         top: 0;
         transform: rotate(90deg);
       }
@@ -98,9 +98,8 @@
     > div {
       @include center-items;
       background: $menu-background;
-      border-radius: 50%;
-      width: 300vw;
-      height: 300vw;
+      width: 105vw;
+      height: 100vw;
       flex: none;
       transform: scale(0);
       transition: all 0.4s ease;

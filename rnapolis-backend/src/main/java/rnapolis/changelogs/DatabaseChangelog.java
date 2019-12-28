@@ -31,7 +31,7 @@ public class DatabaseChangelog {
         objects.forEach(map -> collection.save(new BasicDBObject(map)));
     }
 
-    @ChangeSet(order = "001", id = "initialAwardsData", author = "BlazejPiaskowski", runAlways = true)
+    @ChangeSet(order = "001", id = "initialAwardsData", author = "BlazejPiaskowski")
     public void initialAwardsData(DB db) throws IOException {
         importFromFile("data/awards.json", "awards", db);
     }

@@ -16,7 +16,7 @@ export class PublicationsPageComponent implements OnInit {
   canEdit: boolean;
 
   constructor(public authenticationService: AuthenticationService, public dialog: MatDialog) {
-    this.canEdit = this.authenticationService.ifLogin;
+    this.canEdit = AuthenticationService.ifLogin;
     this.publications = [
       {
         authors: 'Szachniuk M',

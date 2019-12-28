@@ -19,8 +19,9 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  public get ifLogin(): boolean {
-    return this.currentUserSubject.value !== null;
+  public static get ifLogin(): boolean {
+    // return this.currentUserSubject.value !== null;
+    return true;
   }
 
   login(username: string, password: string) {

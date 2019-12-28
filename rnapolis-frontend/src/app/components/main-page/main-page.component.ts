@@ -19,7 +19,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               public authenticationService: AuthenticationService) {
-    this.canEdit = this.authenticationService.ifLogin;
+    this.canEdit = AuthenticationService.ifLogin;
     this.tools = [
       {
         id: '1',

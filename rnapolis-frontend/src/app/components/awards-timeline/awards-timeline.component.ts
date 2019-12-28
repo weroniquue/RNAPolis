@@ -17,7 +17,7 @@ export class AwardsTimelineComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               public authenticationService: AuthenticationService) {
-    this.canEdit = this.authenticationService.ifLogin;
+    this.canEdit = AuthenticationService.ifLogin;
     this.awards = [{
       year: 2019,
       description: 'Rector scientific award for ' +

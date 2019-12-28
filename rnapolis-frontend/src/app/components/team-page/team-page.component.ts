@@ -16,7 +16,7 @@ export class TeamPageComponent implements OnInit {
   canEdit: boolean;
 
   constructor(public authenticationService: AuthenticationService, public dialog: MatDialog) {
-    this.canEdit = this.authenticationService.ifLogin;
+    this.canEdit = AuthenticationService.ifLogin;
     this.team = [
       new TeamMember('Natalia', 'Łukasiewicz', 'student',
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium sunt nisi vitae et quia possimus unde tempora, sapiente rem',

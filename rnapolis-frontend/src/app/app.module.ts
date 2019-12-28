@@ -16,7 +16,7 @@ import {MenuComponent} from './components/basic-components/menu/menu.component';
 import {PageNotFoundComponent} from './components/basic-components/page-not-found/page-not-found.component';
 import {TeamPageComponent} from './components/team-page/team-page.component';
 import {LoginComponent} from './components/login/login.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MainHeaderComponent} from './components/main-header/main-header.component';
 import {ToolComponent} from './components/main-page/tools-utils/tool/tool.component';
 import {
@@ -33,6 +33,7 @@ import {EditAwardsComponent} from './components/awards-timeline/edit-awards/edit
 import {MemberManagerComponent} from './components/team-page/member-manager/member-manager.component';
 import {PublicationsPageComponent} from './components/publications-page/publications-page.component';
 import {PublicationFormComponent} from './components/publications-page/publication-form/publication-form.component';
+import {JwtInterceptor} from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,9 @@ import {PublicationFormComponent} from './components/publications-page/publicati
     MatIconModule,
     MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     AddToolComponent,
@@ -84,4 +87,5 @@ import {PublicationFormComponent} from './components/publications-page/publicati
     PublicationFormComponent
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

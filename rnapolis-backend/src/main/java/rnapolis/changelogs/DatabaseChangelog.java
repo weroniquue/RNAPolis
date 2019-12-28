@@ -24,14 +24,14 @@ public class DatabaseChangelog {
         File file = new File(Objects.requireNonNull(classLoader.getResource(filePath)).getFile());
         String jsonString = new String(Files.readAllBytes(file.toPath()));
 
-        List<Map<String, String>> awards = GSON.fromJson(jsonString, new TypeToken<List<Map<String, String>>>() {
+        List<Map<String, String>> objects = GSON.fromJson(jsonString, new TypeToken<List<Map<String, String>>>() {
         }.getType());
 
         DBCollection collection = db.getCollection(collectionName);
-        awards.forEach(map -> collection.save(new BasicDBObject(map)));
+        objects.forEach(map -> collection.save(new BasicDBObject(map)));
     }
 
-    @ChangeSet(order = "001", id = "initialAwardsData", author = "BlazejPiaskowski")
+    @ChangeSet(order = "001", id = "initialAwardsData", author = "BlazejPiaskowski", runAlways = true)
     public void initialAwardsData(DB db) throws IOException {
         importFromFile("data/awards.json", "awards", db);
     }

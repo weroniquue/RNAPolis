@@ -3,6 +3,8 @@ import {Award} from '../../entity/award';
 import {MatDialog} from '@angular/material';
 import {ConfirmationDialogComponent} from '../basic-components/confirmation-dialog/confirmation-dialog.component';
 import {EditAwardsComponent} from './edit-awards/edit-awards.component';
+import {AuthenticationService} from '../../services/authentication.service';
+import Utils from '../../services/utils';
 
 @Component({
   selector: 'app-awards-timeline',
@@ -13,8 +15,9 @@ export class AwardsTimelineComponent implements OnInit {
   awards: Award[];
   canEdit: boolean;
 
-  constructor(public dialog: MatDialog) {
-    this.canEdit = true;
+  constructor(public dialog: MatDialog,
+              public authenticationService: AuthenticationService) {
+    this.canEdit = this.authenticationService.ifLogin;
     this.awards = [{
       year: 2019,
       description: 'Rector scientific award for ' +
@@ -93,6 +96,7 @@ export class AwardsTimelineComponent implements OnInit {
   }
 
   ngOnInit() {
+    Utils.closeMenu();
     this.onScrollEvent();
   }
 

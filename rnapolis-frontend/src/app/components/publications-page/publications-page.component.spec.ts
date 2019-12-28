@@ -1,51 +1,49 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {TeamPageComponent} from './team-page.component';
+
+import {PublicationsPageComponent} from './publications-page.component';
 import {MenuComponent} from '../basic-components/menu/menu.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderComponent} from '../basic-components/header/header.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {PublicationFormComponent} from './publication-form/publication-form.component';
 import {HttpClientModule} from '@angular/common/http';
-import {Routes} from '@angular/router';
-import {AuthenticationService} from '../../services/authentication.service';
-import {MemberManagerComponent} from './member-manager/member-manager.component';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatIconModule} from '@angular/material';
 import {RouterTestingModule} from '@angular/router/testing';
+import {MatCardModule} from '@angular/material';
 
-describe('TeamPageComponent', () => {
-  let component: TeamPageComponent;
-  let fixture: ComponentFixture<TeamPageComponent>;
-
-  const routes: Routes = [
-    {path: '', redirectTo: '/mock', pathMatch: 'full'}];
+describe('PublicationsPageComponent', () => {
+  let component: PublicationsPageComponent;
+  let fixture: ComponentFixture<PublicationsPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        TeamPageComponent,
-        MemberManagerComponent,
+        PublicationsPageComponent,
+        MenuComponent,
         HeaderComponent,
-        MenuComponent
+        PublicationFormComponent
       ],
       imports: [
+        MatFormFieldModule,
         FormsModule,
         ReactiveFormsModule,
         MatIconModule,
         MatDialogModule,
-        MatFormFieldModule,
+        HttpClientModule,
         RouterTestingModule,
-        HttpClientModule
+        MatCardModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},
         {provide: MAT_DIALOG_DATA, useValue: []},
-        AuthenticationService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TeamPageComponent);
+    fixture = TestBed.createComponent(PublicationsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

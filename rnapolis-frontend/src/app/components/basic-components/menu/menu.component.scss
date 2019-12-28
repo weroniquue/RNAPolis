@@ -129,7 +129,8 @@
               margin-right: 2px;
             }
 
-            &:hover {
+            &:hover,
+            &.is-active{
               color: yellow;
             }
           }

@@ -1,7 +1,10 @@
-import {Component, OnInit, ViewChild, NgZone} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TeamMember} from '../../entity/TeamMember';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import {ConfirmationDialogComponent} from '../basic-components/confirmation-dialog/confirmation-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {MemberManagerComponent} from './member-manager/member-manager.component';
 import {AuthenticationService} from '../../services/authentication.service';
+import Utils from '../../services/utils';
 
 @Component({
   selector: 'app-team-page',
@@ -12,9 +15,8 @@ export class TeamPageComponent implements OnInit {
   team: TeamMember[];
   canEdit: boolean;
 
-  @ViewChild('autosize', {static: false}) autosize: CdkTextareaAutosize;
-
-  constructor(public authenticationService: AuthenticationService) {
+  constructor(public authenticationService: AuthenticationService, public dialog: MatDialog) {
+    this.canEdit = this.authenticationService.ifLogin;
     this.team = [
       new TeamMember('Natalia', 'Łukasiewicz', 'student',
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium sunt nisi vitae et quia possimus unde tempora, sapiente rem',
@@ -38,38 +40,60 @@ export class TeamPageComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  changeCanEdit() {
-    this.canEdit = true;
+    Utils.closeMenu();
   }
 
   setDefaultImage(member: TeamMember) {
     member.imagePath = 'assets/not-found.jpg';
   }
 
-  save() {
-    this.canEdit = false;
-    // TODO save data in db
+  deleteElement(member: TeamMember) {
+    const confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      panelClass: 'custom-dialog-container',
+      data: ['Are you sure?', 'Do you want to delete this member?']
+    });
+
+    confirmationDialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.team.splice(this.team.indexOf(member), 1);
+        // TODO save data in db
+      }
+    });
   }
 
-  deleteElement(member: TeamMember) {
-    this.team.splice(this.team.indexOf(member), 1);
-    // TODO save data in db
+  editElement(member: TeamMember) {
+    const editDialogRef = this.openMemberDialog(member);
+
+    editDialogRef.afterClosed().subscribe(result => {
+      if (result != null) {
+        // TODO save data in db
+        this.team[this.team.indexOf(member)] = result;
+      }
+    });
   }
 
   addElement() {
-    this.team.unshift(new TeamMember('', '', '', '', ''));
+    const addTeamMemberDialogRef = this.openMemberDialog({
+      imagePath: '',
+      name: '',
+      surname: '',
+      position: '',
+      description: ''
+    });
+    addTeamMemberDialogRef.afterClosed().subscribe(result => {
+      if (result != null) {
+        // TODO save data in db
+        this.team.unshift(result);
+      }
+    });
   }
 
-  onChange(event, teamMember) { // called each time file input changes
-    if (event.target.files && event.target.files[0]) {
-      const file = event.target.files[0];
-
-      const reader = new FileReader();
-      reader.onload = e => teamMember.imagePath = reader.result;
-
-      reader.readAsDataURL(file);
-    }
+  openMemberDialog(member: TeamMember) {
+    return this.dialog.open(MemberManagerComponent, {
+      disableClose: true,
+      panelClass: 'form-dialog-container',
+      width: '80vw',
+      data: member
+    });
   }
 }

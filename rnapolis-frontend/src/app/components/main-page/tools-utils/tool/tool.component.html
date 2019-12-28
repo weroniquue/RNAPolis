@@ -1,5 +1,5 @@
 <div class="tool">
-  <div *ngIf="!canEdit" class="edit-manager">
+  <div *ngIf="canEdit" class="edit-manager">
     <button (click)="deleteTool()" color="warn" mat-fab>
       <mat-icon>delete</mat-icon>
     </button>

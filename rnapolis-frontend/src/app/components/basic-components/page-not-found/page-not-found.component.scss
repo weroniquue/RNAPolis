@@ -6,19 +6,19 @@
   @include center-items;
   text-align: center;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - #{$footer-size} - #{$footer-border-size});
 
   img {
     box-shadow: 0 6px 12px #00000029;
     opacity: 1;
-    margin: 3em;
-    width: 80vw;
+    margin: 2em;
+    width: 60vw;
   }
 
   h3 {
     @include main-purple-font;
     font-weight: $font-medium;
-    font-size: $smaller-header-size;
+    font-size: $header-size-mobile;
     letter-spacing: 0.48px;
   }
 }

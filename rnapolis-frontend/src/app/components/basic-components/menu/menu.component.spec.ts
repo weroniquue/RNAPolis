@@ -3,6 +3,7 @@ import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing
 import {MenuComponent} from './menu.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientModule} from '@angular/common/http';
+import {NotifierModule} from 'angular-notifier';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -13,7 +14,8 @@ describe('MenuComponent', () => {
       declarations: [MenuComponent],
       imports: [
         RouterTestingModule,
-        HttpClientModule]
+        HttpClientModule,
+        NotifierModule]
     })
       .compileComponents();
   }));

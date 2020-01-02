@@ -6,6 +6,7 @@ import {EditAwardsComponent} from './edit-awards/edit-awards.component';
 import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
 import {AwardsService} from '../../services/awards.service';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-awards-timeline',
@@ -15,11 +16,14 @@ import {AwardsService} from '../../services/awards.service';
 export class AwardsTimelineComponent implements OnInit {
   awards: Award[];
   canEdit: boolean;
+  notifier: NotifierService;
 
   constructor(public dialog: MatDialog,
               public authenticationService: AuthenticationService,
-              public awardsService: AwardsService) {
+              public awardsService: AwardsService,
+              private readonly notifierService: NotifierService) {
     this.canEdit = this.authenticationService.ifLogin;
+    this.notifier = notifierService;
   }
 
   ngOnInit() {
@@ -61,9 +65,14 @@ export class AwardsTimelineComponent implements OnInit {
 
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.awardsService.deleteAward(award.id).subscribe(response => {
-          this.awards.splice(this.awards.indexOf(award), 1);
-        });
+        this.awardsService.deleteAward(award.id).subscribe(
+          response => {
+            this.awards.splice(this.awards.indexOf(award), 1);
+            this.notifier.notify('success', 'Successfully deleted an award!');
+          },
+          error => {
+            this.notifier.notify('error', 'Failed to delete an award!');
+          });
       }
     });
   }
@@ -72,9 +81,14 @@ export class AwardsTimelineComponent implements OnInit {
     const editDialogRef = this.openAwardDialog(award);
 
     editDialogRef.afterClosed().subscribe(result => {
-      this.awardsService.updateAward(result.id, result).subscribe(editedAward => {
-        this.awards[this.awards.indexOf(editedAward)] = editedAward;
-      });
+      this.awardsService.updateAward(result.id, result).subscribe(
+        editedAward => {
+          this.awards[this.awards.indexOf(editedAward)] = editedAward;
+          this.notifier.notify('success', 'Successfully edited an award!');
+        },
+        error => {
+          this.notifier.notify('error', 'Failed to edit an award!');
+        });
     });
   }
 
@@ -82,9 +96,14 @@ export class AwardsTimelineComponent implements OnInit {
     const addAwardDialogRef = this.openAwardDialog({id: '', year: null, description: ''});
     addAwardDialogRef.afterClosed().subscribe(newAward => {
       if (newAward.year != null) {
-        this.awardsService.addAward(newAward).subscribe(createdAward => {
-          this.awards.unshift(createdAward);
-        });
+        this.awardsService.addAward(newAward).subscribe(
+          createdAward => {
+            this.awards.unshift(createdAward);
+            this.notifier.notify('success', 'Successfully added an award!');
+          },
+          error => {
+            this.notifier.notify('error', 'Failed to add an award!');
+          });
       }
     });
   }

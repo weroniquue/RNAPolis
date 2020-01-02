@@ -15,6 +15,7 @@ import {HeaderComponent} from '../basic-components/header/header.component';
 import {EditAwardsComponent} from './edit-awards/edit-awards.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
+import {NotifierService} from 'angular-notifier';
 
 describe('AwardsTimelineComponent', () => {
   let component: AwardsTimelineComponent;
@@ -41,6 +42,7 @@ describe('AwardsTimelineComponent', () => {
       providers: [
         {provide: MatDialogRef, useValue: {}},
         {provide: MAT_DIALOG_DATA, useValue: []},
+        {provide: NotifierService}
       ]
     })
       .compileComponents();

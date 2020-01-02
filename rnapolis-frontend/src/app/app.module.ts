@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {NotifierModule} from 'angular-notifier';
 import {AppComponent} from './app.component';
 import {AwardsTimelineComponent} from './components/awards-timeline/awards-timeline.component';
 import {FooterComponent} from './components/basic-components/footer/footer.component';
@@ -74,6 +75,20 @@ import {JwtInterceptor} from './interceptors/jwt.interceptor';
     ReactiveFormsModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    NotifierModule.withConfig({
+      behaviour: {
+        autoHide: 5000,
+      },
+      position: {
+        horizontal: {
+          position: 'middle'
+        },
+        vertical: {
+          position: 'bottom'
+        }
+      },
+      theme: 'material'
+    }),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}

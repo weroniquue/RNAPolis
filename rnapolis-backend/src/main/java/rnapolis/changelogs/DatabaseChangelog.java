@@ -24,7 +24,7 @@ public class DatabaseChangelog {
         File file = new File(Objects.requireNonNull(classLoader.getResource(filePath)).getFile());
         String jsonString = new String(Files.readAllBytes(file.toPath()));
 
-        List<Map<String, String>> objects = GSON.fromJson(jsonString, new TypeToken<List<Map<String, String>>>() {
+        List<Map<String, Object>> objects = GSON.fromJson(jsonString, new TypeToken<List<Map<String, Object>>>() {
         }.getType());
 
         DBCollection collection = db.getCollection(collectionName);

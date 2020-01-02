@@ -5,6 +5,7 @@ import {PublicationFormComponent} from './publication-form/publication-form.comp
 import {MatDialog} from '@angular/material/dialog';
 import Utils from '../../services/utils';
 import {AuthenticationService} from '../../services/authentication.service';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-publications-page',
@@ -14,9 +15,14 @@ import {AuthenticationService} from '../../services/authentication.service';
 export class PublicationsPageComponent implements OnInit {
   publications: Publication[];
   canEdit: boolean;
+  notifier: NotifierService;
 
-  constructor(public authenticationService: AuthenticationService, public dialog: MatDialog) {
+
+  constructor(public authenticationService: AuthenticationService,
+              public dialog: MatDialog,
+              private readonly notifierService: NotifierService) {
     this.canEdit = this.authenticationService.ifLogin;
+    this.notifier = notifierService;
     this.publications = [
       {
         authors: 'Szachniuk M',

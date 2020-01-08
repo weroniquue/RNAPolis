@@ -11,6 +11,7 @@ import {PublicationFormComponent} from './publication-form/publication-form.comp
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MatCardModule} from '@angular/material';
+import {NotifierService} from 'angular-notifier';
 
 describe('PublicationsPageComponent', () => {
   let component: PublicationsPageComponent;
@@ -37,6 +38,7 @@ describe('PublicationsPageComponent', () => {
       providers: [
         {provide: MatDialogRef, useValue: {}},
         {provide: MAT_DIALOG_DATA, useValue: []},
+        {provide: NotifierService}
       ]
     })
       .compileComponents();

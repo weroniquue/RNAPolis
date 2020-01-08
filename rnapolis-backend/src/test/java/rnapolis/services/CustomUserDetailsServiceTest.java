@@ -10,15 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import rnapolis.models.User;
 import rnapolis.repositories.UserRepository;
-
 import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-//@RunWith(MockitoJUnitRunner.class)\
 @ExtendWith(MockitoExtension.class)
 class CustomUserDetailsServiceTest {
 

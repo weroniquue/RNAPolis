@@ -10,6 +10,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {MemberManagerComponent} from './member-manager/member-manager.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatIconModule} from '@angular/material';
 import {RouterTestingModule} from '@angular/router/testing';
+import {NotifierService} from 'angular-notifier';
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
@@ -38,7 +39,8 @@ describe('TeamPageComponent', () => {
       providers: [
         {provide: MatDialogRef, useValue: {}},
         {provide: MAT_DIALOG_DATA, useValue: []},
-        AuthenticationService
+        AuthenticationService,
+        {provide: NotifierService}
       ]
     })
     .compileComponents();

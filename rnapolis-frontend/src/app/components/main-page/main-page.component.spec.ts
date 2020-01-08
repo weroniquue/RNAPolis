@@ -19,6 +19,7 @@ import {ToolFilterPipe} from './tool-filter.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
+import {NotifierModule} from 'angular-notifier';
 
 
 describe('MainPageComponent', () => {
@@ -49,7 +50,8 @@ describe('MainPageComponent', () => {
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        RouterTestingModule
+        RouterTestingModule,
+        NotifierModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainHeaderComponent } from './main-header.component';
+import {NotifierModule} from 'angular-notifier';
 
 describe('MainHeaderComponent', () => {
   let component: MainHeaderComponent;
@@ -8,7 +9,8 @@ describe('MainHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainHeaderComponent ]
+      declarations: [ MainHeaderComponent ],
+      imports: [ NotifierModule ]
     })
     .compileComponents();
   }));

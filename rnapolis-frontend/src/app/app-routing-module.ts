@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: MainPageComponent},
   {path: 'team', component: TeamPageComponent},
-  {path: 'award', component: AwardsTimelineComponent},
+  {path: 'awards', component: AwardsTimelineComponent},
   {path: 'publications', component: PublicationsPageComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}

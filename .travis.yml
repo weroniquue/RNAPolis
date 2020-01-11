@@ -21,7 +21,7 @@ matrix:
         - npm install -g @angular/cli
       script:
         - npm install
-        - ng lint
+        - ng lint --fix=true
         - npm run test-headless
         - ng build --prod --base-href https://weroniquue.github.io/RNAPolis/
       deploy:

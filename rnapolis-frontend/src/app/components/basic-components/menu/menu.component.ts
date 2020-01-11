@@ -2,7 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {User} from '../../../entity/user';
 import {Router} from '@angular/router';
-import Utils from "../../../services/utils";
+import Utils from '../../../services/utils';
 
 @Component({
   selector: 'app-menu',

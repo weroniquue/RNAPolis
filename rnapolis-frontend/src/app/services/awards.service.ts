@@ -12,8 +12,8 @@ export class AwardsService {
   constructor(private http: HttpClient) {
   }
 
-  getAwards(): Observable<any> {
-    return this.http.get<Award>(apiUrl);
+  getAwards(): Observable<Award[]> {
+    return this.http.get<Award[]>(apiUrl);
   }
 
   addAward(award: Award): Observable<Award> {

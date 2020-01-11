@@ -32,7 +32,9 @@ export class MenuComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/']);
+    localStorage.clear();
+    sessionStorage.clear();
+    this.router.navigate(['/login', { isrefresh: true }]);
   }
 
   changeChecked() {

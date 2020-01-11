@@ -1,8 +1,10 @@
 package rnapolis.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +31,11 @@ public class AwardController {
   @GetMapping("")
   @ResponseStatus(HttpStatus.OK)
   public List<Award> allAward() {
-    return repository.findAllByOrderByYearDesc();
+    return repository.findAllByOrderByYearDesc()
+            .stream()
+            .filter(award -> StringUtils.isNotEmpty(award.getDescription()))
+            .filter(award -> award.getYear() != null)
+            .collect(Collectors.toList());
   }
 
   @GetMapping("/{id}")

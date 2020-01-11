@@ -13,9 +13,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 @Configuration
 public class AppConfig {
 
-  @Value("${spring.data.mongodb.uri}")
-  private String mongoUri;
-
   @Value("${mongo.clientUri}")
   private String mongoClientUri;
 
@@ -27,7 +24,7 @@ public class AppConfig {
 
   @Bean
   public Mongobee mongobee() {
-    Mongobee runner = new Mongobee(mongoUri);
+    Mongobee runner = new Mongobee(mongoClientUri+"/"+mongoDbName);
     runner.setSpringEnvironment(environment);
     runner.setChangeLogsScanPackage("rnapolis.changelogs");
 

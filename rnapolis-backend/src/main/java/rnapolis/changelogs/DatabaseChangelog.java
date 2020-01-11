@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
@@ -31,8 +30,10 @@ public class DatabaseChangelog {
     @ChangeSet(order = "000", id = "initialUsersData", author = "", runAlways = true)
     public void initialUsersData(MongoTemplate mongoTemplate, Environment environment) {
         mongoTemplate.dropCollection("users");
-        String user = environment.getProperty("admin.name");
-        String password = Optional.ofNullable(environment.getProperty("admin.password")).orElse(StringUtils.EMPTY);
+        String user = Optional.ofNullable(environment.getProperty("admin.name"))
+                .orElseThrow(() -> new IllegalStateException("Property admin.name in config is required"));
+        String password = Optional.ofNullable(environment.getProperty("admin.password"))
+                .orElseThrow(() -> new IllegalStateException("Property admin.password in config is required"));
         password = HASH_PREFIX + password.substring(HASH_PREFIX.length());
         insertUser(mongoTemplate, user, password);
     }

@@ -45,7 +45,7 @@ public class DatabaseChangelog {
     }
 
     @Profile("dev")
-    @ChangeSet(order = "002", id = "initialAwardsDataOnDev", author = "")
+    @ChangeSet(order = "002", id = "initialAwardsDataOnDev", author = "", runAlways = true)
     public void initialAwardsDataOnDev(MongoTemplate mongoTemplate, Environment environment) {
         Optional.ofNullable(environment.getProperty("awards.filePath"))
                 .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
@@ -56,6 +56,26 @@ public class DatabaseChangelog {
                         logger.info("Can't find file {} in resources", path);
                     }
                 }));
+    }
+
+    @ChangeSet(order = "003", id = "initialPublicationsData", author = "", runAlways = true)
+    public void initialPublicationsData(MongoTemplate mongoTemplate, Environment environment) {
+        Optional.ofNullable(environment.getProperty("publications.filePath"))
+            .ifPresent(path -> importFromFile(path, mongoTemplate));
+    }
+
+    @Profile("dev")
+    @ChangeSet(order = "004", id = "initialPublicationsDataOnDev", author = "", runAlways = true)
+    public void initialPublicationsDataOnDev(MongoTemplate mongoTemplate, Environment environment) {
+        Optional.ofNullable(environment.getProperty("publications.filePath"))
+            .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
+                try {
+                    String absolutePath = url.toURI().getPath();
+                    importFromFile(absolutePath, mongoTemplate);
+                } catch (URISyntaxException e) {
+                    logger.info("Can't find file {} in resources", path);
+                }
+            }));
     }
 
     private void insertUser(MongoTemplate mongoTemplate, String user, String encodedPassword) {

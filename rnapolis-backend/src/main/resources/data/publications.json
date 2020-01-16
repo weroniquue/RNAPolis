@@ -1,0 +1,34 @@
+[
+  {
+    "authors": "Szachniuk M",
+    "title": "RNApolis: computational platform for RNA structure analysis",
+    "journal": "Foundations of Computing and Decision Sciences",
+    "volumeIssue": "44(2)",
+    "year": 2019,
+    "pages": "241-257"
+  },
+  {
+    "authors": "Antczak M, Zablocki M, Zok T, Rybarczyk A, Blazewicz J, Szachniuk M",
+    "title": " RNAvista: a webserver to assess RNA secondary structures with non-canonical base pairs",
+    "journal": "Bioinformatics",
+    "volumeIssue": "35(1)",
+    "year": 2019,
+    "pages": "152-155"
+  },
+  {
+    "authors": "Antczak M, Zok T, Osowiecki M, Popenda M, Adamiak RW, Szachniuk M",
+    "title": " RNAfitme: a webserver for modeling nucleobase and nucleoside residue conformation in fixed-backbone RNA structures",
+    "journal": "BMC Bioinformatics",
+    "volumeIssue": "19(1)",
+    "year": 2018,
+    "pages": "304"
+  },
+  {
+    "authors": "Wiedemann J, Zok T, Milostan M, Szachniuk M",
+    "title": " LCS-TA to identify similar fragments in RNA 3D structures",
+    "journal": "BMC Bioinformatics",
+    "volumeIssue": "18",
+    "year": 2017,
+    "pages": "456"
+  }
+]

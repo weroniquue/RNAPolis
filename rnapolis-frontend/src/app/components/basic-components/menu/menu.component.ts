@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {User} from '../../../entity/user';
 import {Router} from '@angular/router';
+import Utils from '../../../services/utils';
 
 @Component({
   selector: 'app-menu',
@@ -32,7 +33,10 @@ export class MenuComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/']);
+    localStorage.clear();
+    sessionStorage.clear();
+    Utils.closeMenu();
+    this.router.navigate(['/', { isrefresh: true }]);
   }
 
   changeChecked() {

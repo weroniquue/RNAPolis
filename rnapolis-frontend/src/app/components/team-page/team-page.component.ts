@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MemberManagerComponent} from './member-manager/member-manager.component';
 import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-team-page',
@@ -14,9 +15,14 @@ import Utils from '../../services/utils';
 export class TeamPageComponent implements OnInit {
   team: TeamMember[];
   canEdit: boolean;
+  notifier: NotifierService;
 
-  constructor(public authenticationService: AuthenticationService, public dialog: MatDialog) {
-    this.canEdit = AuthenticationService.ifLogin;
+  constructor(public authenticationService: AuthenticationService,
+              public dialog: MatDialog,
+              private readonly notifierService: NotifierService) {
+
+    this.canEdit = this.authenticationService.ifLogin;
+    this.notifier = notifierService;
     this.team = [
       new TeamMember('Natalia', 'Łukasiewicz', 'student',
         'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium sunt nisi vitae et quia possimus unde tempora, sapiente rem',

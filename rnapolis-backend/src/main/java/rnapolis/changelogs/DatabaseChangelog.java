@@ -71,7 +71,10 @@ public class DatabaseChangelog {
             .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
                 try {
                     String absolutePath = url.toURI().getPath();
-                    importFromFile(absolutePath, mongoTemplate);
+                    String jsonString = importFromFile(absolutePath);
+                    List<Publication> objects = GSON.fromJson(jsonString, new TypeToken<List<Publication>>() {
+                    }.getType());
+                    objects.forEach(mongoTemplate::save);
                 } catch (URISyntaxException e) {
                     logger.info("Can't find file {} in resources", path);
                 }
@@ -82,15 +85,14 @@ public class DatabaseChangelog {
         mongoTemplate.save(User.builder().username(user).password(encodedPassword).build());
     }
 
-    private void importFromFile(String filePath, MongoTemplate mongoTemplate) {
+    private String importFromFile(String filePath) {
         File file = new File(filePath);
+        String jsonString = "";
         try {
-            String jsonString = new String(Files.readAllBytes(file.toPath()));
-            List<Award> objects = GSON.fromJson(jsonString, new TypeToken<List<Award>>() {
-            }.getType());
-            objects.forEach(mongoTemplate::save);
+            jsonString =  new String(Files.readAllBytes(file.toPath()));
         } catch (IOException e) {
             logger.info("Can't find file {} to load data", filePath);
         }
+        return jsonString;
     }
 }

@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {GenericButtonComponent} from './generic-button.component';
 import {FormsModule} from '@angular/forms';
+import {NotifierModule} from 'angular-notifier';
 
 describe('GenericButtonComponent', () => {
   let component: GenericButtonComponent;
@@ -10,9 +11,12 @@ describe('GenericButtonComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GenericButtonComponent],
-      imports: [FormsModule]
+      imports: [
+        FormsModule,
+        NotifierModule
+      ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {

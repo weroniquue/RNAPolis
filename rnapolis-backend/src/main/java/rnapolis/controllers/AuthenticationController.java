@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,14 +28,14 @@ public class AuthenticationController {
   @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody AuthenticationRequest request) {
 
-      authenticationManager.authenticate(
+    Authentication authentication = authenticationManager
+        .authenticate(
             new UsernamePasswordAuthenticationToken(
                 request.getUsername(),
                 request.getPassword()
             )
         );
-      //TODO: figure out if it will be usefull later
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtTokenProvider.generateToken(request.getUsername());
         return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));

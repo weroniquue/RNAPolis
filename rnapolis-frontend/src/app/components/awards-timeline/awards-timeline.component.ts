@@ -93,7 +93,7 @@ export class AwardsTimelineComponent implements OnInit {
   }
 
   addAward() {
-    const addAwardDialogRef = this.openAwardDialog({id: '', year: null, description: ''});
+    const addAwardDialogRef = this.openAwardDialog({id: null, year: null, description: ''});
     addAwardDialogRef.afterClosed().subscribe(newAward => {
       if (newAward.year != null) {
         this.awardsService.addAward(newAward).subscribe(

@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Publication} from '../../entity/Publication';
+import {Publication} from '../../entity/publication';
 import {ConfirmationDialogComponent} from '../basic-components/confirmation-dialog/confirmation-dialog.component';
 import {PublicationFormComponent} from './publication-form/publication-form.component';
 import {MatDialog} from '@angular/material/dialog';
 import Utils from '../../services/utils';
 import {AuthenticationService} from '../../services/authentication.service';
 import {NotifierService} from 'angular-notifier';
+import {PublicationsService} from '../../services/publications.service';
 
 @Component({
   selector: 'app-publications-page',
@@ -20,48 +21,17 @@ export class PublicationsPageComponent implements OnInit {
 
   constructor(public authenticationService: AuthenticationService,
               public dialog: MatDialog,
+              public publicationsService: PublicationsService,
               private readonly notifierService: NotifierService) {
     this.canEdit = this.authenticationService.ifLogin;
-    this.notifier = notifierService;
-    this.publications = [
-      {
-        authors: 'Szachniuk M',
-        title: 'RNApolis: computational platform for RNA structure analysis',
-        journal: 'Foundations of Computing and Decision Sciences',
-        volumeIssue: '44(2)',
-        year: 2019,
-        pages: '241-257'
-      },
-      {
-        authors: 'Antczak M, Zablocki M, Zok T, Rybarczyk A, Blazewicz J, Szachniuk M',
-        title: ' RNAvista: a webserver to assess RNA secondary structures with non-canonical base pairs',
-        journal: 'Bioinformatics',
-        volumeIssue: '35(1)',
-        year: 2019,
-        pages: '152-155'
-      },
-      {
-        authors: 'Antczak M, Zok T, Osowiecki M, Popenda M, Adamiak RW, Szachniuk M',
-        title: ' RNAfitme: a webserver for modeling nucleobase and nucleoside residue ' +
-          'conformation in fixed-backbone RNA structures',
-        journal: 'BMC Bioinformatics',
-        volumeIssue: '19(1)',
-        year: 2018,
-        pages: '304'
-      },
-      {
-        authors: 'Wiedemann J, Zok T, Milostan M, Szachniuk M',
-        title: ' LCS-TA to identify similar fragments in RNA 3D structures',
-        journal: 'BMC Bioinformatics',
-        volumeIssue: '18',
-        year: 2017,
-        pages: '456'
-      },
-    ];
-  }
+    this.notifier = notifierService;}
 
   ngOnInit() {
     Utils.closeMenu();
+    this.publicationsService.getPublications()
+    .subscribe(publications => {
+      this.publications = publications;
+    });
   }
 
   deleteElement(publication: Publication) {
@@ -72,8 +42,14 @@ export class PublicationsPageComponent implements OnInit {
 
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.publications.splice(this.publications.indexOf(publication), 1);
-        // TODO save data in db
+        this.publicationsService.deletePublication(publication.id).subscribe(
+          response => {
+            this.publications.splice(this.publications.indexOf(publication), 1);
+            this.notifier.notify('success', 'Successfully deleted an publication!');
+          },
+          error => {
+            this.notifier.notify('error', 'Failed to delete an publication!');
+          });
       }
     });
   }
@@ -82,15 +58,20 @@ export class PublicationsPageComponent implements OnInit {
     const editDialogRef = this.openDialog(publication);
 
     editDialogRef.afterClosed().subscribe(result => {
-      if (result != null) {
-        this.publications[this.publications.indexOf(publication)] = result;
-        // TODO save data in db
-      }
+      this.publicationsService.updatePublication(result.id, result).subscribe(
+        editedPublication => {
+          this.publications[this.publications.indexOf(editedPublication)] = editedPublication;
+          this.notifier.notify('success', 'Successfully edited an publication!');
+        },
+        error => {
+          this.notifier.notify('error', 'Failed to edit an publication!');
+        });
     });
   }
 
   addElement() {
     const addPublicationDialogRef = this.openDialog({
+      id: null,
       authors: '',
       title: '',
       journal: '',
@@ -98,10 +79,16 @@ export class PublicationsPageComponent implements OnInit {
       year: null,
       pages: ''
     });
-    addPublicationDialogRef.afterClosed().subscribe(result => {
-      if (result != null) {
-        this.publications.unshift(result);
-        // TODO save data in db
+    addPublicationDialogRef.afterClosed().subscribe(newPublication => {
+      if (newPublication.year != null) {
+        this.publicationsService.addPublication(newPublication).subscribe(
+          createdPublication => {
+            this.publications.unshift(createdPublication);
+            this.notifier.notify('success', 'Successfully added an publication!');
+          },
+          error => {
+            this.notifier.notify('error', 'Failed to add an publication!');
+          });
       }
     });
   }

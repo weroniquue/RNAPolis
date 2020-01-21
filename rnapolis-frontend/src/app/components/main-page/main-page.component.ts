@@ -44,9 +44,7 @@ export class MainPageComponent implements OnInit {
       data: [this.categories, {}]
     });
     dialogRef.afterClosed().subscribe(newTool => {
-      console.log(newTool, newTool.valid);
       if (newTool) {
-        console.log('hes');
         this.toolsService.addTool(newTool).subscribe(
           createdTool => {
             this.tools.push(createdTool);

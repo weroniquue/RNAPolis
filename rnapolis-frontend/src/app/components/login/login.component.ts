@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private readonly notifierService: NotifierService,
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
@@ -52,6 +54,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       () => {
         this.router.navigate(['']);
+        this.notifierService.notify('success', 'Logged in successfully!');
       },
       errorResponse => {
         errorResponse.error.message ? this.errorMessage = errorResponse.error.message : this.errorMessage = errorResponse.statusText;

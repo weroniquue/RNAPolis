@@ -4,7 +4,7 @@ import {PageNotFoundComponent} from './page-not-found.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MenuComponent} from '../menu/menu.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {NotifierService} from "angular-notifier";
+import {NotifierService} from 'angular-notifier';
 
 describe('PageNotFoundComponent', () => {
   let component: PageNotFoundComponent;

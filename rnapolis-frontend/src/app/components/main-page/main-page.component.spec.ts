@@ -1,6 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MainPageComponent} from './main-page.component';
-import {MenuComponent} from '../basic-components/menu/menu.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {FooterComponent} from '../basic-components/footer/footer.component';
 import {MainHeaderComponent} from '../main-header/main-header.component';

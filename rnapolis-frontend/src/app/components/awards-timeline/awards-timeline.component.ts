@@ -7,6 +7,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
 import {AwardsService} from '../../services/awards.service';
 import {NotifierService} from 'angular-notifier';
+import {User} from '../../entity/user';
 
 @Component({
   selector: 'app-awards-timeline',
@@ -15,14 +16,14 @@ import {NotifierService} from 'angular-notifier';
 })
 export class AwardsTimelineComponent implements OnInit {
   awards: Award[];
-  canEdit: boolean;
+  user: User;
   notifier: NotifierService;
 
   constructor(public dialog: MatDialog,
               public authenticationService: AuthenticationService,
               public awardsService: AwardsService,
               private readonly notifierService: NotifierService) {
-    this.canEdit = this.authenticationService.ifLogin;
+    this.authenticationService.currentUser.subscribe(value => this.user = value);
     this.notifier = notifierService;
   }
 

@@ -1,12 +1,12 @@
 <app-header content="RNApolis team" imagePath="assets/team.png"></app-header>
 
-<button mat-raised-button (click)="addElement()" *ngIf="canEdit" class="add-button">
+<button mat-raised-button (click)="addElement()" *ngIf="user" class="add-button">
   <mat-icon>add</mat-icon> Add team member
 </button>
 
 <section class="board">
-  <div class="box" *ngFor="let teamMember of team" [ngStyle]="{'paddingTop': canEdit ? '70px':'default'}">
-    <div *ngIf="canEdit" class="edit-manager">
+  <div class="box" *ngFor="let teamMember of team" [ngStyle]="{'paddingTop': user ? '70px':'default'}">
+    <div *ngIf="user" class="edit-manager">
       <button id="edit" (click)="editElement(teamMember)" mat-fab>
         <mat-icon>edit</mat-icon>
       </button>

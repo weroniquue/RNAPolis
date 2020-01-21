@@ -1,13 +1,13 @@
 <app-header content="Awards" imagePath="assets/awards.png"></app-header>
 
 <section id="timeline">
-  <button (click)="addAward()" *ngIf="canEdit" class="add-button" mat-raised-button>
+  <button (click)="addAward()" *ngIf="user" class="add-button" mat-raised-button>
     <mat-icon>add</mat-icon>
     Add award
   </button>
 
   <mat-card *ngFor="let award of awards">
-    <div *ngIf="canEdit" class="edit-manager">
+    <div *ngIf="user" class="edit-manager">
       <button (click)="deleteElement(award)" color="warn" mat-fab>
         <mat-icon>delete</mat-icon>
       </button>

@@ -43,11 +43,11 @@ export class PublicationsPageComponent implements OnInit {
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.publicationsService.deletePublication(publication.id).subscribe(
-          response => {
+          () => {
             this.publications.splice(this.publications.indexOf(publication), 1);
             this.notifier.notify('success', 'Successfully deleted an publication!');
           },
-          error => {
+          () => {
             this.notifier.notify('error', 'Failed to delete an publication!');
           });
       }
@@ -63,7 +63,7 @@ export class PublicationsPageComponent implements OnInit {
           this.publications[this.publications.indexOf(editedPublication)] = editedPublication;
           this.notifier.notify('success', 'Successfully edited an publication!');
         },
-        error => {
+        () => {
           this.notifier.notify('error', 'Failed to edit an publication!');
         });
     });
@@ -86,7 +86,7 @@ export class PublicationsPageComponent implements OnInit {
             this.publications.unshift(createdPublication);
             this.notifier.notify('success', 'Successfully added an publication!');
           },
-          error => {
+          () => {
             this.notifier.notify('error', 'Failed to add an publication!');
           });
       }

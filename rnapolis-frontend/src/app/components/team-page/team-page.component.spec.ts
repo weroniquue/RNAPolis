@@ -4,13 +4,13 @@ import {MenuComponent} from '../basic-components/menu/menu.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderComponent} from '../basic-components/header/header.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {HttpClientModule} from '@angular/common/http';
 import {Routes} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {MemberManagerComponent} from './member-manager/member-manager.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatIconModule} from '@angular/material';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NotifierService} from 'angular-notifier';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
@@ -34,7 +34,7 @@ describe('TeamPageComponent', () => {
         MatDialogModule,
         MatFormFieldModule,
         RouterTestingModule,
-        HttpClientModule
+        HttpClientTestingModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

@@ -4,6 +4,8 @@ import {MatDialog} from '@angular/material';
 import {AddToolComponent} from './tools-utils/add-tool/add-tool.component';
 import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
+import {ToolsService} from '../../services/tools.service';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-main-page',
@@ -16,50 +18,22 @@ export class MainPageComponent implements OnInit {
   categories: string[];
   selectedCategory: string;
   canEdit: boolean;
+  notifier: NotifierService;
 
   constructor(public dialog: MatDialog,
-              public authenticationService: AuthenticationService) {
+              public authenticationService: AuthenticationService,
+              public toolsService: ToolsService,
+              private readonly notifierService: NotifierService) {
+    this.notifier = notifierService;
     this.canEdit = this.authenticationService.ifLogin;
-    this.tools = [
-      {
-        id: '1',
-        toolName: 'Tool1', description: 'Lorem ipsum dolor sit amet, consectetur ' +
-          'adipisicing elit. Ab amet animi aspernatur blanditiis culpa cumque dolores dolorum ' +
-          'ducimus esse magnam pariatur, praesentium quae quasi quidem quo quod, ratione recusandae ' +
-          'reiciendis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet animi aspernatur' +
-          ' blanditiis culpa cumque dolores dolorum ducimus esse magnam pariatur, praesentium quae quasi ' +
-          'quidem quo quod, ratione recusandae reiciendis.',
-        link: 'https://www.google.com',
-        category: 'category1'
-      },
-      {
-        id: '2',
-        toolName: 'RNA FRABASE', description: 'Lorem ipsum dolor sit amet, consectetur ' +
-          'adipisicing elit. Ab amet animi aspernatur blanditiis culpa cumque dolores dolorum ' +
-          'ducimus esse magnam pariatur, praesentium quae quasi quidem quo quod, ratione recusandae ' +
-          'reiciendis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet animi aspernatur' +
-          ' blanditiis culpa cumque dolores dolorum ducimus esse magnam pariatur, praesentium quae quasi ' +
-          'quidem quo quod, ratione recusandae reiciendis.',
-        link: 'https://www.google.com',
-        category: 'category1'
-      },
-      {
-        id: '3',
-        toolName: 'RNA 2', description: 'Lorem ipsum dolor sit amet, consectetur ' +
-          'adipisicing elit. Ab amet animi aspernatur blanditiis culpa cumque dolores dolorum ' +
-          'ducimus esse magnam pariatur, praesentium quae quasi quidem quo quod, ratione recusandae ' +
-          'reiciendis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet animi aspernatur' +
-          ' blanditiis culpa cumque dolores dolorum ducimus esse magnam pariatur, praesentium quae quasi ' +
-          'quidem quo quod, ratione recusandae reiciendis.',
-        link: 'https://www.google.com',
-        category: 'category12'
-      }
-    ];
     this.categories = ['category12', 'category1'];
   }
 
   ngOnInit() {
     Utils.closeMenu();
+    this.toolsService.getTools().subscribe(tools => {
+      this.tools = tools;
+    });
   }
 
   addTool(): void {
@@ -68,9 +42,17 @@ export class MainPageComponent implements OnInit {
       panelClass: 'form-dialog-container',
       data: [this.categories, {}]
     });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result && result.valid) {
-        this.tools.push(result.value);
+    dialogRef.afterClosed().subscribe(newTool => {
+      if (newTool) {
+        this.toolsService.addTool(newTool).subscribe(
+          createdTool => {
+            this.tools.push(createdTool);
+            this.tools.sort((a, b) => a.name > b.name ? 1 : -1);
+            this.notifier.notify('success', 'Successfully added an tool!');
+          },
+          error => {
+            this.notifier.notify('error', 'Failed to add an tool!');
+          });
       }
     });
   }

@@ -20,7 +20,6 @@ import rnapolis.exception.ResourceNotFoundException;
 import rnapolis.models.Publication;
 import rnapolis.repositories.PublicationRepository;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/publications")
 @AllArgsConstructor
@@ -54,7 +53,6 @@ public class PublicationController {
   @ResponseStatus(HttpStatus.OK)
   public Publication update(@PathVariable String id, @Valid @RequestBody Publication updatedPublication) {
     Publication publication = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Publication", id));
-
     publication.setAuthors(updatedPublication.getAuthors());
     publication.setTitle(updatedPublication.getTitle());
     publication.setJournal(updatedPublication.getJournal());

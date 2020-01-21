@@ -7,7 +7,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
 import {AwardsService} from '../../services/awards.service';
 import {NotifierService} from 'angular-notifier';
-import {User} from "../../entity/user";
+import {User} from '../../entity/user';
 
 @Component({
   selector: 'app-awards-timeline',

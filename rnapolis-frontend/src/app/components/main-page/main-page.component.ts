@@ -4,7 +4,7 @@ import {MatDialog} from '@angular/material';
 import {AddToolComponent} from './tools-utils/add-tool/add-tool.component';
 import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
-import {User} from "../../entity/user";
+import {User} from '../../entity/user';
 
 @Component({
   selector: 'app-main-page',

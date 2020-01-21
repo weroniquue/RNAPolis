@@ -4,8 +4,8 @@ import {DOCUMENT} from '@angular/common';
 import {AddToolComponent} from '../add-tool/add-tool.component';
 import {MatDialog} from '@angular/material';
 import {ConfirmationDialogComponent} from '../../../basic-components/confirmation-dialog/confirmation-dialog.component';
-import {AuthenticationService} from "../../../../services/authentication.service";
-import {User} from "../../../../entity/user";
+import {AuthenticationService} from '../../../../services/authentication.service';
+import {User} from '../../../../entity/user';
 
 @Component({
   selector: 'app-tool',

@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {User} from '../entity/user';
 import {environment} from '../../environments/environment';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -20,7 +21,12 @@ export class AuthenticationService {
   }
 
   public get ifLogin(): boolean {
-    return this.currentUserSubject.value !== null;
+    if (this.currentUserValue === null) {
+      return false;
+    }
+
+    const jwtDecoder = new JwtHelperService();
+    return !jwtDecoder.isTokenExpired(this.currentUserValue.token);
   }
 
   login(username: string, password: string) {

@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 
 describe('ToolComponent', () => {
   let component: ToolComponent;
@@ -29,7 +30,8 @@ describe('ToolComponent', () => {
         MatFormFieldModule,
         MatOptionModule,
         FormsModule,
-        MatDialogModule
+        MatDialogModule,
+        HttpClientModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

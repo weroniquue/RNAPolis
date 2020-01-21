@@ -4,7 +4,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {FooterComponent} from './components/basic-components/footer/footer.component';
 import {MenuComponent} from './components/basic-components/menu/menu.component';
 import {NotifierModule} from 'angular-notifier';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

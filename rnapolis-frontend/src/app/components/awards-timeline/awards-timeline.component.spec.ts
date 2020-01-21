@@ -15,7 +15,7 @@ import {HeaderComponent} from '../basic-components/header/header.component';
 import {EditAwardsComponent} from './edit-awards/edit-awards.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NotifierService} from 'angular-notifier';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AwardsTimelineComponent', () => {
   let component: AwardsTimelineComponent;

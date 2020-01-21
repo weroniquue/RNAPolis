@@ -1,0 +1,146 @@
+[
+  {
+    "authors": "Szachniuk M",
+    "title": "RNApolis: computational platform for RNA structure analysis",
+    "journal": "Foundations of Computing and Decision Sciences",
+    "volumeIssue": "44(2)",
+    "year": 2019,
+    "pages": "241-257"
+  },
+  {
+    "authors": "Antczak M, Zablocki M, Zok T, Rybarczyk A, Blazewicz J, Szachniuk M",
+    "title": " RNAvista: a webserver to assess RNA secondary structures with non-canonical base pairs",
+    "journal": "Bioinformatics",
+    "volumeIssue": "35(1)",
+    "year": 2019,
+    "pages": "152-155"
+  },
+  {
+    "authors": "Antczak M, Zok T, Osowiecki M, Popenda M, Adamiak RW, Szachniuk M",
+    "title": " RNAfitme: a webserver for modeling nucleobase and nucleoside residue conformation in fixed-backbone RNA structures",
+    "journal": "BMC Bioinformatics",
+    "volumeIssue": "19(1)",
+    "year": 2018,
+    "pages": "304"
+  },
+  {
+    "authors": "Wiedemann J, Zok T, Milostan M, Szachniuk M",
+    "title": " LCS-TA to identify similar fragments in RNA 3D structures",
+    "journal": "BMC Bioinformatics",
+    "volumeIssue": "18",
+    "year": 2017,
+    "pages": "456"
+  },
+  {
+    "authors": "Zok T, Antczak M, Zurkowski M, Popenda M, Blazewicz J, Adamiak RW, Szachniuk M",
+    "title": "RNApdbee 2.0: multifunctional tool for RNA structure annotation",
+    "journal": "Nucleic Acids Research",
+    "volumeIssue": "46(W1",
+    "year": 2018,
+    "pages": "W30-W35"
+  },
+  {
+    "authors": "Antczak M, Popenda M, Zok T, Zurkowski M, Adamiak RW, Szachniuk M",
+    "title": "New algorithms to represent complex pseudoknotted RNA structures in dot-bracket notation",
+    "journal": "Bioinformatics",
+    "volumeIssue": "34(8)",
+    "year": 2018,
+    "pages": "1304-1312"
+  },
+  {
+    "authors": "Wiedemann J, Zok T, Milostan M, Szachniuk M",
+    "title": "LCS-TA to identify similar fragments in RNA 3D structures",
+    "journal": "BMC Bioinformatics",
+    "volumeIssue": "18",
+    "year": 2017,
+    "pages": "456"
+  },
+  {
+    "authors": "Antczak M, Popenda M, Zok T, Sarzynska J, Ratajczak T, Tomczyk K, Adamiak RW, Szachniuk M",
+    "title": "New functionality of RNAComposer: an application to shape the axis of miR160 precursor structure",
+    "journal": "Acta Biochimica Polonica",
+    "volumeIssue": "63(4)",
+    "year": 2016,
+    "pages": "737-744"
+  },
+  {
+    "authors": "Biesiada M, Purzycka KJ, Szachniuk M, Blazewicz J, Adamiak RW",
+    "title": "Automated RNA 3D structure prediction with RNAComposer, in Doug H. Turner, David H. Mathews (eds.) RNA Structure Determination: Methods and Protocols (Methods in Molecular Biology 1490)",
+    "journal": "Springer, Humana Press",
+    "volumeIssue": "",
+    "year": 2016,
+    "pages": "199-215"
+  },
+  {
+    "authors": "Rybarczyk A, Szostak N, Antczak M, Zok T, Popenda M, Adamiak RW, Blazewicz J, Szachniuk M",
+    "title": "New in silico approach to assessing RNA secondary structures with non-canonical base pairs",
+    "journal": "BMC Bioinformatics",
+    "volumeIssue": "16",
+    "year": 2015,
+    "pages": "276"
+  },
+  {
+    "authors": "Lukasiak P, Antczak M, Ratajczak T, Szachniuk M, Popenda M, Adamiak RW, Blazewicz J",
+    "title": "RNAssess - a webserver for quality assessment of RNA 3D structures",
+    "journal": "Nucleic Acids Research",
+    "volumeIssue": "43(W1)",
+    "year": 2015,
+    "pages": "W502-W506"
+  },
+  {
+    "authors": "Antczak M, Zok T, Popenda M, Lukasiak P, Adamiak RW, Blazewicz J, Szachniuk M",
+    "title": "RNApdbee - a webserver to derive secondary structures from pdb files of knotted and unknotted RNAs",
+    "journal": "Nucleic Acids Research",
+    "volumeIssue": "42(W1)",
+    "year": 2014,
+    "pages": "W368-W372"
+  },
+  {
+    "authors": "Purzycka KJ, Popenda M, Szachniuk M, Antczak M, Lukasiak P, Blazewicz J, Adamiak RW",
+    "title": "Automated 3D RNA structure prediction using the RNAComposer method for riboswitches, in Shi-Jie Chen, Donald H. Burke-Aguero (eds.) Methods in Enzymology: Computational Methods for Understanding Riboswitches 553",
+    "journal": "Elsevier",
+    "volumeIssue": "",
+    "year": 2014,
+    "pages": "3-34"
+  },
+  {
+    "authors": "Zok T, Popenda M, Szachniuk M",
+    "title": "MCQ4Structures to compute similarity of molecule structures",
+    "journal": "Central European Journal of Operations Research",
+    "volumeIssue": "22(3)",
+    "year": 2014,
+    "pages": "457-474"
+  },
+  {
+    "authors": "Lukasiak P, Antczak M, Ratajczak T, Bujnicki JM, Szachniuk M, Popenda M, Adamiak RW, Blazewicz J",
+    "title": "RNAlyzer – novel approach for quality analysis of RNA structural models",
+    "journal": "Nucleic Acids Research",
+    "volumeIssue": "41(12)",
+    "year": 2013,
+    "pages": "5978-90"
+  },
+  {
+    "authors": "Popenda M, Szachniuk M, Antczak M, Purzycka KJ, Lukasiak P, Bartol N, Blazewicz J, Adamiak RW",
+    "title": "Automated 3D structure composition for large RNAs",
+    "journal": "Nucleic Acids Research",
+    "volumeIssue": "40(14)",
+    "year": 2012,
+    "pages": "e112"
+  },
+  {
+    "authors": "Popenda M, Szachniuk M, Blazewicz M, Wasik S, Burke EK, Blazewicz J, Adamiak RW",
+    "title": "RNA FRABASE 2.0: an advanced web-accessible database with the capacity to search the three-dimensional fragments within RNA structures",
+    "journal": "BMC Bioinformatics",
+    "volumeIssue": "11",
+    "year": 2010,
+    "pages": "231"
+  },
+  {
+    "authors": "Popenda M, Blazewicz M, Szachniuk M, Adamiak RW",
+    "title": "RNA FRABASE version 1.0: an engine with a database to search for the three-dimensional fragments within RNA structures",
+    "journal": "Nucleic Acids Research",
+    "volumeIssue": "36(1)",
+    "year": 2008,
+    "pages": "D386-D391"
+  }
+]

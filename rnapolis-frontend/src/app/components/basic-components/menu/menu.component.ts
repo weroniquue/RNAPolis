@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   ESC = 'Escape';
   isChecked: boolean;
   currentUser: User;
+  notifier: NotifierService;
 
   constructor(
     private router: Router,
@@ -21,6 +22,7 @@ export class MenuComponent implements OnInit {
     private readonly notifierService: NotifierService
   ) {
     this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
+    this.notifier = notifierService;
   }
 
   ngOnInit() {
@@ -36,7 +38,7 @@ export class MenuComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     Utils.closeMenu();
-    this.notifierService.notify('success', 'Logged out successfully!');
+    this.notifier.notify('success', 'Logged out successfully!');
   }
 
   changeChecked() {

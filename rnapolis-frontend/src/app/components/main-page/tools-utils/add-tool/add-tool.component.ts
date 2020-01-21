@@ -25,9 +25,10 @@ export class AddToolComponent implements OnInit {
   ngOnInit() {
     this.toolForm = this.fromBuilder.group({
       id: this.tool.id,
-      toolName: [this.tool.toolName, Validators.required],
+      name: [this.tool.name, Validators.required],
       description: [this.tool.description, Validators.required],
-      link: [this.tool.link, Validators.required],
+      link: [this.tool.link,
+        [Validators.required, Validators.pattern('^((https?|ftp|smtp):\\/\\/)?(www.)?[a-z0-9]+\\.[a-z]+(\\/[a-zA-Z0-9#]+\\/?)*$')]],
       category: [this.tool.category, Validators.required],
     });
   }

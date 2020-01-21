@@ -6,6 +6,9 @@ import {MatDialog} from '@angular/material';
 import {ConfirmationDialogComponent} from '../../../basic-components/confirmation-dialog/confirmation-dialog.component';
 import {AuthenticationService} from '../../../../services/authentication.service';
 import {User} from '../../../../entity/user';
+import {NotifierService} from 'angular-notifier';
+import {ToolsService} from '../../../../services/tools.service';
+
 
 @Component({
   selector: 'app-tool',
@@ -19,9 +22,15 @@ export class ToolComponent implements OnInit {
   @Output() toolRemoved = new EventEmitter<Tool>();
   @Output() toolChanged = new EventEmitter<Tool>();
 
+  notifier: NotifierService;
+
   constructor(@Inject(DOCUMENT) private document: Document,
               public dialog: MatDialog,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              public toolsService: ToolsService,
+              private readonly notifierService: NotifierService) {
+
+    this.notifier = notifierService;
   }
 
   ngOnInit() {
@@ -31,6 +40,7 @@ export class ToolComponent implements OnInit {
   }
 
   redirectToUrl(url: string): void {
+    url = !url.match(/^https?:/) ? '//' + url : url;
     window.open(url, '_blank');
   }
 
@@ -41,8 +51,14 @@ export class ToolComponent implements OnInit {
     });
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // TODO remove from db
-        this.toolRemoved.emit(this.tool);
+        this.toolsService.deleteTool(this.tool.id).subscribe(
+          () => {
+            this.toolRemoved.emit(this.tool);
+            this.notifier.notify('success', 'Successfully deleted an tool!');
+          },
+          () => {
+            this.notifier.notify('error', 'Failed to delete an tool!');
+          });
       }
     });
   }
@@ -55,9 +71,14 @@ export class ToolComponent implements OnInit {
       data: [this.categories, this.tool]
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.tool = result;
-      // TODO save changes in db
-      this.toolChanged.emit(this.tool);
+      this.toolsService.updateTool(result.id, result).subscribe(
+        editedTool => {
+          this.toolChanged.emit(editedTool);
+          this.notifier.notify('success', 'Successfully edited an tool!');
+        },
+        () => {
+          this.notifier.notify('error', 'Failed to edit an tool!');
+        });
     });
   }
 }

@@ -34,6 +34,7 @@ export class ToolComponent implements OnInit {
   }
 
   redirectToUrl(url: string): void {
+    url = !url.match(/^https?:/) ? '//' + url : url;
     window.open(url, '_blank');
   }
 
@@ -45,11 +46,11 @@ export class ToolComponent implements OnInit {
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.toolsService.deleteTool(this.tool.id).subscribe(
-          response => {
+          () => {
             this.toolRemoved.emit(this.tool);
             this.notifier.notify('success', 'Successfully deleted an tool!');
           },
-          error => {
+          () => {
             this.notifier.notify('error', 'Failed to delete an tool!');
           });
       }
@@ -69,7 +70,7 @@ export class ToolComponent implements OnInit {
           this.toolChanged.emit(editedTool);
           this.notifier.notify('success', 'Successfully edited an tool!');
         },
-        error => {
+        () => {
           this.notifier.notify('error', 'Failed to edit an tool!');
         });
     });

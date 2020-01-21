@@ -31,8 +31,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     Utils.closeMenu();
-    this.toolsService.getTools()
-    .subscribe(tools => {
+    this.toolsService.getTools().subscribe(tools => {
       this.tools = tools;
     });
   }

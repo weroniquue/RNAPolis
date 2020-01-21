@@ -11,7 +11,7 @@ import {
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {NotifierService} from 'angular-notifier';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('ToolComponent', () => {
   let component: ToolComponent;
@@ -32,7 +32,7 @@ describe('ToolComponent', () => {
         MatOptionModule,
         FormsModule,
         MatDialogModule,
-        HttpClientModule
+        HttpClientTestingModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

@@ -36,7 +36,6 @@ export class MenuComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     Utils.closeMenu();
-    window.location.reload();
     this.notifierService.notify('success', 'Logged out successfully!');
   }
 

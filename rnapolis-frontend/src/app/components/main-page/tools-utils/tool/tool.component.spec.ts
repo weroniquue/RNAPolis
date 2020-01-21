@@ -10,6 +10,8 @@ import {
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import {NotifierService} from 'angular-notifier';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('ToolComponent', () => {
   let component: ToolComponent;
@@ -29,11 +31,13 @@ describe('ToolComponent', () => {
         MatFormFieldModule,
         MatOptionModule,
         FormsModule,
-        MatDialogModule
+        MatDialogModule,
+        HttpClientModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},
         {provide: MAT_DIALOG_DATA, useValue: []},
+        {provide: NotifierService},
       ]
     })
       .compileComponents();
@@ -42,7 +46,7 @@ describe('ToolComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ToolComponent);
     component = fixture.componentInstance;
-    component.tool = {id: 'id', toolName: 'tool', description: 'desc', link: 'https://localshot:3000', category: 'category'};
+    component.tool = {id: 'id', name: 'tool', description: 'desc', link: 'https://localshot:3000', category: 'category'};
     fixture.detectChanges();
   });
 

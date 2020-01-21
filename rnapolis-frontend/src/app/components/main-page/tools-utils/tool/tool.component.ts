@@ -4,6 +4,8 @@ import {DOCUMENT} from '@angular/common';
 import {AddToolComponent} from '../add-tool/add-tool.component';
 import {MatDialog} from '@angular/material';
 import {ConfirmationDialogComponent} from '../../../basic-components/confirmation-dialog/confirmation-dialog.component';
+import {AuthenticationService} from "../../../../services/authentication.service";
+import {User} from "../../../../entity/user";
 
 @Component({
   selector: 'app-tool',
@@ -13,15 +15,19 @@ import {ConfirmationDialogComponent} from '../../../basic-components/confirmatio
 export class ToolComponent implements OnInit {
   @Input() tool: Tool;
   @Input() categories: string[];
-  @Input() canEdit: boolean;
+  currentUser: User;
   @Output() toolRemoved = new EventEmitter<Tool>();
   @Output() toolChanged = new EventEmitter<Tool>();
 
   constructor(@Inject(DOCUMENT) private document: Document,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
+    this.authenticationService.currentUser.subscribe(value => {
+      this.currentUser = value;
+    });
   }
 
   redirectToUrl(url: string): void {

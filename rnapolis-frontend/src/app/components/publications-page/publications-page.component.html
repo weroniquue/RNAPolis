@@ -1,13 +1,13 @@
 <app-header content="Publications" imagePath="assets/publications.png"></app-header>
 
 <section class="board">
-  <button mat-raised-button (click)="addElement()" *ngIf="canEdit" class="add-button">
+  <button mat-raised-button (click)="addElement()" *ngIf="user" class="add-button">
     <mat-icon>add</mat-icon>
     Add publication
   </button>
 
   <mat-card *ngFor="let publication of publications">
-    <div *ngIf="canEdit" class="edit-manager">
+    <div *ngIf="user" class="edit-manager">
       <button (click)="deleteElement(publication)" color="warn" mat-fab>
         <mat-icon>delete</mat-icon>
       </button>

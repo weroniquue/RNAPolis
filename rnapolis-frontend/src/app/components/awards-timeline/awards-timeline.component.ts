@@ -87,6 +87,7 @@ export class AwardsTimelineComponent implements OnInit {
           this.notifier.notify('success', 'Successfully edited an award!');
         },
         error => {
+          console.log('err:', error);
           this.notifier.notify('error', 'Failed to edit an award!');
         });
     });

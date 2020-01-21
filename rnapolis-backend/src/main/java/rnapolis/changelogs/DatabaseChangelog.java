@@ -38,24 +38,60 @@ public class DatabaseChangelog {
         insertUser(mongoTemplate, user, password);
     }
 
-    @ChangeSet(order = "001", id = "initialAwardsData", author = "")
-    public void initialAwardsData(MongoTemplate mongoTemplate, Environment environment) {
-        Optional.ofNullable(environment.getProperty("awards.filePath"))
-                .ifPresent(path -> importFromFile(path, mongoTemplate));
-    }
+//    @ChangeSet(order = "001", id = "initialAwardsData", author = "")
+//    public void initialAwardsData(MongoTemplate mongoTemplate, Environment environment) {
+//        Optional.ofNullable(environment.getProperty("awards.filePath"))
+//                .ifPresent(path -> {
+//                    String jsonString = importFromFile(path);
+//                    List<Award> objects = GSON.fromJson(jsonString, new TypeToken<List<Award>>() {
+//                    }.getType());
+//                    objects.forEach(mongoTemplate::save);
+//                });
+//    }
 
     @Profile("dev")
     @ChangeSet(order = "002", id = "initialAwardsDataOnDev", author = "")
     public void initialAwardsDataOnDev(MongoTemplate mongoTemplate, Environment environment) {
         Optional.ofNullable(environment.getProperty("awards.filePath"))
-                .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
-                    try {
-                        String absolutePath = url.toURI().getPath();
-                        importFromFile(absolutePath, mongoTemplate);
-                    } catch (URISyntaxException e) {
-                        logger.info("Can't find file {} in resources", path);
-                    }
-                }));
+            .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
+                try {
+                    String absolutePath = url.toURI().getPath();
+                    String jsonString = importFromFile(absolutePath);
+                    List<Award> objects = GSON.fromJson(jsonString, new TypeToken<List<Award>>() {
+                    }.getType());
+                    objects.forEach(mongoTemplate::save);
+                } catch (URISyntaxException e) {
+                    logger.info("Can't find file {} in resources", path);
+                }
+            }));
+    }
+//
+//    @ChangeSet(order = "003", id = "initialPublicationsData", author = "")
+//    public void initialPublicationsData(MongoTemplate mongoTemplate, Environment environment) {
+//        Optional.ofNullable(environment.getProperty("publications.filePath"))
+//            .ifPresent(path -> {
+//                String jsonString = importFromFile(path);
+//                List<Publication> objects = GSON.fromJson(jsonString, new TypeToken<List<Publication>>() {
+//                }.getType());
+//                objects.forEach(mongoTemplate::save);
+//            });
+//    }
+
+    @Profile("dev")
+    @ChangeSet(order = "004", id = "initialPublicationsDataOnDev", author = "")
+    public void initialPublicationsDataOnDev(MongoTemplate mongoTemplate, Environment environment) {
+        Optional.ofNullable(environment.getProperty("publications.filePath"))
+            .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
+                try {
+                    String absolutePath = url.toURI().getPath();
+                    String jsonString = importFromFile(absolutePath);
+                    List<Publication> objects = GSON.fromJson(jsonString, new TypeToken<List<Publication>>() {
+                    }.getType());
+                    objects.forEach(mongoTemplate::save);
+                } catch (URISyntaxException e) {
+                    logger.info("Can't find file {} in resources", path);
+                }
+            }));
     }
 
     private void insertUser(MongoTemplate mongoTemplate, String user, String encodedPassword) {

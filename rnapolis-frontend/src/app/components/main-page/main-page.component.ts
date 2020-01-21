@@ -50,7 +50,7 @@ export class MainPageComponent implements OnInit {
         this.toolsService.addTool(newTool).subscribe(
           createdTool => {
             this.tools.push(createdTool);
-            this.tools.sort((a,b) => a.name > b.name ? 1 : -1);
+            this.tools.sort((a, b) => a.name > b.name ? 1 : -1);
             this.notifier.notify('success', 'Successfully added an tool!');
           },
           error => {

@@ -19,16 +19,7 @@ export class AuthenticationService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
-
-  public get ifLogin(): boolean {
-    if (this.currentUserValue === null) {
-      return false;
-    }
-
-    const jwtDecoder = new JwtHelperService();
-    return !jwtDecoder.isTokenExpired(this.currentUserValue.token);
-  }
-
+  
   login(username: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}/api/auth/login`, {username, password})
     .pipe(map(user => {

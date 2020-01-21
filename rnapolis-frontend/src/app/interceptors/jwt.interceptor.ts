@@ -18,6 +18,8 @@ export class JwtInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser && currentUser.token) {
+      this.handleTokenExpiration(currentUser.token);
+
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${currentUser.token}`
@@ -33,14 +35,20 @@ export class JwtInterceptor implements HttpInterceptor {
           }
           throw err;
         }
-      )
+      ),
     );
   }
 
   private handleAuthError() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']).then(r =>
-      this.notifierService.notify('error', 'Your session has expired!')
-    );
+    this.router.navigate(['/login']);
+  }
+
+  private handleTokenExpiration(token: string) {
+    const jwtDecoder = new JwtHelperService();
+    if (jwtDecoder.isTokenExpired(token)) {
+      this.authenticationService.logout();
+      this.notifierService.notify('error', 'Your session has expired!');
+    }
   }
 }

@@ -1,4 +1,5 @@
 export class Publication {
+  id: string;
   authors: string;
   title: string;
   journal: string;

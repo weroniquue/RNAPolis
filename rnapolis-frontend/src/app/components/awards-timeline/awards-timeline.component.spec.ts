@@ -13,9 +13,9 @@ import {
 import {MenuComponent} from '../basic-components/menu/menu.component';
 import {HeaderComponent} from '../basic-components/header/header.component';
 import {EditAwardsComponent} from './edit-awards/edit-awards.component';
-import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NotifierService} from 'angular-notifier';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AwardsTimelineComponent', () => {
   let component: AwardsTimelineComponent;
@@ -36,7 +36,7 @@ describe('AwardsTimelineComponent', () => {
         MatIconModule,
         MatDialogModule,
         MatCardModule,
-        HttpClientModule,
+        HttpClientTestingModule,
         RouterTestingModule
       ],
       providers: [

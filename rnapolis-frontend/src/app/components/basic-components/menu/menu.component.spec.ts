@@ -4,6 +4,7 @@ import {MenuComponent} from './menu.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientModule} from '@angular/common/http';
 import {NotifierModule, NotifierService} from 'angular-notifier';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -17,8 +18,8 @@ describe('MenuComponent', () => {
         HttpClientModule,
         NotifierModule],
       providers: [
-        {provide: NotifierService}
-      ]
+        HttpClientTestingModule,
+        NotifierModule]
     })
       .compileComponents();
   }));

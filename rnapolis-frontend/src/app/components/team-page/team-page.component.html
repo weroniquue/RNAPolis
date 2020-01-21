@@ -5,8 +5,8 @@
 </button>
 
 <section class="board">
-  <div class="box" *ngFor="let teamMember of team" [ngStyle]="{'paddingTop': user ? '70px':'default'}">
-    <div *ngIf="user" class="edit-manager">
+  <div class="box" *ngFor="let teamMember of teamMembers" [ngStyle]="{'paddingTop': user ? '70px':'default'}">
+    <div *ngIf="canEdit" class="edit-manager">
       <button id="edit" (click)="editElement(teamMember)" mat-fab>
         <mat-icon>edit</mat-icon>
       </button>

@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AwardsService } from './awards.service';
+import { TeamMembersService } from './team-members.service';
+import {HttpClient} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('AwardsService', () => {
+describe('TeamMembersService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     declarations: [],
     imports: [HttpClientTestingModule],
@@ -11,7 +12,7 @@ describe('AwardsService', () => {
   }));
 
   it('should be created', () => {
-    const service: AwardsService = TestBed.get(AwardsService);
+    const service: TeamMembersService = TestBed.get(TeamMembersService);
     expect(service).toBeTruthy();
   });
 });

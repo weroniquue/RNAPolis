@@ -8,10 +8,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {PublicationFormComponent} from './publication-form/publication-form.component';
-import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MatCardModule} from '@angular/material';
 import {NotifierService} from 'angular-notifier';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('PublicationsPageComponent', () => {
   let component: PublicationsPageComponent;
@@ -31,7 +31,7 @@ describe('PublicationsPageComponent', () => {
         ReactiveFormsModule,
         MatIconModule,
         MatDialogModule,
-        HttpClientModule,
+        HttpClientTestingModule,
         RouterTestingModule,
         MatCardModule
       ],

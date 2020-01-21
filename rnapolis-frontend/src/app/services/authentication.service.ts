@@ -19,7 +19,7 @@ export class AuthenticationService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
-  
+
   login(username: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}/api/auth/login`, {username, password})
     .pipe(map(user => {

@@ -48,11 +48,11 @@ export class TeamPageComponent implements OnInit {
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.teamMembersService.deleteTeamMember(teamMember.id).subscribe(
-          response => {
+          () => {
             this.teamMembers.splice(this.teamMembers.indexOf(teamMember), 1);
             this.notifier.notify('success', 'Successfully deleted a team member!');
           },
-          error => {
+          () => {
             this.notifier.notify('error', 'Failed to delete a team member!');
           });
       }
@@ -67,7 +67,7 @@ export class TeamPageComponent implements OnInit {
           this.teamMembers[this.teamMembers.indexOf(editedTeamMember)] = editedTeamMember;
           this.notifier.notify('success', 'Successfully edited a team member!');
         },
-        error => {
+        () => {
           this.notifier.notify('error', 'Failed to edit a team member!');
         });
     });
@@ -89,7 +89,7 @@ export class TeamPageComponent implements OnInit {
             this.teamMembers.unshift(createdTeamMember);
             this.notifier.notify('success', 'Successfully added a team member!');
           },
-          error => {
+          () => {
             this.notifier.notify('error', 'Failed to add a team member!');
           });
       }

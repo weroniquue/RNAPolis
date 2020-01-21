@@ -19,7 +19,8 @@ describe('MenuComponent', () => {
         NotifierModule],
       providers: [
         HttpClientTestingModule,
-        NotifierModule]
+        NotifierModule,
+        {provide: NotifierService}]
     })
       .compileComponents();
   }));
@@ -34,7 +35,7 @@ describe('MenuComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it ('should be false after Esc press', fakeAsync(() => {
+  it('should be false after Esc press', fakeAsync(() => {
     const compiled = fixture.debugElement.nativeElement;
     const elem = compiled.querySelector('input');
     component.isChecked = true;

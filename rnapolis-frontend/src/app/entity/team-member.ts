@@ -1,4 +1,5 @@
 export class TeamMember {
+  id: string;
   name: string;
   surname: string;
   position: string;

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,8 +31,12 @@ public class PublicationController {
   @GetMapping("")
   @ResponseStatus(HttpStatus.OK)
   public List<Publication> allPublication() {
-    return repository.findAllByOrderByYearDesc();
-  }
+    return repository.findAllByOrderByYearDesc().stream()
+        .filter(publication -> StringUtils.isNotEmpty(publication.getTitle()))
+        .filter(publication -> StringUtils.isNotEmpty(publication.getAuthors()))
+        .filter(publication -> publication.getYear() != null)
+        .collect(Collectors.toList());
+    }
 
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)

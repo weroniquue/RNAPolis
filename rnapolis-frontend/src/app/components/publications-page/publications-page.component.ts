@@ -24,7 +24,8 @@ export class PublicationsPageComponent implements OnInit {
               public publicationsService: PublicationsService,
               private readonly notifierService: NotifierService) {
     this.canEdit = this.authenticationService.ifLogin;
-    this.notifier = notifierService;}
+    this.notifier = notifierService;
+  }
 
   ngOnInit() {
     Utils.closeMenu();

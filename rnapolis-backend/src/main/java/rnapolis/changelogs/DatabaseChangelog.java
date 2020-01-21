@@ -5,18 +5,24 @@ import com.github.mongobee.changeset.ChangeSet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.mongodb.client.model.Collation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import rnapolis.models.Award;
+import rnapolis.models.Publication;
 import rnapolis.models.User;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +47,12 @@ public class DatabaseChangelog {
     @ChangeSet(order = "001", id = "initialAwardsData", author = "")
     public void initialAwardsData(MongoTemplate mongoTemplate, Environment environment) {
         Optional.ofNullable(environment.getProperty("awards.filePath"))
-                .ifPresent(path -> importFromFile(path, mongoTemplate));
+                .ifPresent(path -> {
+                    String jsonString = importFromFile(path);
+                    List<Award> objects = GSON.fromJson(jsonString, new TypeToken<List<Award>>() {
+                    }.getType());
+                    objects.forEach(mongoTemplate::save);
+                });
     }
 
     @Profile("dev")
@@ -50,8 +61,37 @@ public class DatabaseChangelog {
         Optional.ofNullable(environment.getProperty("awards.filePath"))
                 .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
                     try {
-                        String absolutePath = url.toURI().getPath();
-                        importFromFile(absolutePath, mongoTemplate);
+                        String jsonString = getJsonString(url);
+                        List<Award> objects = GSON.fromJson(jsonString, new TypeToken<List<Award>>() {
+                        }.getType());
+                        objects.forEach(mongoTemplate::save);
+                    } catch (URISyntaxException e) {
+                        logger.info("Can't find file {} in resources", path);
+                    }
+                }));
+    }
+
+    @ChangeSet(order = "003", id = "initialPublicationsData", author = "")
+    public void initialPublicationsData(MongoTemplate mongoTemplate, Environment environment) {
+        Optional.ofNullable(environment.getProperty("publications.filePath"))
+                .ifPresent(path -> {
+                    String jsonString = importFromFile(path);
+                    List<Publication> objects = GSON.fromJson(jsonString, new TypeToken<List<Publication>>() {
+                    }.getType());
+                    objects.forEach(mongoTemplate::save);
+                });
+    }
+
+    @Profile("dev")
+    @ChangeSet(order = "004", id = "initialPublicationsDataOnDev", author = "")
+    public void initialPublicationsDataOnDev(MongoTemplate mongoTemplate, Environment environment) {
+        Optional.ofNullable(environment.getProperty("publications.filePath"))
+                .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
+                    try {
+                        String jsonString = getJsonString(url);
+                        List<Publication> objects = GSON.fromJson(jsonString, new TypeToken<List<Publication>>() {
+                        }.getType());
+                        objects.forEach(mongoTemplate::save);
                     } catch (URISyntaxException e) {
                         logger.info("Can't find file {} in resources", path);
                     }
@@ -62,15 +102,19 @@ public class DatabaseChangelog {
         mongoTemplate.save(User.builder().username(user).password(encodedPassword).build());
     }
 
-    private void importFromFile(String filePath, MongoTemplate mongoTemplate) {
+    private String importFromFile(String filePath) {
         File file = new File(filePath);
         try {
-            String jsonString = new String(Files.readAllBytes(file.toPath()));
-            List<Award> objects = GSON.fromJson(jsonString, new TypeToken<List<Award>>() {
-            }.getType());
-            objects.forEach(mongoTemplate::save);
+            return new String(Files.readAllBytes(file.toPath()));
         } catch (IOException e) {
             logger.info("Can't find file {} to load data", filePath);
         }
+        return Collections.emptyList().toString();
     }
+
+    private String getJsonString(URL url) throws URISyntaxException {
+        String absolutePath = url.toURI().getPath();
+        return importFromFile(absolutePath);
+    }
+
 }

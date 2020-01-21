@@ -17,8 +17,8 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ToolFilterPipe} from './tool-filter.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
 import {NotifierModule} from 'angular-notifier';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 
 describe('MainPageComponent', () => {
@@ -48,7 +48,7 @@ describe('MainPageComponent', () => {
         FormsModule,
         BrowserModule,
         ReactiveFormsModule,
-        HttpClientModule,
+        HttpClientTestingModule,
         RouterTestingModule,
         NotifierModule
       ],

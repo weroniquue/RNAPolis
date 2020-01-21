@@ -1,8 +1,8 @@
 <h1 mat-dialog-title>Tool</h1>
 <div [formGroup]="toolForm" mat-dialog-content>
   <mat-form-field>
-    <input formControlName="toolName" matInput placeholder="Tool name">
-    <mat-error *ngIf="hasError('toolName', 'required')">Tool name is required</mat-error>
+    <input formControlName="name" matInput placeholder="Tool name">
+    <mat-error *ngIf="hasError('name', 'required')">Tool name is required</mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea formControlName="description" matInput placeholder="Tool description"></textarea>
@@ -11,6 +11,7 @@
   <mat-form-field>
     <input formControlName="link" matInput placeholder="Tool link">
     <mat-error *ngIf="hasError('link', 'required')">Link is required</mat-error>
+    <mat-error *ngIf="hasError('link', 'pattern')">This is not url!</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Filter</mat-label>

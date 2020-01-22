@@ -20,8 +20,9 @@ import rnapolis.exception.ResourceNotFoundException;
 import rnapolis.models.TeamMember;
 import rnapolis.repositories.TeamMemberRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/teamMembers")
+@RequestMapping("/api/team-members")
 @AllArgsConstructor
 public class TeamMemberController {
 

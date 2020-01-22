@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import Utils from '../../services/utils';
 import {AuthenticationService} from '../../services/authentication.service';
 import {NotifierService} from 'angular-notifier';
+import {User} from '../../entity/user';
 import {PublicationsService} from '../../services/publications.service';
 
 @Component({
@@ -15,15 +16,15 @@ import {PublicationsService} from '../../services/publications.service';
 })
 export class PublicationsPageComponent implements OnInit {
   publications: Publication[];
-  canEdit: boolean;
   notifier: NotifierService;
+  user: User;
 
 
   constructor(public authenticationService: AuthenticationService,
               public dialog: MatDialog,
               public publicationsService: PublicationsService,
               private readonly notifierService: NotifierService) {
-    this.canEdit = this.authenticationService.ifLogin;
+    this.authenticationService.currentUser.subscribe(value => this.user = value);
     this.notifier = notifierService;
   }
 

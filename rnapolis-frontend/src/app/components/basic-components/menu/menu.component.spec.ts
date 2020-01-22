@@ -2,7 +2,8 @@ import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing
 
 import {MenuComponent} from './menu.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {NotifierModule} from 'angular-notifier';
+import {HttpClientModule} from '@angular/common/http';
+import {NotifierModule, NotifierService} from 'angular-notifier';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('MenuComponent', () => {
@@ -14,8 +15,12 @@ describe('MenuComponent', () => {
       declarations: [MenuComponent],
       imports: [
         RouterTestingModule,
+        HttpClientModule,
+        NotifierModule],
+      providers: [
         HttpClientTestingModule,
-        NotifierModule]
+        NotifierModule,
+        {provide: NotifierService}]
     })
       .compileComponents();
   }));
@@ -30,7 +35,7 @@ describe('MenuComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it ('should be false after Esc press', fakeAsync(() => {
+  it('should be false after Esc press', fakeAsync(() => {
     const compiled = fixture.debugElement.nativeElement;
     const elem = compiled.querySelector('input');
     component.isChecked = true;

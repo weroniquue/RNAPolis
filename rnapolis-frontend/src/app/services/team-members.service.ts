@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {TeamMember} from '../entity/team-member';
 import {environment} from '../../environments/environment';
 
-const apiUrl = `${environment.apiUrl}/api/teamMembers`;
+const apiUrl = `${environment.apiUrl}/api/team-members`;
 
 @Injectable({providedIn: 'root'})
 export class TeamMembersService {

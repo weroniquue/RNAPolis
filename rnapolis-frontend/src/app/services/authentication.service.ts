@@ -19,10 +19,6 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  public get ifLogin(): boolean {
-    return this.currentUserSubject.value !== null;
-  }
-
   login(username: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}/api/auth/login`, {username, password})
     .pipe(map(user => {

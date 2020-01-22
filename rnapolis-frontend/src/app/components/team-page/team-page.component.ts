@@ -6,6 +6,7 @@ import {MemberManagerComponent} from './member-manager/member-manager.component'
 import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
 import {NotifierService} from 'angular-notifier';
+import {User} from '../../entity/user';
 import {TeamMembersService} from '../../services/team-members.service';
 
 @Component({
@@ -15,15 +16,15 @@ import {TeamMembersService} from '../../services/team-members.service';
 })
 export class TeamPageComponent implements OnInit {
   teamMembers: TeamMember[];
-  canEdit: boolean;
   notifier: NotifierService;
+  user: User;
 
   constructor(public authenticationService: AuthenticationService,
               public dialog: MatDialog,
               public teamMembersService: TeamMembersService,
               private readonly notifierService: NotifierService) {
 
-    this.canEdit = this.authenticationService.ifLogin;
+    this.authenticationService.currentUser.subscribe(value => this.user = value);
     this.notifier = notifierService;
   }
 

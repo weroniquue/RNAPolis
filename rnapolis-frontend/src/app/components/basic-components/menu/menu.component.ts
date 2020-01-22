@@ -3,6 +3,7 @@ import {AuthenticationService} from '../../../services/authentication.service';
 import {User} from '../../../entity/user';
 import {Router} from '@angular/router';
 import Utils from '../../../services/utils';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-menu',
@@ -13,12 +14,15 @@ export class MenuComponent implements OnInit {
   ESC = 'Escape';
   isChecked: boolean;
   currentUser: User;
+  notifier: NotifierService;
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private readonly notifierService: NotifierService
   ) {
     this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
+    this.notifier = notifierService;
   }
 
   ngOnInit() {
@@ -27,16 +31,14 @@ export class MenuComponent implements OnInit {
   @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === this.ESC && this.isChecked) {
-        this.isChecked = false;
+      this.isChecked = false;
     }
   }
 
   logout() {
     this.authenticationService.logout();
-    localStorage.clear();
-    sessionStorage.clear();
     Utils.closeMenu();
-    this.router.navigate(['/', { isrefresh: true }]);
+    this.notifier.notify('success', 'Logged out successfully!');
   }
 
   changeChecked() {

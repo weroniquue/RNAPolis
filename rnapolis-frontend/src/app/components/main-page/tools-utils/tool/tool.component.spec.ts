@@ -40,7 +40,7 @@ describe('ToolComponent', () => {
         {provide: NotifierService},
       ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {

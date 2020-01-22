@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material';
 import {AddToolComponent} from './tools-utils/add-tool/add-tool.component';
 import {AuthenticationService} from '../../services/authentication.service';
 import Utils from '../../services/utils';
+import {User} from '../../entity/user';
 import {ToolsService} from '../../services/tools.service';
 import {NotifierService} from 'angular-notifier';
 
@@ -17,7 +18,7 @@ export class MainPageComponent implements OnInit {
   tools: Tool[];
   categories: string[];
   selectedCategory: string;
-  canEdit: boolean;
+  user: User;
   notifier: NotifierService;
 
   constructor(public dialog: MatDialog,
@@ -25,7 +26,8 @@ export class MainPageComponent implements OnInit {
               public toolsService: ToolsService,
               private readonly notifierService: NotifierService) {
     this.notifier = notifierService;
-    this.canEdit = this.authenticationService.ifLogin;
+    this.authenticationService.currentUser.subscribe(value => this.user = value);
+
     this.categories = ['category12', 'category1'];
   }
 

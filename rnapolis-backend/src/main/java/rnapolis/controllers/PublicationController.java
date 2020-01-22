@@ -20,6 +20,7 @@ import rnapolis.exception.ResourceNotFoundException;
 import rnapolis.models.Publication;
 import rnapolis.repositories.PublicationRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/publications")
 @AllArgsConstructor

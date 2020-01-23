@@ -57,13 +57,16 @@ export class AwardsTimelineComponent implements OnInit {
   }
 
   editAward(award: Award) {
-    const oldAward = award;
+    const oldAward = award.year;
     const editDialogRef = this.openAwardDialog(award);
 
     editDialogRef.afterClosed().subscribe(result => {
       this.awardsService.updateAward(result.id, result).subscribe(
         () => {
-          // TODO
+          this.shuffleAwards(result);
+          if (this.awards.get(oldAward).length === 1) {
+            this.awards.get(oldAward).splice(0, this.awards.get(oldAward).length);
+          }
           this.notifier.notify('success', 'Successfully edited an award!');
         },
         () => {
@@ -88,15 +91,6 @@ export class AwardsTimelineComponent implements OnInit {
     });
   }
 
-  private shuffleAwards(newAward: Award): void {
-    const key = this.awards.get(newAward.year);
-    if (key) {
-      key.push(newAward);
-    } else {
-      this.awards.set(newAward.year, Array.of(newAward));
-    }
-  }
-
   openAwardDialog(award: Award) {
     return this.dialog.open(EditAwardsComponent, {
       disableClose: true,
@@ -109,6 +103,15 @@ export class AwardsTimelineComponent implements OnInit {
   descOrder = (a, b) => {
     if (a.key < b.key) {
       return b.key;
+    }
+  };
+
+  private shuffleAwards(newAward: Award): void {
+    const key = this.awards.get(newAward.year);
+    if (key) {
+      key.push(newAward);
+    } else {
+      this.awards.set(newAward.year, Array.of(newAward));
     }
   }
 }

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ToolRepository extends MongoRepository<Tool, String> {
 
-  List<Tool> findAllByOrderByCategoryDesc();
+  List<Tool> findAllByOrderByNameDesc();
 
 }

@@ -25,15 +25,21 @@
       }
     }
 
-    p {
-      font-size: $paragraph-size;
+    .award-list-element {
+      margin: 0 1em;
+      padding: 0.5em 0;
       text-align: justify;
-      padding: 1em;
     }
 
     .edit-manager {
-      @include edit-manager;
+      display: flex;
     }
+
+    .bullet-points{
+      display: flex;
+      align-items: center;
+    }
+
   }
 }
 
@@ -44,9 +50,8 @@
     }
 
     mat-card {
-      p {
-        text-align: left;
-        font-size: $normal-size;
+      .edit-manager {
+        display: block;
       }
     }
   }
@@ -60,9 +65,8 @@
     }
     mat-card {
       margin: 1em;
-
-      p {
-        text-align: left;
+      .award-list-element {
+        padding: 1em 0;
       }
 
       h3, i {

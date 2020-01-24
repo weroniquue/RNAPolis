@@ -12,7 +12,7 @@ import {ListItem} from 'ng-multiselect-dropdown/multiselect.model';
 export class AddToolComponent implements OnInit {
   tool: Tool;
   toolForm: FormGroup;
-  categories: string[];
+  availableCategories: string[];
   dropdownSettings = {};
 
   constructor(
@@ -20,7 +20,7 @@ export class AddToolComponent implements OnInit {
     public dialogRef: MatDialogRef<AddToolComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
-    this.categories = data[0];
+    this.availableCategories = data[0];
     this.tool = data[1];
   }
 
@@ -31,7 +31,7 @@ export class AddToolComponent implements OnInit {
       description: [this.tool.description, Validators.required],
       link: [this.tool.link,
         [Validators.required, Validators.pattern('^((https?|ftp|smtp):\\/\\/)?(www.)?[a-z0-9]+\\.[a-z]+(\\/[a-zA-Z0-9#]+\\/?)*$')]],
-      category: [this.tool.category, Validators.required],
+      categories: [this.tool.categories],
     });
 
     this.dropdownSettings = {
@@ -51,7 +51,7 @@ export class AddToolComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close(this.toolForm.value);
+    this.dialogRef.close(null);
   }
 
   public hasError = (controlName: string, errorName: string) => {

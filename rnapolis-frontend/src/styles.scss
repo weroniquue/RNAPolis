@@ -37,3 +37,32 @@ app-root {
 .mat-dialog-actions {
   float: right;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d4d7dd;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a2a9b7;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item,
+.multiselect-item-checkbox input[type=checkbox]:checked + div:before{
+  background: #673ab7 !important;
+  border-color: transparent !important;
+}
+

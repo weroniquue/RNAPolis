@@ -35,6 +35,7 @@ import {MemberManagerComponent} from './components/team-page/member-manager/memb
 import {PublicationsPageComponent} from './components/publications-page/publications-page.component';
 import {PublicationFormComponent} from './components/publications-page/publication-form/publication-form.component';
 import {JwtInterceptor} from './interceptors/jwt.interceptor';
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import {JwtInterceptor} from './interceptors/jwt.interceptor';
       },
       theme: 'material'
     }),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}

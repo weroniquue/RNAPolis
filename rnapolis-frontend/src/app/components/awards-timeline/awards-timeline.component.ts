@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Award} from '../../entity/award';
 import {MatDialog} from '@angular/material';
 import {ConfirmationDialogComponent} from '../basic-components/confirmation-dialog/confirmation-dialog.component';
@@ -15,7 +15,7 @@ import {User} from '../../entity/user';
   styleUrls: ['./awards-timeline.component.scss']
 })
 export class AwardsTimelineComponent implements OnInit {
-  awards: Award[];
+  awards: Map<number, Award[]> = new Map<number, Award[]>();
   user: User;
   notifier: NotifierService;
 
@@ -29,33 +29,10 @@ export class AwardsTimelineComponent implements OnInit {
 
   ngOnInit() {
     Utils.closeMenu();
-    this.onScrollEvent();
     this.awardsService.getAwards()
-    .subscribe(awards => {
-      this.awards = awards;
-    });
-  }
-
-  @HostListener('window:resize', [])
-  @HostListener('window:load', [])
-  @HostListener('window:reload', [])
-  @HostListener('window:scroll', []) onScrollEvent() {
-    document.querySelectorAll('#timeline li').forEach(item => {
-      function isInViewport(element: Element) {
-        const rect = element.getBoundingClientRect();
-        return (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <=
-          (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-      }
-
-      if (isInViewport(item)) {
-        item.classList.add('show');
-      }
-    });
+      .subscribe(awards => {
+        this.awards.set(awards[0], awards[1]);
+      });
   }
 
   deleteElement(award: Award) {
@@ -66,12 +43,13 @@ export class AwardsTimelineComponent implements OnInit {
 
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
+        console.log(award);
         this.awardsService.deleteAward(award.id).subscribe(
-          response => {
-            this.awards.splice(this.awards.indexOf(award), 1);
+          () => {
+            this.awards.get(award.year).splice(this.awards.get(award.year).indexOf(award), 1);
             this.notifier.notify('success', 'Successfully deleted an award!');
           },
-          error => {
+          () => {
             this.notifier.notify('error', 'Failed to delete an award!');
           });
       }
@@ -79,15 +57,19 @@ export class AwardsTimelineComponent implements OnInit {
   }
 
   editAward(award: Award) {
+    const oldAward = award.year;
     const editDialogRef = this.openAwardDialog(award);
 
     editDialogRef.afterClosed().subscribe(result => {
       this.awardsService.updateAward(result.id, result).subscribe(
-        editedAward => {
-          this.awards[this.awards.indexOf(editedAward)] = editedAward;
+        () => {
+          this.shuffleAwards(result);
+          if (this.awards.get(oldAward).length === 1) {
+            this.awards.get(oldAward).splice(0, this.awards.get(oldAward).length);
+          }
           this.notifier.notify('success', 'Successfully edited an award!');
         },
-        error => {
+        () => {
           this.notifier.notify('error', 'Failed to edit an award!');
         });
     });
@@ -98,11 +80,11 @@ export class AwardsTimelineComponent implements OnInit {
     addAwardDialogRef.afterClosed().subscribe(newAward => {
       if (newAward.year != null) {
         this.awardsService.addAward(newAward).subscribe(
-          createdAward => {
-            this.awards.unshift(createdAward);
+          () => {
+            this.shuffleAwards(newAward);
             this.notifier.notify('success', 'Successfully added an award!');
           },
-          error => {
+          () => {
             this.notifier.notify('error', 'Failed to add an award!');
           });
       }
@@ -116,6 +98,21 @@ export class AwardsTimelineComponent implements OnInit {
       width: '80vw',
       data: award
     });
+  }
+
+  descOrder = (a, b) => {
+    if (a.key < b.key) {
+      return b.key;
+    }
+  }
+
+  private shuffleAwards(newAward: Award): void {
+    const year = this.awards.get(newAward.year);
+    if (year) {
+      year.push(newAward);
+    } else {
+      this.awards.set(newAward.year, Array.of(newAward));
+    }
   }
 }
 

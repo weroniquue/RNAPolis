@@ -18,52 +18,56 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ToolController {
 
-    private ToolRepository repository;
+  private ToolRepository repository;
 
-    @GetMapping("")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Tool> allTool() {
-        return repository.findAllByOrderByCategoryDesc()
-                .stream()
-                .filter(this::verifyTool)
-                .collect(Collectors.toList());
-    }
+  @GetMapping("")
+  @ResponseStatus(HttpStatus.OK)
+  public List<Tool> allTool() {
+    return repository.findAllByOrderByNameDesc().stream()
+        .filter(this::verifyTool)
+        .collect(Collectors.toList());
+  }
 
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Tool findById(@PathVariable String id) {
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Tool", id));
-    }
+  @GetMapping("/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public Tool findById(@PathVariable String id) {
+    return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Tool", id));
+  }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Tool create(@Valid @RequestBody Tool newTool) {
-        return repository.save(newTool);
-    }
+  @PostMapping
+  @ResponseStatus(HttpStatus.CREATED)
+  public Tool create(@Valid @RequestBody Tool newTool) {
+    return repository.save(newTool);
+  }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Tool update(@PathVariable String id, @Valid @RequestBody Tool updatedTool) {
-        return repository.findById(id)
-                .map(tool -> {
-                    tool.setName(updatedTool.getName());
-                    tool.setCategory(updatedTool.getCategory());
-                    tool.setDescription(updatedTool.getDescription());
-                    tool.setLink(updatedTool.getLink());
-                    return tool;
-                }).map(tool -> repository.save(tool))
-                .orElseThrow(() -> new ResourceNotFoundException("Tool", id));
-    }
+  @PutMapping("/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public Tool update(@PathVariable String id, @Valid @RequestBody Tool updatedTool) {
+    return repository
+        .findById(id)
+        .map(
+            tool -> {
+              tool.setName(updatedTool.getName());
+              tool.setCategories(updatedTool.getCategories());
+              tool.setDescription(updatedTool.getDescription());
+              tool.setLink(updatedTool.getLink());
+              return tool;
+            })
+        .map(tool -> repository.save(tool))
+        .orElseThrow(() -> new ResourceNotFoundException("Tool", id));
+  }
 
-    @DeleteMapping(value = "/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") String id) {
-        Tool tool = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Tool", id));
-        repository.delete(tool);
-    }
+  @DeleteMapping(value = "/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void delete(@PathVariable("id") String id) {
+    Tool tool =
+        repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Tool", id));
+    repository.delete(tool);
+  }
 
-    private boolean verifyTool(Tool tool) {
-        return StringUtils.isNotEmpty(tool.getName()) && StringUtils.isNotEmpty(tool.getLink())
-                && StringUtils.isNotEmpty(tool.getCategory()) && StringUtils.isNotEmpty(tool.getDescription());
-    }
+  private boolean verifyTool(Tool tool) {
+    return StringUtils.isNotEmpty(tool.getName())
+        && StringUtils.isNotEmpty(tool.getLink())
+        && StringUtils.isNotEmpty(tool.getDescription());
+  }
 }

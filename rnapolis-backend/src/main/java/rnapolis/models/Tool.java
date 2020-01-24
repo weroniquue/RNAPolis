@@ -1,6 +1,7 @@
 package rnapolis.models;
 
 import java.time.Instant;
+import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -19,7 +20,7 @@ public class Tool {
   private String name;
   private String link;
   private String description;
-  private String category;
+  private List<String> categories;
 
   @CreatedDate private Instant createdDate;
 

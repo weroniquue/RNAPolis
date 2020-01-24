@@ -3,37 +3,28 @@
 #footer {
   border-top: $light-purple $footer-border-size solid;
   background-color: #ffffff;
-}
-
-.footer-container {
   height: $footer-size;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1.5rem;
-  max-width: 50%;
   margin: 0 auto;
+  padding: 0 6em;
   align-items: center;
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
 
-  a img {
-    padding-top: 10px;
-    width: 100%;
+  .put-logo {
+    width: 40vw;
+    height: $footer-size - 20px;
+  }
+
+  .ichb-logo {
+    width: 100px;
+    max-width: 100px;
     height: $footer-size - 20px;
   }
 }
 
-@media screen and (max-width: $medium-screen) and (min-width: $small-screen) {
-  .footer-container {
-    max-width: 75%;
-  }
-}
-
 @media screen and (max-width: $small-screen) {
-  .footer-container {
-    max-width: 100%;
-    margin: 0.5em;
-
-    > img {
-      transform: scale(0.8);
-    }
+  #footer {
+    padding: 0;
   }
 }

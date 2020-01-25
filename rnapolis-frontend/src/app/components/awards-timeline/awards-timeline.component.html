@@ -6,17 +6,23 @@
     Add award
   </button>
 
-  <mat-card *ngFor="let award of awards">
-    <div *ngIf="user" class="edit-manager">
-      <button (click)="deleteElement(award)" color="warn" mat-fab>
-        <mat-icon>delete</mat-icon>
-      </button>
-      <button (click)="editAward(award)" mat-fab>
-        <mat-icon>edit</mat-icon>
-      </button>
-    </div>
-
-    <h3><i class="fas fa-trophy"></i>{{award.year}}</h3>
-    <p>{{award.description}}</p>
+  <div *ngFor="let map of awards | keyvalue: descOrder">
+  <mat-card *ngIf="map.value.length">
+    <h3><i class="fas fa-trophy"></i>{{map.key}}</h3>
+    <ul class="award-list">
+      <li *ngFor="let award of map.value" [class.bullet-points]="user" class="award-list-element">
+        <div *ngIf="user" class="edit-manager">
+          <button (click)="deleteElement(award)" color="warn" mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button (click)="editAward(award)" color="accent" mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        {{award.description}}
+      </li>
+    </ul>
   </mat-card>
+  </div>
+
 </section>

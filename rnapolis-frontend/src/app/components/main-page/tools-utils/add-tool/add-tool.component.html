@@ -13,9 +13,7 @@
     <mat-error *ngIf="hasError('link', 'required')">Link is required</mat-error>
     <mat-error *ngIf="hasError('link', 'pattern')">This is not url!</mat-error>
   </mat-form-field>
-  <ng-multiselect-dropdown (onSelect)="onItemSelect($event)"
-                           (change)="change($event)"
-                           [data]="availableCategories" [settings]="dropdownSettings"
+  <ng-multiselect-dropdown [data]="availableCategories" [settings]="dropdownSettings"
                            formControlName="categories">
   </ng-multiselect-dropdown>
 </div>

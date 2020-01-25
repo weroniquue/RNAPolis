@@ -11,6 +11,7 @@ import {
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 describe('AddToolComponent', () => {
   let component: AddToolComponent;
@@ -30,7 +31,8 @@ describe('AddToolComponent', () => {
         MatIconModule,
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgMultiSelectDropDownModule.forRoot()
       ],
       providers: [
         FormBuilder,

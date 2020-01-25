@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {NotifierModule} from 'angular-notifier';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 
 describe('MainPageComponent', () => {
@@ -50,7 +51,8 @@ describe('MainPageComponent', () => {
         ReactiveFormsModule,
         HttpClientTestingModule,
         RouterTestingModule,
-        NotifierModule
+        NotifierModule,
+        NgMultiSelectDropDownModule.forRoot()
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

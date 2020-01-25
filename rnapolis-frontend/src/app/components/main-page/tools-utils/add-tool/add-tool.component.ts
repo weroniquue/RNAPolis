@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Tool} from '../../../../entity/tool';
-import {ListItem} from 'ng-multiselect-dropdown/multiselect.model';
 
 @Component({
   selector: 'app-add-tool',
@@ -56,13 +55,5 @@ export class AddToolComponent implements OnInit {
 
   public hasError = (controlName: string, errorName: string) => {
     return this.toolForm.controls[controlName].hasError(errorName);
-  }
-
-  onItemSelect($event: ListItem) {
-    console.log($event);
-  }
-
-  change($event: Event) {
-    console.log($event);
   }
 }

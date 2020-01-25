@@ -5,6 +5,9 @@ import {Tool} from '../entity/tool';
 import {environment} from '../../environments/environment';
 
 const apiUrl = `${environment.apiUrl}/api/tools`;
+console.log(apiUrl)
+// const apiUrl = `${window.location.origin}/api/tools`;
+
 
 @Injectable({providedIn: 'root'})
 export class ToolsService {
@@ -13,6 +16,7 @@ export class ToolsService {
   }
 
   getTools(): Observable<Tool[]> {
+    console.log(apiUrl);
     return this.http.get<Tool[]>(apiUrl);
   }
 

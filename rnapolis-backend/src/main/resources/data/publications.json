@@ -9,7 +9,7 @@
   },
   {
     "authors": "Antczak M, Zablocki M, Zok T, Rybarczyk A, Blazewicz J, Szachniuk M",
-    "title": " RNAvista: a webserver to assess RNA secondary structures with non-canonical base pairs",
+    "title": "RNAvista: a webserver to assess RNA secondary structures with non-canonical base pairs",
     "journal": "Bioinformatics",
     "volumeIssue": "35(1)",
     "year": 2019,
@@ -17,7 +17,7 @@
   },
   {
     "authors": "Antczak M, Zok T, Osowiecki M, Popenda M, Adamiak RW, Szachniuk M",
-    "title": " RNAfitme: a webserver for modeling nucleobase and nucleoside residue conformation in fixed-backbone RNA structures",
+    "title": "RNAfitme: a webserver for modeling nucleobase and nucleoside residue conformation in fixed-backbone RNA structures",
     "journal": "BMC Bioinformatics",
     "volumeIssue": "19(1)",
     "year": 2018,
@@ -25,7 +25,7 @@
   },
   {
     "authors": "Wiedemann J, Zok T, Milostan M, Szachniuk M",
-    "title": " LCS-TA to identify similar fragments in RNA 3D structures",
+    "title": "LCS-TA to identify similar fragments in RNA 3D structures",
     "journal": "BMC Bioinformatics",
     "volumeIssue": "18",
     "year": 2017,
@@ -35,7 +35,7 @@
     "authors": "Zok T, Antczak M, Zurkowski M, Popenda M, Blazewicz J, Adamiak RW, Szachniuk M",
     "title": "RNApdbee 2.0: multifunctional tool for RNA structure annotation",
     "journal": "Nucleic Acids Research",
-    "volumeIssue": "46(W1",
+    "volumeIssue": "46(W1)",
     "year": 2018,
     "pages": "W30-W35"
   },
@@ -48,14 +48,6 @@
     "pages": "1304-1312"
   },
   {
-    "authors": "Wiedemann J, Zok T, Milostan M, Szachniuk M",
-    "title": "LCS-TA to identify similar fragments in RNA 3D structures",
-    "journal": "BMC Bioinformatics",
-    "volumeIssue": "18",
-    "year": 2017,
-    "pages": "456"
-  },
-  {
     "authors": "Antczak M, Popenda M, Zok T, Sarzynska J, Ratajczak T, Tomczyk K, Adamiak RW, Szachniuk M",
     "title": "New functionality of RNAComposer: an application to shape the axis of miR160 precursor structure",
     "journal": "Acta Biochimica Polonica",
@@ -65,9 +57,9 @@
   },
   {
     "authors": "Biesiada M, Purzycka KJ, Szachniuk M, Blazewicz J, Adamiak RW",
-    "title": "Automated RNA 3D structure prediction with RNAComposer, in Doug H. Turner, David H. Mathews (eds.) RNA Structure Determination: Methods and Protocols (Methods in Molecular Biology 1490)",
-    "journal": "Springer, Humana Press",
-    "volumeIssue": "",
+    "title": "Automated RNA 3D structure prediction with RNAComposer, in Doug H. Turner, David H. Mathews (eds.)",
+    "journal": "RNA Structure Determination: Methods and Protocols",
+    "volumeIssue": "(Methods in Molecular Biology 1490) ,Springer, Humana Press",
     "year": 2016,
     "pages": "199-215"
   },
@@ -97,9 +89,9 @@
   },
   {
     "authors": "Purzycka KJ, Popenda M, Szachniuk M, Antczak M, Lukasiak P, Blazewicz J, Adamiak RW",
-    "title": "Automated 3D RNA structure prediction using the RNAComposer method for riboswitches, in Shi-Jie Chen, Donald H. Burke-Aguero (eds.) Methods in Enzymology: Computational Methods for Understanding Riboswitches 553",
-    "journal": "Elsevier",
-    "volumeIssue": "",
+    "title": "Automated 3D RNA structure prediction using the RNAComposer method for riboswitches, in Shi-Jie Chen, Donald H. Burke-Aguero (eds.)",
+    "journal": "Methods in Enzymology: Computational Methods for Understanding Riboswitches",
+    "volumeIssue": "553 Elsevier",
     "year": 2014,
     "pages": "3-34"
   },

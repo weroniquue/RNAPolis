@@ -106,7 +106,7 @@ export class AwardsTimelineComponent implements OnInit {
     if (a.key < b.key) {
       return b.key;
     }
-  };
+  }
 
   private shuffleAwards(newAward: Award): void {
     const year = this.awards.get(newAward.year);

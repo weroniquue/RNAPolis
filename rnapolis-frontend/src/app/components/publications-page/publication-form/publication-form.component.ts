@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Publication} from '../../../entity/publication';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {AppComponent} from '../../../app.component';
 import Utils from '../../../services/utils';
 
 @Component({

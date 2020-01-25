@@ -7,8 +7,8 @@
       <div>
         <h2>One place</h2>
         <h2>All desired links</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis cumque delectus dignissimos enim, eum,
-          eveniet ex exercitationem harum</p>
+        <p>Bioinformatics helps researchers ask increasingly complex questions in a systems-wide approach, allowing
+          for the analysis of complex networks and pathways of protein interactions.</p>
       </div>
     </div>
   </section>
@@ -24,11 +24,12 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button (click)="addTool()" *ngIf="user">
-      <mat-icon>add</mat-icon> Add tool
+    <button (click)="addTool()" *ngIf="user" mat-raised-button>
+      <mat-icon>add</mat-icon>
+      Add tool
     </button>
 
-    <app-tool (toolRemoved)="removeTool($event)"(toolChanged)="refreshTool($event)"
+    <app-tool (toolChanged)="refreshTool($event)" (toolRemoved)="removeTool($event)"
               *ngFor="let tool of tools | toolFilter: selectedCategory"
               [categories]="categories" [tool]="tool"></app-tool>
   </section>

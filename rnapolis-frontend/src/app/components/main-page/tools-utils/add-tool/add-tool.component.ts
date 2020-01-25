@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Tool} from '../../../../entity/tool';
-import {AppComponent} from '../../../../app.component';
 import Utils from '../../../../services/utils';
 
 @Component({
@@ -13,14 +12,15 @@ import Utils from '../../../../services/utils';
 export class AddToolComponent implements OnInit {
   tool: Tool;
   toolForm: FormGroup;
-  categories: string[];
+  availableCategories: string[];
+  dropdownSettings = {};
 
   constructor(
     private fromBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddToolComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
-    this.categories = data[0];
+    this.availableCategories = data[0];
     this.tool = data[1];
   }
 
@@ -31,8 +31,17 @@ export class AddToolComponent implements OnInit {
       description: [this.tool.description, [Validators.required, Utils.noWhitespaceValidator]],
       link: [this.tool.link, [Validators.required,
         Validators.pattern('^((https?|ftp|smtp):\\/\\/)?(www.)?[a-z0-9]+\\.[a-z]+(\\/[a-zA-Z0-9#]+\\/?)*$')]],
-      category: [this.tool.category, [Validators.required, Utils.noWhitespaceValidator]],
+      categories: [this.tool.categories],
     });
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      text: 'Select categories',
+      selectAllText: 'all',
+      unSelectAllText: 'all',
+      enableSearchFilter: true,
+      defaultOpen: true
+    };
   }
 
   save() {
@@ -42,7 +51,7 @@ export class AddToolComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close(this.toolForm.value);
+    this.dialogRef.close(null);
   }
 
   public hasError = (controlName: string, errorName: string) => {

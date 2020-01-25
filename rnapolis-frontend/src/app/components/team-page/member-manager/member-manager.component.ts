@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {TeamMember} from '../../../entity/team-member';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
-import {AppComponent} from '../../../app.component';
 import Utils from '../../../services/utils';
 
 @Component({

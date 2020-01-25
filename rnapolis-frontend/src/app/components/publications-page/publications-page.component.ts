@@ -60,14 +60,16 @@ export class PublicationsPageComponent implements OnInit {
     const editDialogRef = this.openDialog(publication);
 
     editDialogRef.afterClosed().subscribe(result => {
-      this.publicationsService.updatePublication(result.id, result).subscribe(
-        editedPublication => {
-          this.publications[this.publications.indexOf(editedPublication)] = editedPublication;
-          this.notifier.notify('success', 'Successfully edited the publication!');
-        },
-        () => {
-          this.notifier.notify('error', 'Failed to edit the publication!');
-        });
+      if (result) {
+        this.publicationsService.updatePublication(result.id, result).subscribe(
+          editedPublication => {
+            this.publications[this.publications.indexOf(editedPublication)] = editedPublication;
+            this.notifier.notify('success', 'Successfully edited the publication!');
+          },
+          () => {
+            this.notifier.notify('error', 'Failed to edit the publication!');
+          });
+      }
     });
   }
 

@@ -23,6 +23,7 @@
 
   <mat-form-field>
     <input formControlName="editors" placeholder="Editor(s)" matInput/>
+    <mat-error *ngIf="hasError('editors', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -30,23 +31,26 @@
     <mat-error *ngIf="hasError('journal', 'required') || hasError('journal', 'whitespace') ">
       Journal or book title is required
     </mat-error>
-
   </mat-form-field>
 
   <mat-form-field>
     <input formControlName="volumeIssue" placeholder="Volume and issue" matInput/>
+    <mat-error *ngIf="hasError('volumeIssue', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input formControlName="publishers" placeholder="Publisher(s)" matInput/>
+    <mat-error *ngIf="hasError('publishers', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input formControlName="pages" placeholder="Page(s)" matInput/>
+    <mat-error *ngIf="hasError('pages', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input formControlName="link" placeholder="Link" matInput/>
+    <mat-error *ngIf="hasError('link', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
 </div>
 

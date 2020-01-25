@@ -61,24 +61,26 @@ export class AwardsTimelineComponent implements OnInit {
     const editDialogRef = this.openAwardDialog(award);
 
     editDialogRef.afterClosed().subscribe(result => {
-      this.awardsService.updateAward(result.id, result).subscribe(
-        () => {
-          this.shuffleAwards(result);
-          if (this.awards.get(oldAward).length === 1) {
-            this.awards.get(oldAward).splice(0, this.awards.get(oldAward).length);
-          }
-          this.notifier.notify('success', 'Successfully edited an award!');
-        },
-        () => {
-          this.notifier.notify('error', 'Failed to edit an award!');
-        });
+      if (result) {
+        this.awardsService.updateAward(result.id, result).subscribe(
+          () => {
+            this.shuffleAwards(result);
+            if (this.awards.get(oldAward).length === 1) {
+              this.awards.get(oldAward).splice(0, this.awards.get(oldAward).length);
+            }
+            this.notifier.notify('success', 'Successfully edited an award!');
+          },
+          () => {
+            this.notifier.notify('error', 'Failed to edit an award!');
+          });
+      }
     });
   }
 
   addAward() {
     const addAwardDialogRef = this.openAwardDialog({id: null, year: null, description: ''});
     addAwardDialogRef.afterClosed().subscribe(newAward => {
-      if (newAward.year != null) {
+      if (newAward) {
         this.awardsService.addAward(newAward).subscribe(
           () => {
             this.shuffleAwards(newAward);
@@ -104,7 +106,7 @@ export class AwardsTimelineComponent implements OnInit {
     if (a.key < b.key) {
       return b.key;
     }
-  }
+  };
 
   private shuffleAwards(newAward: Award): void {
     const year = this.awards.get(newAward.year);

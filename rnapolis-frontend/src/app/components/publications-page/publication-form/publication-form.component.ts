@@ -3,6 +3,7 @@ import {Publication} from '../../../entity/publication';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {AppComponent} from '../../../app.component';
+import Utils from '../../../services/utils';
 
 @Component({
   selector: 'app-publication-form',
@@ -21,10 +22,10 @@ export class PublicationFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fromBuilder.group({
-      authors: [this.publication.authors, [Validators.required, AppComponent.noWhitespaceValidator]],
-      title: [this.publication.title, [Validators.required, AppComponent.noWhitespaceValidator]],
+      authors: [this.publication.authors, [Validators.required, Utils.noWhitespaceValidator]],
+      title: [this.publication.title, [Validators.required, Utils.noWhitespaceValidator]],
       editors: [this.publication.editors],
-      journal: [this.publication.journal, [Validators.required, AppComponent.noWhitespaceValidator]],
+      journal: [this.publication.journal, [Validators.required, Utils.noWhitespaceValidator]],
       volumeIssue: [this.publication.volumeIssue],
       publishers: [this.publication.publishers],
       year: [this.publication.year, [
@@ -38,15 +39,15 @@ export class PublicationFormComponent implements OnInit {
 
   saveClicked() {
     if (this.form.valid) {
-      this.publication.authors = this.form.value.authors.trim();
-      this.publication.title = this.form.value.title.trim();
-      this.publication.editors = this.form.value.editors.trim();
-      this.publication.journal = this.form.value.journal.trim();
-      this.publication.volumeIssue = this.form.value.volumeIssue.trim();
-      this.publication.publishers = this.form.value.publishers.trim();
+      this.publication.authors = this.form.value.authors;
+      this.publication.title = this.form.value.title;
+      this.publication.editors = this.form.value.editors;
+      this.publication.journal = this.form.value.journal;
+      this.publication.volumeIssue = this.form.value.volumeIssue;
+      this.publication.publishers = this.form.value.publishers;
       this.publication.year = this.form.value.year;
-      this.publication.pages = this.form.value.pages.trim();
-      this.publication.link = this.form.value.link.trim();
+      this.publication.pages = this.form.value.pages;
+      this.publication.link = this.form.value.link;
       this.dialogRef.close(this.publication);
     }
   }

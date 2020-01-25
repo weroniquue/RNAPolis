@@ -19,9 +19,11 @@
   </mat-form-field>
   <mat-form-field>
     <input formControlName="position" matInput placeholder="Position">
+    <mat-error *ngIf="hasError('position', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea formControlName="description" matInput placeholder="Description"></textarea>
+    <mat-error *ngIf="hasError('description', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
 </div>
 

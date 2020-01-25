@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {TeamMember} from '../../../entity/team-member';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import {AppComponent} from '../../../app.component';
+import Utils from '../../../services/utils';
 
 @Component({
   selector: 'app-member-manager',
@@ -30,10 +31,10 @@ export class MemberManagerComponent implements OnInit {
   ngOnInit() {
     this.form = this.fromBuilder.group({
       image: [this.member.imagePath],
-      name: [this.member.name, [Validators.required, AppComponent.noWhitespaceValidator]],
-      surname: [this.member.surname, [Validators.required, AppComponent.noWhitespaceValidator]],
-      position: [this.member.position],
-      description: [this.member.description]
+      name: [this.member.name, [Validators.required, Utils.noWhitespaceValidator]],
+      surname: [this.member.surname, [Validators.required, Utils.noWhitespaceValidator]],
+      position: [this.member.position, Utils.noWhitespaceValidator],
+      description: [this.member.description, Utils.noWhitespaceValidator]
     });
   }
 

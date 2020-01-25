@@ -13,14 +13,9 @@
     <mat-error *ngIf="hasError('link', 'required')">Link is required</mat-error>
     <mat-error *ngIf="hasError('link', 'pattern')">This is not url!</mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <mat-select formControlName="category">
-      <mat-option *ngFor="let category of categories" [value]="category">
-        {{category}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <ng-multiselect-dropdown [data]="availableCategories" [settings]="dropdownSettings"
+                           formControlName="categories">
+  </ng-multiselect-dropdown>
 </div>
 
 <div mat-dialog-actions>

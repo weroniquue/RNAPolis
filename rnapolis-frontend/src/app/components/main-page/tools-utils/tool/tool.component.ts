@@ -71,14 +71,16 @@ export class ToolComponent implements OnInit {
       data: [this.categories, this.tool]
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.toolsService.updateTool(result.id, result).subscribe(
-        editedTool => {
-          this.toolChanged.emit(editedTool);
-          this.notifier.notify('success', 'Successfully edited an tool!');
-        },
-        () => {
-          this.notifier.notify('error', 'Failed to edit an tool!');
-        });
+      if (result) {
+        this.toolsService.updateTool(result.id, result).subscribe(
+          editedTool => {
+            this.toolChanged.emit(editedTool);
+            this.notifier.notify('success', 'Successfully edited an tool!');
+          },
+          () => {
+            this.notifier.notify('error', 'Failed to edit an tool!');
+          });
+      }
     });
   }
 }

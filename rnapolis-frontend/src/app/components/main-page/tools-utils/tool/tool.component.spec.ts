@@ -46,7 +46,7 @@ describe('ToolComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ToolComponent);
     component = fixture.componentInstance;
-    component.tool = {id: 'id', name: 'tool', description: 'desc', link: 'https://localshot:3000', category: 'category'};
+    component.tool = {id: 'id', name: 'tool', description: 'desc', link: 'https://localshot:3000', categories: ['category1', 'category2']};
     fixture.detectChanges();
   });
 

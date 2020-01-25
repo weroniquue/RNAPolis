@@ -10,7 +10,7 @@ export class ToolFilterPipe implements PipeTransform {
     if (!tools || !filter) {
       return tools;
     }
-    return tools.filter(tool => tool.category === filter);
+    return tools.filter(tool => tool.categories.indexOf(filter) > -1);
   }
-
 }
+

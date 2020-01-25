@@ -9,6 +9,7 @@
 
 # dependencies
 /node_modules
+/src/main
 
 # profiling files
 chrome-profiler-events*.json
@@ -55,6 +56,9 @@ Thumbs.db
 *.ear
 *.nar
 hs_err_pid*
+
+rnapolis-backend/src/main/resources/static
+rnapolis-frontend/src/main/
 
 ##############################
 ## Maven

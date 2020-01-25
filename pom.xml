@@ -17,5 +17,6 @@
 
     <modules>
         <module>rnapolis-backend</module>
+        <module>rnapolis-frontend</module>
     </modules>
 </project>

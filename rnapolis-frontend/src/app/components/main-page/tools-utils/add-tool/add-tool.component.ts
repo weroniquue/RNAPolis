@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Tool} from '../../../../entity/tool';
+import {AppComponent} from '../../../../app.component';
 
 @Component({
   selector: 'app-add-tool',
@@ -25,11 +26,11 @@ export class AddToolComponent implements OnInit {
   ngOnInit() {
     this.toolForm = this.fromBuilder.group({
       id: this.tool.id,
-      name: [this.tool.name, Validators.required],
-      description: [this.tool.description, Validators.required],
-      link: [this.tool.link,
-        [Validators.required, Validators.pattern('^((https?|ftp|smtp):\\/\\/)?(www.)?[a-z0-9]+\\.[a-z]+(\\/[a-zA-Z0-9#]+\\/?)*$')]],
-      category: [this.tool.category, Validators.required],
+      name: [this.tool.name, [Validators.required, AppComponent.noWhitespaceValidator]],
+      description: [this.tool.description, [Validators.required, AppComponent.noWhitespaceValidator]],
+      link: [this.tool.link, [Validators.required,
+        Validators.pattern('^((https?|ftp|smtp):\\/\\/)?(www.)?[a-z0-9]+\\.[a-z]+(\\/[a-zA-Z0-9#]+\\/?)*$')]],
+      category: [this.tool.category, [Validators.required, AppComponent.noWhitespaceValidator]],
     });
   }
 

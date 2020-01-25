@@ -16,13 +16,18 @@
       </button>
     </div>
 
-
-    <p> {{publication.title}},
-      <span style="font-style: italic">{{publication.journal}}</span>
-      {{publication.volumeIssue}},
-      <span style="font-weight: bold">{{publication.year.toString()}}</span>,
-      {{publication.pages}}
+    <p>
+      {{publication.authors}} ({{publication.year.toString()}}) {{publication.title}},
+      <span *ngIf="publication.editors"> {{publication.editors}},</span>
+      <span style="font-style: italic"> {{publication.journal}}</span>
+      <span *ngIf="publication.volumeIssue"> {{publication.volumeIssue}},</span>
+      <span *ngIf="publication.publishers">  {{publication.publishers}},</span>
+      <span *ngIf="publication.pages"> {{publication.pages}}</span>.
+      <span *ngIf="publication.link">
+        <button (click)="redirectToUrl(publication.link)" mat-button>
+          <mat-icon>link</mat-icon>
+        </button>
+      </span>
     </p>
-    <p> {{publication.authors}} </p>
-  </mat-card >
+  </mat-card>
 </section>

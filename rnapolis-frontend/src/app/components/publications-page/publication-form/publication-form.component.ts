@@ -1,7 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Publication} from '../../../entity/publication';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-publication-form',
@@ -20,26 +21,31 @@ export class PublicationFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fromBuilder.group({
-      authors: [this.publication.authors, Validators.required],
-      title: [this.publication.title, Validators.required],
-      journal: [this.publication.journal, Validators.required],
-      volumeIssue: [this.publication.volumeIssue, Validators.required],
+      authors: [this.publication.authors, [Validators.required, AppComponent.noWhitespaceValidator]],
+      title: [this.publication.title, [Validators.required, AppComponent.noWhitespaceValidator]],
+      editors: [this.publication.editors],
+      journal: [this.publication.journal, [Validators.required, AppComponent.noWhitespaceValidator]],
+      volumeIssue: [this.publication.volumeIssue],
+      publishers: [this.publication.publishers],
       year: [this.publication.year, [
         Validators.required,
         Validators.minLength(4),
         Validators.pattern('^(0|[1-9][0-9]*)$')]],
-      pages: [this.publication.pages, Validators.required]
+      pages: [this.publication.pages]
     });
   }
 
   saveClicked() {
     if (this.form.valid) {
-      this.publication.authors = this.form.value.authors;
-      this.publication.title = this.form.value.title;
-      this.publication.journal = this.form.value.journal;
-      this.publication.volumeIssue = this.form.value.volumeIssue;
+      this.publication.authors = this.form.value.authors.trim();
+      this.publication.title = this.form.value.title.trim();
+      this.publication.editors = this.form.value.editors.trim();
+      this.publication.journal = this.form.value.journal.trim();
+      this.publication.volumeIssue = this.form.value.volumeIssue.trim();
+      this.publication.publishers = this.form.value.publishers.trim();
       this.publication.year = this.form.value.year;
-      this.publication.pages = this.form.value.pages;
+      this.publication.pages = this.form.value.pages.trim();
+      this.publication.link = this.form.value.link.trim();
       this.dialogRef.close(this.publication);
     }
   }

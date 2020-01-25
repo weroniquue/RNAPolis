@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Award} from '../../../entity/award';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-edit-awards',
@@ -26,8 +27,8 @@ export class EditAwardsComponent implements OnInit {
           Validators.required,
           Validators.pattern('^[0-9]{4}$')
         ])],
-    description: [this.award.description, Validators.required]
-  });
+      description: [this.award.description, [Validators.required, AppComponent.noWhitespaceValidator]]
+    });
   }
 
   save() {

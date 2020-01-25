@@ -15,6 +15,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import rnapolis.models.Award;
 import rnapolis.models.Publication;
+import rnapolis.models.Tool;
 import rnapolis.models.User;
 
 import java.io.File;
@@ -90,6 +91,33 @@ public class DatabaseChangelog {
                     try {
                         String jsonString = getJsonString(url);
                         List<Publication> objects = GSON.fromJson(jsonString, new TypeToken<List<Publication>>() {
+                        }.getType());
+                        objects.forEach(mongoTemplate::save);
+                    } catch (URISyntaxException e) {
+                        logger.info("Can't find file {} in resources", path);
+                    }
+                }));
+    }
+
+    @ChangeSet(order = "005", id = "initialToolsData", author = "")
+    public void initialToolsData(MongoTemplate mongoTemplate, Environment environment) {
+        Optional.ofNullable(environment.getProperty("tools.filePath"))
+                .ifPresent(path -> {
+                    String jsonString = importFromFile(path);
+                    List<Tool> objects = GSON.fromJson(jsonString, new TypeToken<List<Tool>>() {
+                    }.getType());
+                    objects.forEach(mongoTemplate::save);
+                });
+    }
+
+    @Profile("dev")
+    @ChangeSet(order = "006", id = "initialToolsDataOnDev", author = "")
+    public void initialToolsDataOnDev(MongoTemplate mongoTemplate, Environment environment) {
+        Optional.ofNullable(environment.getProperty("tools.filePath"))
+                .ifPresent(path -> Optional.ofNullable(ClassLoader.getSystemClassLoader().getResource(path)).ifPresent(url -> {
+                    try {
+                        String jsonString = getJsonString(url);
+                        List<Tool> objects = GSON.fromJson(jsonString, new TypeToken<List<Tool>>() {
                         }.getType());
                         objects.forEach(mongoTemplate::save);
                     } catch (URISyntaxException e) {

@@ -73,14 +73,6 @@
     ]
   },
   {
-    "name": "WebTetrado",
-    "description": "Not working yet.",
-    "link": "http://webtetrado.cs.put.poznan.pl/",
-    "categories": [
-      "RNA tertiary structure"
-    ]
-  },
-  {
     "name": "ONQUADRO",
     "description": "ONQUADRO database collects tetrads and quadruplexes found in PDB-deposited structures of nucleic acids. It stores their sequences, secondary and tertiary structures, and motif-specific description including planarity, rise and twist parameters, ONZ classification, dot-bracket encoding, arc diagrams, etc. Graphical 2D and 3D views complement their characteristics.",
     "link": "http://onquadro.cs.put.poznan.pl/home",

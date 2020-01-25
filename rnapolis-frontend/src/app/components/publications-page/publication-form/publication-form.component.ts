@@ -31,7 +31,8 @@ export class PublicationFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(4),
         Validators.pattern('^(0|[1-9][0-9]*)$')]],
-      pages: [this.publication.pages]
+      pages: [this.publication.pages],
+      link: [this.publication.link]
     });
   }
 

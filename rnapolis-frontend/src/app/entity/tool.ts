@@ -3,5 +3,5 @@ export interface Tool {
   name: string;
   description: string;
   link: string;
-  category: string[];
+  categories: string[];
 }

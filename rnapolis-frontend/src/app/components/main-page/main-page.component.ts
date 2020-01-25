@@ -7,6 +7,8 @@ import Utils from '../../services/utils';
 import {User} from '../../entity/user';
 import {ToolsService} from '../../services/tools.service';
 import {NotifierService} from 'angular-notifier';
+import {Award} from '../../entity/award';
+import {EditAwardsComponent} from '../awards-timeline/edit-awards/edit-awards.component';
 
 @Component({
   selector: 'app-main-page',
@@ -40,6 +42,7 @@ export class MainPageComponent implements OnInit {
 
   addTool(): void {
     const dialogRef = this.dialog.open(AddToolComponent, {
+      disableClose: true,
       width: '80vw',
       panelClass: 'form-dialog-container',
       data: [this.categories, {}]

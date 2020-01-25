@@ -1,0 +1,109 @@
+[
+  {
+    "name": "RNA FRABASE",
+    "description": "If one compares the three dimensional RNA structure to a spatial puzzle, the RNA FRABASE allows to pull out a defined piece of this puzzle - the 3D RNA fragment. The architecture of the web-accessible RNA FRABASE engine and database is based on the following information path: PDB-deposited RNA structures » RNA sequences and secondary structures described in the dot-bracket notation » secondary structures of RNA fragments » 3D RNA fragments.\nIn the 2.0 ver. database contains RNA sequences and secondary structures, described in the dot-bracket notation, derived from 2753 PDB-deposited RNA structures and their complexes. It also contains atom coordinates of the unmodified and modified nucleotide and nucleoside residues (1921887 cases) extracted from the PDB-deposited RNA structures, as well as torsion and pseudotorsion angle values, sugar pucker parameters and classification of base pair types. Also new functionalities \"Structural elements\" and \"Secondary structures\" were added.",
+    "link": "http://rnafrabase.cs.put.poznan.pl/",
+    "categories": [
+      "3D RNA structure"
+    ]
+  },
+  {
+    "name": "RNAComposer",
+    "description": "Here, we present RNAComposer ver. 1.0 which greatly facilitates an access to RNA structure 3D-models.",
+    "link": "http://rnacomposer.cs.put.poznan.pl/",
+    "categories": [
+      "3D RNA structure"
+    ]
+  },
+  {
+    "name": "RNApdbee",
+    "description": "Here, we present RNApdbee which greatly facilitates an access to RNA secondary structure topology extracted from PDB/mmCIF files of both, knotted and unknotted RNA structures. The tool also allows to convert between BPSEQ, CT and dot-bracket notations, and provides visualization of RNA secondary structures.",
+    "link": "http://rnapdbee.cs.put.poznan.pl/",
+    "categories": [
+      "RNA secondary structure"
+    ]
+  },
+  {
+    "name": "RNAvista",
+    "description": "A versatile web server for reliable prediction of extended RNA secondary structure. It is an implementation of our former concept (Rybarczyk et al.) based on four-stage computation: (1) canonical secondary structure is predicted from a user-provided RNA sequence (this step is optional and performs if canonical secondary structure was not defined at the input); (2) RNA 3D model is predicted from secondary structure containing canonical base pairs only; (3) the obtained 3D model is used to derive the extended secondary structure; (4) extended secondary structure is drawn, non-canonical base pairs are classifiend and annotated. The tool effectively incorporates specialized engine versions of RNAComposer in the second stage, and RNApdbee in the third stage of the process.",
+    "link": "http://rnavista.cs.put.poznan.pl",
+    "categories": [
+      "RNA secondary structure"
+    ]
+  },
+  {
+    "name": "RNAfitme",
+    "description": "A versatile web server tool for remodeling and refining of nucleobase and nucleoside residue conformations for the fixed-backbone RNA 3D structure. Our approach incorporates dedicated libraries encompassing torsional angles distribution investigated in a conformational space of high-resolution RNA 3D structures deposited in PDB. RNAfitme allows users for the prediction of RNA 3D models by threading homologous RNA sequence onto fixed-backbone RNA 3D template as well as refinement of artificial RNA 3D models or RNA 3D structures determined experimentally in order to remove steric clashes observed upon structure quality assessment.",
+    "link": "http://rnafitme.cs.put.poznan.pl/",
+    "categories": [
+      "RNA secondary structure"
+    ]
+  },
+  {
+    "name": "RNAssess",
+    "description": "RNAssess is a computational server for comparison of RNA 3D models with the reference structure and for discrimination between the correct and incorrect models. The approach is based on the idea of local neighborhood, defined as a set of atoms included in the sphere centered around a user-defined atom. A unique feature of the RNAssess is the simultaneous visualization of the model-reference structure distance at different precision levels, from the individual residues to the entire molecules.",
+    "link": "http://rnassess.cs.put.poznan.pl/",
+    "categories": [
+      "3D RNA structure"
+    ]
+  },
+  {
+    "name": "RNAtive",
+    "description": "RNAtive addresses the problem of ranking RNA 3D models and recognizing the native-like structure in the set of tertiary models when the reference structure is unknown. It works on RNA structures having the same sequence. Up to 100 structures are accepted at the input in one run of the system.\n\nRNAtive follows the multi-stage computation scheme. First, it retrieves the interaction network for every input RNA 3D model. In this step, it applies selected functions adapted from RNApdbee. Next, it builds a consensus-driven secondary structure taking into account all the interaction networks and a predefined confidence threshold. In the third step, it computes INF (Interaction Network Fidelity) for every input RNA model compared to the consensus. It also evaluates the confidence of every base-pair in each input RNA model following the binary classification test. Finally, it constructs the INF-based ranking of all analyzed 3D models. RNAtive outputs the final ranking, base-pair confidence values and consensus secondary structure. The consensus is presented in multi-line dot-bracket notation and graphic format.",
+    "link": "http://rnative.cs.put.poznan.pl/",
+    "categories": [
+      "3D RNA structure"
+    ]
+  },
+  {
+    "name": "RNathor",
+    "description": "RNAthor is a tool for the fully automated normalization of SHAPE data resolved by capillary electrophoresis and processed in ShapeFinder. RNAthor significantly reduces the time required for data analysis and provides tools for fast and easy SHAPE-CE data visualization and statistical analysis. The tool can be applied to analyze data from other RNA probing methods (i.a. DMS, hydroxyl radicals, and enzyme-based) if capillary electrophoresis and ShapeFinder were used for data collection.",
+    "link": "http://rnathor.cs.put.poznan.pl/",
+    "categories": []
+  },
+  {
+    "name": "RNAtango",
+    "description": "",
+    "link": "http://rnatango.cs.put.poznan.pl/",
+    "categories": [
+      "3D RNA structure"
+    ]
+  },
+  {
+    "name": "WebTetrado",
+    "description": "Not working yet.",
+    "link": "http://webtetrado.cs.put.poznan.pl/",
+    "categories": []
+  },
+  {
+    "name": "ONQUADRO",
+    "description": "ONQUADRO database collects tetrads and quadruplexes found in PDB-deposited structures of nucleic acids. It stores their sequences, secondary and tertiary structures, and motif-specific description including planarity, rise and twist parameters, ONZ classification, dot-bracket encoding, arc diagrams, etc. Graphical 2D and 3D views complement their characteristics.",
+    "link": "http://onquadro.cs.put.poznan.pl/home",
+    "categories": [
+      "3D RNA structure",
+      "RNA secondary structure"
+    ]
+  },
+  {
+    "name": "RNAlyzer",
+    "description": "RNAlyzer is a computational method for comparison of RNA 3D models with the reference structure and for discrimination between the correct and incorrect models. Our approach is based on the idea of local neighborhood, defined as a set of atoms included in the sphere centered around a user-defined atom. A unique feature of the RNAlyzer is the simultaneous visualization of the model-reference structure distance at different precision levels, from the individual residues to the entire molecules.",
+    "link": "http://rnalyzer.cs.put.poznan.pl/",
+    "categories": [
+      "3D RNA structure"
+    ]
+  },
+  {
+    "name": "MCQ4Structures",
+    "description": "Standalone application",
+    "link": "http://bio.cs.put.poznan.pl/files/52234aef9dfb89e2e2000001/download/",
+    "categories": []
+  },
+  {
+    "name": "ElTetrado",
+    "description": "This is an application to analyze base pairing patterns of DNA/RNA 3D structures to find and classify tetrads and quadruplexes. ElTetrado assigns tetrads to one of the ONZ classes (O, N, Z) alongside with the directionality of the tetrad (+/-) determined by the bonds between bases and their non-canonical interactions. The interactions follow Leontis/Westhof classification (Leontis and Westhof, 2001). Watson-Crick (W) edge of first base in the tetrad structure exposed to the Hoogsteen (H) edge of the next nucleobase from the same tetrad sets the tetrad directionality, clockwise (+) or anticlockwise (-).",
+    "link": "https://github.com/tzok/eltetrado/",
+    "categories": [
+      "3D RNA structure"
+    ]
+  }
+]

@@ -28,7 +28,7 @@ export class MainPageComponent implements OnInit {
     this.notifier = notifierService;
     this.authenticationService.currentUser.subscribe(value => this.user = value);
 
-    this.categories = ['category12', 'category1'];
+    this.categories = ['3D RNA structure', 'RNA secondary structure'];
   }
 
   ngOnInit() {

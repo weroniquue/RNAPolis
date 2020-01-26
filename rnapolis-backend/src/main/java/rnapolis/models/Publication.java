@@ -14,22 +14,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 public class Publication {
 
-    @Id
-    private String id;
+  @Id private String id;
 
-    private String authors;
-    private String title;
-    private String editors;
-    private String journal;
-    private String volumeIssue;
-    private String publishers;
-    private Integer year;
-    private String pages;
-    private String link;
+  private String authors;
+  private String title;
+  private String editors;
+  private String journal;
+  private String volumeIssue;
+  private String publishers;
+  private Integer year;
+  private String pages;
+  private String link;
 
-    @CreatedDate
-    private Instant createdDate;
+  @CreatedDate private Instant createdDate;
 
-    @LastModifiedDate
-    private Instant lastModifiedDate;
+  @LastModifiedDate private Instant lastModifiedDate;
 }

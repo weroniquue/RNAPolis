@@ -47,10 +47,10 @@ export class AwardsTimelineComponent implements OnInit {
         this.awardsService.deleteAward(award.id).subscribe(
           () => {
             this.awards.get(award.year).splice(this.awards.get(award.year).indexOf(award), 1);
-            this.notifier.notify('success', 'Successfully deleted an award!');
+            this.notifier.notify('success', 'Successfully deleted the award!');
           },
           () => {
-            this.notifier.notify('error', 'Failed to delete an award!');
+            this.notifier.notify('error', 'Failed to delete the award!');
           });
       }
     });
@@ -68,10 +68,10 @@ export class AwardsTimelineComponent implements OnInit {
             if (this.awards.get(oldAward).length === 1) {
               this.awards.get(oldAward).splice(0, this.awards.get(oldAward).length);
             }
-            this.notifier.notify('success', 'Successfully edited an award!');
+            this.notifier.notify('success', 'Successfully edited the award!');
           },
           () => {
-            this.notifier.notify('error', 'Failed to edit an award!');
+            this.notifier.notify('error', 'Failed to edit the award!');
           });
       }
     });
@@ -84,10 +84,10 @@ export class AwardsTimelineComponent implements OnInit {
         this.awardsService.addAward(newAward).subscribe(
           () => {
             this.shuffleAwards(newAward);
-            this.notifier.notify('success', 'Successfully added an award!');
+            this.notifier.notify('success', 'Successfully added the award!');
           },
           () => {
-            this.notifier.notify('error', 'Failed to add an award!');
+            this.notifier.notify('error', 'Failed to add the award!');
           });
       }
     });

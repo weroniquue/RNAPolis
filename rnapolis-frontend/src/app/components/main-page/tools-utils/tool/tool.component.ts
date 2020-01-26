@@ -54,10 +54,10 @@ export class ToolComponent implements OnInit {
         this.toolsService.deleteTool(this.tool.id).subscribe(
           () => {
             this.toolRemoved.emit(this.tool);
-            this.notifier.notify('success', 'Successfully deleted an tool!');
+            this.notifier.notify('success', 'Successfully deleted the tool!');
           },
           () => {
-            this.notifier.notify('error', 'Failed to delete an tool!');
+            this.notifier.notify('error', 'Failed to delete the tool!');
           });
       }
     });
@@ -75,10 +75,10 @@ export class ToolComponent implements OnInit {
         this.toolsService.updateTool(result.id, result).subscribe(
           editedTool => {
             this.toolChanged.emit(editedTool);
-            this.notifier.notify('success', 'Successfully edited an tool!');
+            this.notifier.notify('success', 'Successfully edited the tool!');
           },
           () => {
-            this.notifier.notify('error', 'Failed to edit an tool!');
+            this.notifier.notify('error', 'Failed to edit the tool!');
           });
       }
     });

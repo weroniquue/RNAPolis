@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Award} from '../../../entity/award';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import Utils from '../../../services/utils';
 
 @Component({
   selector: 'app-edit-awards',
@@ -26,8 +27,8 @@ export class EditAwardsComponent implements OnInit {
           Validators.required,
           Validators.pattern('^[0-9]{4}$')
         ])],
-    description: [this.award.description, Validators.required]
-  });
+      description: [this.award.description, [Validators.required, Utils.noWhitespaceValidator]]
+    });
   }
 
   save() {
@@ -39,7 +40,7 @@ export class EditAwardsComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close(this.award);
+    this.dialogRef.close(null);
   }
 
   public hasError = (controlName: string, errorName: string) => {

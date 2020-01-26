@@ -31,9 +31,9 @@ export class TeamPageComponent implements OnInit {
   ngOnInit() {
     Utils.closeMenu();
     this.teamMembersService.getTeamMembers()
-    .subscribe(teamMembers => {
-      this.teamMembers = teamMembers;
-    });
+      .subscribe(teamMembers => {
+        this.teamMembers = teamMembers;
+      });
   }
 
   setDefaultImage(member: TeamMember) {
@@ -63,14 +63,16 @@ export class TeamPageComponent implements OnInit {
   editElement(member: TeamMember) {
     const editDialogRef = this.openMemberDialog(member);
     editDialogRef.afterClosed().subscribe(result => {
-      this.teamMembersService.updateTeamMember(result.id, result).subscribe(
-        editedTeamMember => {
-          this.teamMembers[this.teamMembers.indexOf(editedTeamMember)] = editedTeamMember;
-          this.notifier.notify('success', 'Successfully edited a team member!');
-        },
-        () => {
-          this.notifier.notify('error', 'Failed to edit a team member!');
-        });
+      if (result) {
+        this.teamMembersService.updateTeamMember(result.id, result).subscribe(
+          editedTeamMember => {
+            this.teamMembers[this.teamMembers.indexOf(editedTeamMember)] = editedTeamMember;
+            this.notifier.notify('success', 'Successfully edited a team member!');
+          },
+          () => {
+            this.notifier.notify('error', 'Failed to edit a team member!');
+          });
+      }
     });
   }
 
@@ -84,7 +86,7 @@ export class TeamPageComponent implements OnInit {
       description: ''
     });
     addTeamMemberDialogRef.afterClosed().subscribe(newTeamMember => {
-      if (newTeamMember != null) {
+      if (newTeamMember) {
         this.teamMembersService.addTeamMember(newTeamMember).subscribe(
           createdTeamMember => {
             this.teamMembers.unshift(createdTeamMember);

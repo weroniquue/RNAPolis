@@ -53,10 +53,10 @@ export class MainPageComponent implements OnInit {
           createdTool => {
             this.tools.push(createdTool);
             this.tools.sort((a, b) => a.name > b.name ? 1 : -1);
-            this.notifier.notify('success', 'Successfully added an tool!');
+            this.notifier.notify('success', 'Successfully added the tool!');
           },
           error => {
-            this.notifier.notify('error', 'Failed to add an tool!');
+            this.notifier.notify('error', 'Failed to add the tool!');
           });
       }
     });

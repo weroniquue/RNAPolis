@@ -1,30 +1,56 @@
 <h1 mat-dialog-title>Publication</h1>
 <div [formGroup]="form" mat-dialog-content>
   <mat-form-field>
-    <input formControlName="authors" matInput placeholder="Author(s)">
-    <mat-error *ngIf="hasError('authors', 'required')">Author is required</mat-error>
+    <input formControlName="authors" placeholder="Author(s)" matInput/>
+    <mat-error *ngIf="hasError('authors', 'required') || hasError('authors', 'whitespace')">
+      Author is required
+    </mat-error>
   </mat-form-field>
+
   <mat-form-field>
-    <input formControlName="title" matInput placeholder="Title">
-    <mat-error *ngIf="hasError('title', 'required')">Title is required</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input formControlName="journal" matInput placeholder="Journal">
-    <mat-error *ngIf="hasError('journal', 'required')">Journal is required</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input formControlName="volumeIssue" matInput placeholder="Volume and issue">
-    <mat-error *ngIf="hasError('volumeIssue', 'required')">Volume is required</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input formControlName="year" matInput placeholder="Year" maxlength="4">
+    <input formControlName="year" placeholder="Year" maxlength="4" matInput/>
     <mat-error *ngIf="hasError('year', 'required')">Year is required</mat-error>
     <mat-error *ngIf="hasError('year', 'minlength')">Year must be 4 characters long</mat-error>
     <mat-error *ngIf="hasError('year', 'pattern')">Only digits</mat-error>
   </mat-form-field>
+
   <mat-form-field>
-    <input formControlName="pages" matInput placeholder="Page(s)"/>
-    <mat-error *ngIf="hasError('pages', 'required')">Page is required</mat-error>
+    <input formControlName="title" placeholder="Title" matInput/>
+    <mat-error *ngIf="hasError('title', 'required') || hasError('title', 'whitespace')">
+      Title is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="editors" placeholder="Editor(s)" matInput/>
+    <mat-error *ngIf="hasError('editors', 'whitespace')">Please provide valid input</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="journal" placeholder="Journal or book title" matInput/>
+    <mat-error *ngIf="hasError('journal', 'required') || hasError('journal', 'whitespace') ">
+      Journal or book title is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="volumeIssue" placeholder="Volume and issue" matInput/>
+    <mat-error *ngIf="hasError('volumeIssue', 'whitespace')">Please provide valid input</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="publishers" placeholder="Publisher(s)" matInput/>
+    <mat-error *ngIf="hasError('publishers', 'whitespace')">Please provide valid input</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="pages" placeholder="Page(s)" matInput/>
+    <mat-error *ngIf="hasError('pages', 'whitespace')">Please provide valid input</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="link" placeholder="Link" matInput/>
+    <mat-error *ngIf="hasError('link', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
 </div>
 

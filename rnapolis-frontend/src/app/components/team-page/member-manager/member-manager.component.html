@@ -7,19 +7,23 @@
 
   <mat-form-field>
     <input formControlName="name" matInput placeholder="Name"/>
-    <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+    <mat-error *ngIf="hasError('name', 'required') || hasError('name', 'whitespace')">
+      Name is required
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <input formControlName="surname" matInput placeholder="Surname">
-    <mat-error *ngIf="hasError('surname', 'required')">Surname is required</mat-error>
+    <mat-error *ngIf="hasError('surname', 'required') || hasError('surname', 'whitespace')">
+      Surname is required
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <input formControlName="position" matInput placeholder="Position">
-    <mat-error *ngIf="hasError('position', 'required')">Position is required</mat-error>
+    <mat-error *ngIf="hasError('position', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea formControlName="description" matInput placeholder="Description"></textarea>
-    <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+    <mat-error *ngIf="hasError('description', 'whitespace')">Please provide valid input</mat-error>
   </mat-form-field>
 </div>
 

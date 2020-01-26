@@ -3,6 +3,7 @@ package rnapolis.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
+
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
@@ -34,14 +35,17 @@ public class PublicationController {
     return repository.findAllByOrderByYearDesc().stream()
         .filter(publication -> StringUtils.isNotEmpty(publication.getTitle()))
         .filter(publication -> StringUtils.isNotEmpty(publication.getAuthors()))
+        .filter(publication -> StringUtils.isNotBlank(publication.getJournal()))
         .filter(publication -> publication.getYear() != null)
         .collect(Collectors.toList());
-    }
+  }
 
   @GetMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
   public Publication findById(@PathVariable String id) {
-    return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Publication", id));
+    return repository
+        .findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Publication", id));
   }
 
   @PostMapping
@@ -52,21 +56,27 @@ public class PublicationController {
 
   @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.OK)
-  public Publication update(@PathVariable String id, @Valid @RequestBody Publication updatedPublication) {
-    Publication publication = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Publication", id));
+  public Publication update(
+      @PathVariable String id, @Valid @RequestBody Publication updatedPublication) {
+    Publication publication =
+        repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Publication", id));
     publication.setAuthors(updatedPublication.getAuthors());
     publication.setTitle(updatedPublication.getTitle());
+    publication.setEditors(updatedPublication.getEditors());
     publication.setJournal(updatedPublication.getJournal());
     publication.setVolumeIssue(updatedPublication.getVolumeIssue());
+    publication.setPublishers(updatedPublication.getPublishers());
     publication.setYear(updatedPublication.getYear());
     publication.setPages(updatedPublication.getPages());
+    publication.setLink(updatedPublication.getLink());
     return repository.save(publication);
   }
 
   @DeleteMapping(value = "/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void delete(@PathVariable("id") String id) {
-    Publication publication = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Publication", id));
+    Publication publication =
+        repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Publication", id));
     repository.delete(publication);
   }
 }

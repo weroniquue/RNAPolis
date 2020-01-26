@@ -5,39 +5,44 @@
     "journal": "Foundations of Computing and Decision Sciences",
     "volumeIssue": "44(2)",
     "year": 2019,
-    "pages": "241-257"
+    "pages": "241-257",
+    "link": "http://dx.doi.org/10.2478/fcds-2019-0012"
   },
   {
     "authors": "Antczak M, Zablocki M, Zok T, Rybarczyk A, Blazewicz J, Szachniuk M",
-    "title": " RNAvista: a webserver to assess RNA secondary structures with non-canonical base pairs",
+    "title": "RNAvista: a webserver to assess RNA secondary structures with non-canonical base pairs",
     "journal": "Bioinformatics",
     "volumeIssue": "35(1)",
     "year": 2019,
-    "pages": "152-155"
+    "pages": "152-155",
+    "link": "https://doi.org/10.1093/bioinformatics/bty609"
   },
   {
     "authors": "Antczak M, Zok T, Osowiecki M, Popenda M, Adamiak RW, Szachniuk M",
-    "title": " RNAfitme: a webserver for modeling nucleobase and nucleoside residue conformation in fixed-backbone RNA structures",
+    "title": "RNAfitme: a webserver for modeling nucleobase and nucleoside residue conformation in fixed-backbone RNA structures",
     "journal": "BMC Bioinformatics",
     "volumeIssue": "19(1)",
     "year": 2018,
-    "pages": "304"
+    "pages": "304",
+    "link": "https://rdcu.be/41Mx"
   },
   {
     "authors": "Wiedemann J, Zok T, Milostan M, Szachniuk M",
-    "title": " LCS-TA to identify similar fragments in RNA 3D structures",
+    "title": "LCS-TA to identify similar fragments in RNA 3D structures",
     "journal": "BMC Bioinformatics",
     "volumeIssue": "18",
     "year": 2017,
-    "pages": "456"
+    "pages": "456",
+    "link": "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-017-1867-6"
   },
   {
     "authors": "Zok T, Antczak M, Zurkowski M, Popenda M, Blazewicz J, Adamiak RW, Szachniuk M",
     "title": "RNApdbee 2.0: multifunctional tool for RNA structure annotation",
     "journal": "Nucleic Acids Research",
-    "volumeIssue": "46(W1",
+    "volumeIssue": "46(W1)",
     "year": 2018,
-    "pages": "W30-W35"
+    "pages": "W30-W35",
+    "link": "https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gky314/4990031?guestAccessKey=c292c7dc-a6d1-4076-b389-6ad1c1feca7c"
   },
   {
     "authors": "Antczak M, Popenda M, Zok T, Zurkowski M, Adamiak RW, Szachniuk M",
@@ -45,15 +50,8 @@
     "journal": "Bioinformatics",
     "volumeIssue": "34(8)",
     "year": 2018,
-    "pages": "1304-1312"
-  },
-  {
-    "authors": "Wiedemann J, Zok T, Milostan M, Szachniuk M",
-    "title": "LCS-TA to identify similar fragments in RNA 3D structures",
-    "journal": "BMC Bioinformatics",
-    "volumeIssue": "18",
-    "year": 2017,
-    "pages": "456"
+    "pages": "1304-1312",
+    "link": "https://academic.oup.com/bioinformatics/article/34/8/1304/4721780?guestAccessKey=bf94ccf6-c705-4b86-ab89-bf07071232eb"
   },
   {
     "authors": "Antczak M, Popenda M, Zok T, Sarzynska J, Ratajczak T, Tomczyk K, Adamiak RW, Szachniuk M",
@@ -61,15 +59,19 @@
     "journal": "Acta Biochimica Polonica",
     "volumeIssue": "63(4)",
     "year": 2016,
-    "pages": "737-744"
+    "pages": "737-744",
+    "link": "http://www.actabp.pl/pdf/4_2016/2016_1329.pdf"
   },
   {
     "authors": "Biesiada M, Purzycka KJ, Szachniuk M, Blazewicz J, Adamiak RW",
-    "title": "Automated RNA 3D structure prediction with RNAComposer, in Doug H. Turner, David H. Mathews (eds.) RNA Structure Determination: Methods and Protocols (Methods in Molecular Biology 1490)",
-    "journal": "Springer, Humana Press",
-    "volumeIssue": "",
+    "title": "Automated RNA 3D structure prediction with RNAComposer",
+    "editors": "in Doug H. Turner, David H. Mathews (eds.)",
+    "journal": "RNA Structure Determination: Methods and Protocols",
+    "volumeIssue": "(Methods in Molecular Biology 1490)",
+    "publishers": "Springer, Humana Press",
     "year": 2016,
-    "pages": "199-215"
+    "pages": "199-215",
+    "link": "http://link.springer.com/protocol/10.1007%2F978-1-4939-6433-8_13"
   },
   {
     "authors": "Rybarczyk A, Szostak N, Antczak M, Zok T, Popenda M, Adamiak RW, Blazewicz J, Szachniuk M",
@@ -77,7 +79,8 @@
     "journal": "BMC Bioinformatics",
     "volumeIssue": "16",
     "year": 2015,
-    "pages": "276"
+    "pages": "276",
+    "link": "http://www.biomedcentral.com/1471-2105/16/276"
   },
   {
     "authors": "Lukasiak P, Antczak M, Ratajczak T, Szachniuk M, Popenda M, Adamiak RW, Blazewicz J",
@@ -85,7 +88,8 @@
     "journal": "Nucleic Acids Research",
     "volumeIssue": "43(W1)",
     "year": 2015,
-    "pages": "W502-W506"
+    "pages": "W502-W506",
+    "link": "http://nar.oxfordjournals.org/content/early/2015/06/11/nar.gkv557.full"
   },
   {
     "authors": "Antczak M, Zok T, Popenda M, Lukasiak P, Adamiak RW, Blazewicz J, Szachniuk M",
@@ -93,15 +97,19 @@
     "journal": "Nucleic Acids Research",
     "volumeIssue": "42(W1)",
     "year": 2014,
-    "pages": "W368-W372"
+    "pages": "W368-W372",
+    "link": "http://nar.oxfordjournals.org/content/42/W1/W368.full.pdf+html"
   },
   {
     "authors": "Purzycka KJ, Popenda M, Szachniuk M, Antczak M, Lukasiak P, Blazewicz J, Adamiak RW",
-    "title": "Automated 3D RNA structure prediction using the RNAComposer method for riboswitches, in Shi-Jie Chen, Donald H. Burke-Aguero (eds.) Methods in Enzymology: Computational Methods for Understanding Riboswitches 553",
-    "journal": "Elsevier",
-    "volumeIssue": "",
+    "title": "Automated 3D RNA structure prediction using the RNAComposer method for riboswitches",
+    "editors": "in Shi-Jie Chen, Donald H. Burke-Aguero (eds.)",
+    "journal": "Methods in Enzymology: Computational Methods for Understanding Riboswitches",
+    "volumeIssue": "553",
+    "publishers": "Elsevier",
     "year": 2014,
-    "pages": "3-34"
+    "pages": "3-34",
+    "link": "http://dx.doi.org/10.1016/bs.mie.2014.10.050"
   },
   {
     "authors": "Zok T, Popenda M, Szachniuk M",
@@ -109,7 +117,8 @@
     "journal": "Central European Journal of Operations Research",
     "volumeIssue": "22(3)",
     "year": 2014,
-    "pages": "457-474"
+    "pages": "457-474",
+    "link": "http://link.springer.com/article/10.1007%2Fs10100-013-0296-5"
   },
   {
     "authors": "Lukasiak P, Antczak M, Ratajczak T, Bujnicki JM, Szachniuk M, Popenda M, Adamiak RW, Blazewicz J",
@@ -117,7 +126,8 @@
     "journal": "Nucleic Acids Research",
     "volumeIssue": "41(12)",
     "year": 2013,
-    "pages": "5978-90"
+    "pages": "5978-90",
+    "link": "http://nar.oxfordjournals.org/content/41/12/5978.full.pdf+html"
   },
   {
     "authors": "Popenda M, Szachniuk M, Antczak M, Purzycka KJ, Lukasiak P, Bartol N, Blazewicz J, Adamiak RW",
@@ -125,7 +135,8 @@
     "journal": "Nucleic Acids Research",
     "volumeIssue": "40(14)",
     "year": 2012,
-    "pages": "e112"
+    "pages": "e112",
+    "link": "http://nar.oxfordjournals.org/content/early/2012/04/26/nar.gks339.full.pdf+html"
   },
   {
     "authors": "Popenda M, Szachniuk M, Blazewicz M, Wasik S, Burke EK, Blazewicz J, Adamiak RW",
@@ -133,7 +144,8 @@
     "journal": "BMC Bioinformatics",
     "volumeIssue": "11",
     "year": 2010,
-    "pages": "231"
+    "pages": "231",
+    "link": "http://www.biomedcentral.com/1471-2105/11/231"
   },
   {
     "authors": "Popenda M, Blazewicz M, Szachniuk M, Adamiak RW",
@@ -141,6 +153,7 @@
     "journal": "Nucleic Acids Research",
     "volumeIssue": "36(1)",
     "year": 2008,
-    "pages": "D386-D391"
+    "pages": "D386-D391",
+    "link": "https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkm786"
   }
 ]

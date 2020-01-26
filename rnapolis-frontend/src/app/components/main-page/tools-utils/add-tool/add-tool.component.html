@@ -2,11 +2,15 @@
 <div [formGroup]="toolForm" mat-dialog-content>
   <mat-form-field>
     <input formControlName="name" matInput placeholder="Tool name">
-    <mat-error *ngIf="hasError('name', 'required')">Tool name is required</mat-error>
+    <mat-error *ngIf="hasError('name', 'required') || hasError('name', 'whitespace')">
+      Tool name is required
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <textarea formControlName="description" matInput placeholder="Tool description"></textarea>
-    <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+    <mat-error *ngIf="hasError('description', 'required') || hasError('description', 'whitespace')">
+      Description is required
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <input formControlName="link" matInput placeholder="Tool link">

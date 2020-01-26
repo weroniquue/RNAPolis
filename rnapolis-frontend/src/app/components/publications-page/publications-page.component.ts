@@ -31,9 +31,9 @@ export class PublicationsPageComponent implements OnInit {
   ngOnInit() {
     Utils.closeMenu();
     this.publicationsService.getPublications()
-    .subscribe(publications => {
-      this.publications = publications;
-    });
+      .subscribe(publications => {
+        this.publications = publications;
+      });
   }
 
   deleteElement(publication: Publication) {
@@ -47,10 +47,10 @@ export class PublicationsPageComponent implements OnInit {
         this.publicationsService.deletePublication(publication.id).subscribe(
           () => {
             this.publications.splice(this.publications.indexOf(publication), 1);
-            this.notifier.notify('success', 'Successfully deleted an publication!');
+            this.notifier.notify('success', 'Successfully deleted the publication!');
           },
           () => {
-            this.notifier.notify('error', 'Failed to delete an publication!');
+            this.notifier.notify('error', 'Failed to delete the publication!');
           });
       }
     });
@@ -60,14 +60,16 @@ export class PublicationsPageComponent implements OnInit {
     const editDialogRef = this.openDialog(publication);
 
     editDialogRef.afterClosed().subscribe(result => {
-      this.publicationsService.updatePublication(result.id, result).subscribe(
-        editedPublication => {
-          this.publications[this.publications.indexOf(editedPublication)] = editedPublication;
-          this.notifier.notify('success', 'Successfully edited an publication!');
-        },
-        () => {
-          this.notifier.notify('error', 'Failed to edit an publication!');
-        });
+      if (result) {
+        this.publicationsService.updatePublication(result.id, result).subscribe(
+          editedPublication => {
+            this.publications[this.publications.indexOf(editedPublication)] = editedPublication;
+            this.notifier.notify('success', 'Successfully edited the publication!');
+          },
+          () => {
+            this.notifier.notify('error', 'Failed to edit the publication!');
+          });
+      }
     });
   }
 
@@ -76,20 +78,23 @@ export class PublicationsPageComponent implements OnInit {
       id: null,
       authors: '',
       title: '',
+      editors: '',
       journal: '',
       volumeIssue: '',
+      publishers: '',
       year: null,
-      pages: ''
+      pages: '',
+      link: ''
     });
     addPublicationDialogRef.afterClosed().subscribe(newPublication => {
-      if (newPublication.year != null) {
+      if (newPublication) {
         this.publicationsService.addPublication(newPublication).subscribe(
           createdPublication => {
             this.publications.unshift(createdPublication);
-            this.notifier.notify('success', 'Successfully added an publication!');
+            this.notifier.notify('success', 'Successfully added the publication!');
           },
           () => {
-            this.notifier.notify('error', 'Failed to add an publication!');
+            this.notifier.notify('error', 'Failed to add the publication!');
           });
       }
     });
@@ -104,4 +109,8 @@ export class PublicationsPageComponent implements OnInit {
     });
   }
 
+  redirectToUrl(url: string): void {
+    url = !url.match(/^https?:/) ? '//' + url : url;
+    window.open(url, '_blank');
+  }
 }

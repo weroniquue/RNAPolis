@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Tool} from '../../../../entity/tool';
+import Utils from '../../../../services/utils';
 
 @Component({
   selector: 'app-add-tool',
@@ -26,10 +27,10 @@ export class AddToolComponent implements OnInit {
   ngOnInit() {
     this.toolForm = this.fromBuilder.group({
       id: this.tool.id,
-      name: [this.tool.name, Validators.required],
-      description: [this.tool.description, Validators.required],
-      link: [this.tool.link,
-        [Validators.required, Validators.pattern('^((https?|ftp|smtp):\\/\\/)?(www.)?[a-z0-9]+\\.[a-z]+(\\/[a-zA-Z0-9#]+\\/?)*$')]],
+      name: [this.tool.name, [Validators.required, Utils.noWhitespaceValidator]],
+      description: [this.tool.description, [Validators.required, Utils.noWhitespaceValidator]],
+      link: [this.tool.link, [Validators.required,
+        Validators.pattern('^((https?|ftp|smtp):\\/\\/)?(www.)?[a-z0-9]+\\.[a-z]+(\\/[a-zA-Z0-9#]+\\/?)*$')]],
       categories: [this.tool.categories],
     });
 

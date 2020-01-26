@@ -1,6 +1,7 @@
 package rnapolis.models;
 
 import java.time.Instant;
+
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -17,10 +18,13 @@ public class Publication {
 
   private String authors;
   private String title;
+  private String editors;
   private String journal;
   private String volumeIssue;
+  private String publishers;
   private Integer year;
   private String pages;
+  private String link;
 
   @CreatedDate private Instant createdDate;
 

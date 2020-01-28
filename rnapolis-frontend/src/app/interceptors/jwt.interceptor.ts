@@ -48,7 +48,12 @@ export class JwtInterceptor implements HttpInterceptor {
     const jwtDecoder = new JwtHelperService();
     if (jwtDecoder.isTokenExpired(token)) {
       this.authenticationService.logout();
-      this.notifierService.notify('error', 'Your session has expired!');
+
+      const expirationDate = jwtDecoder.getTokenExpirationDate(token).getTime();
+      const eightHoursInMs = 8 * 3600 * 1000;
+      if (Date.now() - expirationDate < eightHoursInMs) {
+        this.notifierService.notify('error', 'Your session has expired!');
+      }
     }
   }
 }

@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.notifierService.notify('success', 'Logged in successfully!');
       },
       errorResponse => {
-        errorResponse.error.message ? this.errorMessage = errorResponse.error.message : this.errorMessage = errorResponse.statusText;
+        errorResponse.error ? this.errorMessage = errorResponse.error.message : this.errorMessage = 'Bad password or username';
         this.loading = false;
       });
   }

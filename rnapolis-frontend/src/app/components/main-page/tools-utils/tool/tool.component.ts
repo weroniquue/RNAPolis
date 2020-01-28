@@ -39,11 +39,6 @@ export class ToolComponent implements OnInit {
     });
   }
 
-  redirectToUrl(url: string): void {
-    url = !url.match(/^https?:/) ? '//' + url : url;
-    window.open(url, '_blank');
-  }
-
   deleteTool(): void {
     const confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
       panelClass: 'custom-dialog-container',

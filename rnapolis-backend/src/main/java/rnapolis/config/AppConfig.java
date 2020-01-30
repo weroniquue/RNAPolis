@@ -16,7 +16,7 @@ public class AppConfig {
   @Value("${mongo.clientUri}")
   private String mongoClientUri;
 
-  @Value("${mongo.dbname}")
+  @Value("${spring.data.mongodb.database}")
   private String mongoDbName;
 
   @Autowired

@@ -18,9 +18,10 @@ import {ToolsService} from '../../../../services/tools.service';
 export class ToolComponent implements OnInit {
   @Input() tool: Tool;
   @Input() categories: string[];
-  currentUser: User;
+  @Input() changeOrder = false;
   @Output() toolRemoved = new EventEmitter<Tool>();
   @Output() toolChanged = new EventEmitter<Tool>();
+  currentUser: User;
 
   notifier: NotifierService;
 

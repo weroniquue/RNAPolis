@@ -7,8 +7,7 @@ import Utils from '../../services/utils';
 import {User} from '../../entity/user';
 import {ToolsService} from '../../services/tools.service';
 import {NotifierService} from 'angular-notifier';
-import {Award} from '../../entity/award';
-import {EditAwardsComponent} from '../awards-timeline/edit-awards/edit-awards.component';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-main-page',
@@ -21,6 +20,7 @@ export class MainPageComponent implements OnInit {
   categories: string[];
   selectedCategory: string;
   user: User;
+  changeOrderOption = false;
   notifier: NotifierService;
 
   constructor(public dialog: MatDialog,
@@ -29,7 +29,6 @@ export class MainPageComponent implements OnInit {
               private readonly notifierService: NotifierService) {
     this.notifier = notifierService;
     this.authenticationService.currentUser.subscribe(value => this.user = value);
-
     this.categories = ['RNA sequence', 'RNA secondary structure', 'RNA tertiary sequence'];
   }
 
@@ -55,19 +54,34 @@ export class MainPageComponent implements OnInit {
             this.tools.sort((a, b) => a.name > b.name ? 1 : -1);
             this.notifier.notify('success', 'Successfully added the tool!');
           },
-          error => {
+          () => {
             this.notifier.notify('error', 'Failed to add the tool!');
           });
       }
     });
   }
 
-  removeTool(tool: Tool) {
+  removeTool(tool: Tool): void  {
+    // TODO podpiąć usuwanie toolsa
     this.tools.splice(this.tools.indexOf(tool), 1);
   }
 
-  refreshTool(tool: Tool) {
+  refreshTool(tool: Tool): void {
     const targetIdx = this.tools.map(item => item.id).indexOf(tool.id);
     this.tools[targetIdx] = tool;
+  }
+
+  changeOrderAndMove(event: CdkDragDrop<any, any>): void {
+    moveItemInArray(this.tools, event.previousIndex, event.currentIndex);
+  }
+
+  changeOrder(): void {
+    // TODO
+    this.changeOrderOption = true;
+  }
+
+  saveOrder(): void {
+    // TODO
+    this.changeOrderOption = false;
   }
 }

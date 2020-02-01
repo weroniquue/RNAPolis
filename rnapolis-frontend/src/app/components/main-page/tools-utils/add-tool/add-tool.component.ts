@@ -29,8 +29,7 @@ export class AddToolComponent implements OnInit {
       id: this.tool.id,
       name: [this.tool.name, [Validators.required, Utils.noWhitespaceValidator]],
       description: [this.tool.description, [Validators.required, Utils.noWhitespaceValidator]],
-      link: [this.tool.link, [Validators.required,
-        Validators.pattern('^((https?|ftp|smtp):\\/\\/)?(www.)?[a-z0-9]+\\.[a-z]+(\\/[a-zA-Z0-9#]+\\/?)*$')]],
+      link: [this.tool.link, [Validators.required]],
       categories: [this.tool.categories],
     });
 

@@ -15,7 +15,6 @@
   <mat-form-field>
     <input formControlName="link" matInput placeholder="Tool link">
     <mat-error *ngIf="hasError('link', 'required')">Link is required</mat-error>
-    <mat-error *ngIf="hasError('link', 'pattern')">This is not url!</mat-error>
   </mat-form-field>
   <ng-multiselect-dropdown [data]="availableCategories" [settings]="dropdownSettings"
                            formControlName="categories">

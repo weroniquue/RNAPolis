@@ -35,7 +35,6 @@ export class AddToolComponent implements OnInit {
 
     this.dropdownSettings = {
       singleSelection: false,
-      text: 'Select categories',
       selectAllText: 'all',
       unSelectAllText: 'all',
       enableSearchFilter: true,

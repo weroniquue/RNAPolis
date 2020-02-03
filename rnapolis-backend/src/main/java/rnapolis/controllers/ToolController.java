@@ -57,6 +57,25 @@ public class ToolController {
         .orElseThrow(() -> new ResourceNotFoundException("Tool", id));
   }
 
+  @PutMapping()
+  @ResponseStatus(HttpStatus.OK)
+  public void updateAll(@Valid @RequestBody List<Tool> updatedTools) {
+
+    System.out.println(updatedTools);
+    updatedTools.forEach(
+        updatedTool -> {
+          repository
+              .findById(updatedTool.getId())
+              .map(
+                  tool -> {
+                    tool.setOrder(updatedTool.getOrder());
+                    return tool;
+                  })
+              .map(tool -> repository.save(tool))
+              .orElseThrow(() -> new ResourceNotFoundException("Tool", updatedTool.getId()));
+        });
+  }
+
   @DeleteMapping(value = "/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void delete(@PathVariable("id") String id) {

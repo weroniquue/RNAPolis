@@ -24,6 +24,11 @@ export class ToolsService {
     return this.http.put<Tool>(apiUrl + '/' + id, tool);
   }
 
+  updateToolsOrder(tools: Tool[]): Observable<Tool> {
+    tools.forEach((tool, idx) => tool.order = idx);
+    return this.http.put<Tool>(apiUrl, tools);
+  }
+
   deleteTool(id: any): Observable<Tool> {
     return this.http.delete<Tool>(apiUrl + '/' + id);
   }

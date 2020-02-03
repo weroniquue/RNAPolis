@@ -44,14 +44,13 @@ export class MainPageComponent implements OnInit {
       disableClose: true,
       width: '80vw',
       panelClass: 'form-dialog-container',
-      data: [this.categories, {}]
+      data: [this.categories, {order: -this.tools.length}]
     });
     dialogRef.afterClosed().subscribe(newTool => {
       if (newTool) {
         this.toolsService.addTool(newTool).subscribe(
           createdTool => {
-            this.tools.push(createdTool);
-            this.tools.sort((a, b) => a.name > b.name ? 1 : -1);
+            this.tools.unshift(createdTool);
             this.notifier.notify('success', 'Successfully added the tool!');
           },
           () => {
@@ -76,12 +75,13 @@ export class MainPageComponent implements OnInit {
   }
 
   changeOrder(): void {
-    // TODO
     this.changeOrderOption = true;
   }
 
   saveOrder(): void {
-    // TODO
+    this.toolsService.updateToolsOrder(this.tools).subscribe(
+      () => this.notifier.notify('success', 'Successfully ordered the tools!'),
+      () => this.notifier.notify('error', 'Failed to order the tools!'));
     this.changeOrderOption = false;
   }
 }

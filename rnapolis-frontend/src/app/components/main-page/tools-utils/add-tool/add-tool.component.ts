@@ -31,6 +31,7 @@ export class AddToolComponent implements OnInit {
       description: [this.tool.description, [Validators.required, Utils.noWhitespaceValidator]],
       link: [this.tool.link, [Validators.required]],
       categories: [this.tool.categories],
+      order: this.tool.order
     });
 
     this.dropdownSettings = {

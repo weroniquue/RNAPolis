@@ -23,7 +23,7 @@ public class ToolController {
   @GetMapping("")
   @ResponseStatus(HttpStatus.OK)
   public List<Tool> allTool() {
-    return repository.findAllByOrderByNameDesc().stream()
+    return repository.findAllByOrderByOrderAsc().stream()
         .filter(this::verifyTool)
         .collect(Collectors.toList());
   }

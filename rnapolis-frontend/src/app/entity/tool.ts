@@ -4,4 +4,5 @@ export interface Tool {
   description: string;
   link: string;
   categories: string[];
+  order: number;
 }

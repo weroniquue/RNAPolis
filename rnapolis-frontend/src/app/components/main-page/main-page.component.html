@@ -15,7 +15,7 @@
 
   <section id="tools">
     <mat-form-field *ngIf="tools?.length">
-      <mat-label>Filter</mat-label>
+      <mat-label>Category</mat-label>
       <mat-select [(value)]="selectedCategory">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let category of categories" [value]="category">

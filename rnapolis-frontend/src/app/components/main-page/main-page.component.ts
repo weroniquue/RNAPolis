@@ -61,8 +61,8 @@ export class MainPageComponent implements OnInit {
   }
 
   removeTool(tool: Tool): void  {
-    // TODO podpiąć usuwanie toolsa
     this.tools.splice(this.tools.indexOf(tool), 1);
+    this.toolsService.updateToolsOrder(this.tools).subscribe();
   }
 
   refreshTool(tool: Tool): void {

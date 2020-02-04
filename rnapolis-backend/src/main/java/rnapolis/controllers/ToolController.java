@@ -60,8 +60,6 @@ public class ToolController {
   @PutMapping()
   @ResponseStatus(HttpStatus.OK)
   public void updateAll(@Valid @RequestBody List<Tool> updatedTools) {
-
-    System.out.println(updatedTools);
     updatedTools.forEach(
         updatedTool -> {
           repository

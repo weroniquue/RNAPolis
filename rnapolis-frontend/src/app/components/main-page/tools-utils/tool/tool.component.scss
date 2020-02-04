@@ -9,6 +9,7 @@
   background: url(~src/assets/tool_1.jpg) no-repeat center center scroll;
   background-size: cover;
   position: relative;
+  width: 100%;
 
   .edit-manager {
     @include edit-manager;

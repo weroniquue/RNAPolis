@@ -43,7 +43,6 @@ export class AwardsTimelineComponent implements OnInit {
 
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(award);
         this.awardsService.deleteAward(award.id).subscribe(
           () => {
             this.awards.get(award.year).splice(this.awards.get(award.year).indexOf(award), 1);

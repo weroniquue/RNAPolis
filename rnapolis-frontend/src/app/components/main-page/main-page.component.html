@@ -15,7 +15,7 @@
 
   <section id="tools">
     <mat-form-field *ngIf="tools?.length">
-      <mat-label>Filter</mat-label>
+      <mat-label>Category</mat-label>
       <mat-select [(value)]="selectedCategory">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let category of categories" [value]="category">
@@ -28,9 +28,27 @@
       <mat-icon>add</mat-icon>
       Add tool
     </button>
+    <button (click)="changeOrder()" *ngIf="user && !changeOrderOption" mat-raised-button>
+      <mat-icon>reorder</mat-icon>
+      Change tools order
+    </button>
+    <button (click)="saveOrder()" *ngIf="user && changeOrderOption" mat-raised-button>
+      <mat-icon>save</mat-icon>
+      Save order
+    </button>
 
-    <app-tool (toolChanged)="refreshTool($event)" (toolRemoved)="removeTool($event)"
-              *ngFor="let tool of tools | toolFilter: selectedCategory"
-              [categories]="categories" [tool]="tool"></app-tool>
+
+    <div (cdkDropListDropped)="changeOrderAndMove($event)" *ngIf="changeOrderOption" cdkDropList class="tool-list">
+      <app-tool *ngFor="let tool of tools | toolFilter: selectedCategory"
+                [categories]="categories" [changeOrder]="changeOrderOption" [tool]="tool" cdkDrag>
+        <div *cdkDragPlaceholder class="tool-placeholder"></div>
+      </app-tool>
+    </div>
+
+    <div *ngIf="!changeOrderOption">
+      <app-tool (toolChanged)="refreshTool($event)" (toolRemoved)="removeTool($event)"
+                *ngFor="let tool of tools | toolFilter: selectedCategory"
+                [categories]="categories" [tool]="tool"></app-tool>
+    </div>
   </section>
 </div>

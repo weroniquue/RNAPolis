@@ -9,6 +9,6 @@
   </div>
 
   <h2 class="tool-name">{{tool.name}}</h2>
-  <p>{{tool.description}}</p>
-  <app-generic-button url="{{tool.link}}" content="{{tool.name}}"></app-generic-button>
+  <p *ngIf="!changeOrder">{{tool.description}}</p>
+  <app-generic-button *ngIf="!changeOrder" content="{{tool.name}}" url="{{tool.link}}"></app-generic-button>
 </div>

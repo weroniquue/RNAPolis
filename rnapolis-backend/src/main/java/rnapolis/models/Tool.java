@@ -21,6 +21,7 @@ public class Tool {
   private String link;
   private String description;
   private List<String> categories;
+  private Integer order;
 
   @CreatedDate private Instant createdDate;
 

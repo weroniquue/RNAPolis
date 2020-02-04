@@ -23,7 +23,7 @@ public class ToolController {
   @GetMapping("")
   @ResponseStatus(HttpStatus.OK)
   public List<Tool> allTool() {
-    return repository.findAllByOrderByNameDesc().stream()
+    return repository.findAllByOrderByOrderAsc().stream()
         .filter(this::verifyTool)
         .collect(Collectors.toList());
   }
@@ -55,6 +55,23 @@ public class ToolController {
             })
         .map(tool -> repository.save(tool))
         .orElseThrow(() -> new ResourceNotFoundException("Tool", id));
+  }
+
+  @PutMapping()
+  @ResponseStatus(HttpStatus.OK)
+  public void updateAll(@Valid @RequestBody List<Tool> updatedTools) {
+    updatedTools.forEach(
+        updatedTool -> {
+          repository
+              .findById(updatedTool.getId())
+              .map(
+                  tool -> {
+                    tool.setOrder(updatedTool.getOrder());
+                    return tool;
+                  })
+              .map(tool -> repository.save(tool))
+              .orElseThrow(() -> new ResourceNotFoundException("Tool", updatedTool.getId()));
+        });
   }
 
   @DeleteMapping(value = "/{id}")

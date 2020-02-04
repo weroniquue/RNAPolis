@@ -1,9 +1,11 @@
 @import '../../style-utils/consts.scss';
 
-
-.add-button {
-  margin-top: 2vh;
-  margin-left: 10vw;
+.button-section > *{
+  margin-right: 1em;
+  margin-top: 1em;
+  &:first-child {
+    margin-left: 10vw;
+  }
 }
 
 .board {
@@ -11,6 +13,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 4vw;
   padding: 5vh 10vw;
+  overflow: hidden;
 }
 
 .box {
@@ -27,7 +30,7 @@
     top: 0;
     right: 0;
 
-    button{
+    button {
       margin: 0.5em;
     }
   }
@@ -54,6 +57,39 @@
   border-radius: 50%;
 }
 
+.member-order-list {
+  width: 500px;
+  max-width: 100%;
+  margin: 1.5em auto;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  display: block;
+  overflow: hidden;
+}
+
+.order-list-item {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: move;
+}
+
+.team-placeholder {
+  background: #ccc;
+  border: solid 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
 @media only screen and (max-width: $small-screen) {
   .board {
     grid-template-columns: 1fr;
@@ -68,6 +104,9 @@
   .member-image {
     width: 40vw;
     height: 40vw;
+  }
+  .button-section > * {
+    margin-left: 10vw;
   }
 }
 

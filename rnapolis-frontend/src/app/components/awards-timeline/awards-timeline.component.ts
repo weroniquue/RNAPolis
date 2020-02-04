@@ -43,7 +43,6 @@ export class AwardsTimelineComponent implements OnInit {
 
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(award);
         this.awardsService.deleteAward(award.id).subscribe(
           () => {
             this.awards.get(award.year).splice(this.awards.get(award.year).indexOf(award), 1);
@@ -82,8 +81,8 @@ export class AwardsTimelineComponent implements OnInit {
     addAwardDialogRef.afterClosed().subscribe(newAward => {
       if (newAward) {
         this.awardsService.addAward(newAward).subscribe(
-          () => {
-            this.shuffleAwards(newAward);
+          response => {
+            this.shuffleAwards(response);
             this.notifier.notify('success', 'Successfully added the award!');
           },
           () => {

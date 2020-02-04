@@ -32,6 +32,9 @@ export class EditAwardsComponent implements OnInit {
   }
 
   save() {
+    Object.keys(this.awardForm.controls).forEach(key => {
+      this.awardForm.controls[key].markAsTouched();
+    });
     if (this.awardForm.valid) {
       this.award.year = +this.awardForm.value.year;
       this.award.description = this.awardForm.value.description;

@@ -38,6 +38,10 @@ export class MemberManagerComponent implements OnInit {
   }
 
   saveClicked() {
+    Object.keys(this.form.controls).forEach(key => {
+      this.form.controls[key].markAsTouched();
+    });
+
     if (this.form.valid) {
       this.member.imagePath = this.imageSrc;
       this.member.name = this.form.value.name;
@@ -59,15 +63,12 @@ export class MemberManagerComponent implements OnInit {
   onChange(event) { // called each time file input changes
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-
-      this.reader.onload = e => this.imageSrc = this.reader.result.toString();
-
+      this.reader.onload = () => this.imageSrc = this.reader.result.toString();
       this.reader.readAsDataURL(file);
     }
   }
 
-  setDefaultImage(member: TeamMember) {
+  setDefaultImage(): void {
     this.imageSrc = 'assets/not-found.jpg';
   }
-
 }

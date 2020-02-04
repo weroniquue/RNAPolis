@@ -36,7 +36,7 @@ import {PublicationsPageComponent} from './components/publications-page/publicat
 import {PublicationFormComponent} from './components/publications-page/publication-form/publication-form.component';
 import {JwtInterceptor} from './interceptors/jwt.interceptor';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
-import {DragDropModule} from "@angular/cdk/drag-drop";
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [

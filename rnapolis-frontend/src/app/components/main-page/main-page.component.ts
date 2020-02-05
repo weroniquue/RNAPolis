@@ -28,7 +28,12 @@ export class MainPageComponent implements OnInit {
               public toolsService: ToolsService,
               private readonly notifierService: NotifierService) {
     this.notifier = notifierService;
-    this.authenticationService.currentUser.subscribe(value => this.user = value);
+    this.authenticationService.currentUser.subscribe(value => {
+      this.user = value;
+      if (value == null) {
+        this.changeOrderOption = false;
+      }
+    });
     this.categories = ['RNA sequence', 'RNA secondary structure', 'RNA tertiary sequence'];
   }
 

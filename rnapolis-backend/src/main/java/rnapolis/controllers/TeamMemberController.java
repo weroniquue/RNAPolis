@@ -77,7 +77,7 @@ public class TeamMemberController {
                     return teamMember;
                   })
               .map(teamMember -> repository.save(teamMember))
-              .orElseThrow(() -> new ResourceNotFoundException("Tool", updatedTeamMember.getId()));
+              .orElseThrow(() -> new ResourceNotFoundException("TeamMember", updatedTeamMember.getId()));
         });
   }
 

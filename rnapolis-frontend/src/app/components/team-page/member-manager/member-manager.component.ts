@@ -33,7 +33,8 @@ export class MemberManagerComponent implements OnInit {
       name: [this.member.name, [Validators.required, Utils.noWhitespaceValidator]],
       surname: [this.member.surname, [Validators.required, Utils.noWhitespaceValidator]],
       position: [this.member.position, Utils.noWhitespaceValidator],
-      description: [this.member.description, Utils.noWhitespaceValidator]
+      description: [this.member.description, Utils.noWhitespaceValidator],
+      order: this.member.order
     });
   }
 
@@ -48,6 +49,7 @@ export class MemberManagerComponent implements OnInit {
       this.member.surname = this.form.value.surname;
       this.member.position = this.form.value.position;
       this.member.description = this.form.value.description;
+      this.member.order = this.form.value.order;
       this.dialogRef.close(this.member);
     }
   }

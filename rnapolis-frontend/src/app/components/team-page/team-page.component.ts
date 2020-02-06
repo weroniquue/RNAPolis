@@ -85,7 +85,8 @@ export class TeamPageComponent implements OnInit {
       name: '',
       surname: '',
       position: '',
-      description: ''
+      description: '',
+      order: -this.teamMembers.length
     });
     addTeamMemberDialogRef.afterClosed().subscribe(newTeamMember => {
       if (newTeamMember) {
@@ -119,7 +120,9 @@ export class TeamPageComponent implements OnInit {
   }
 
   saveTeamOrder(): void {
+    this.teamMembersService.updateTeamMembersOrder(this.teamMembers).subscribe(
+      () => this.notifier.notify('success', 'Successfully ordered the team members!'),
+      () => this.notifier.notify('error', 'Failed to order the team members!'));
     this.changeOrder = false;
-    // TODO
   }
 }

@@ -24,6 +24,11 @@ export class TeamMembersService {
     return this.http.put<TeamMember>(apiUrl + '/' + id, teamMember);
   }
 
+  updateTeamMembersOrder(teamMembers: TeamMember[]): Observable<TeamMember> {
+    teamMembers.forEach((teamMember, idx) => teamMember.order = idx);
+    return this.http.put<TeamMember>(apiUrl, teamMembers);
+  }
+
   deleteTeamMember(id: any): Observable<TeamMember> {
     return this.http.delete<TeamMember>(apiUrl + '/' + id);
   }

@@ -41,7 +41,7 @@
       p {
         margin-top: 2em;
         padding-right: 1em;
-        font-size: $paragraph-size;
+        font-size: $title-size;
       }
     }
   }
@@ -61,8 +61,6 @@
     margin: 1em 1em 1em 0;
   }
 }
-
-//TODO
 
 .tool-list{
   overflow: hidden;

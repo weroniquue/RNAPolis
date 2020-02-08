@@ -44,6 +44,9 @@ export class AddToolComponent implements OnInit {
   }
 
   save() {
+    Object.keys(this.toolForm.controls).forEach(key => {
+      this.toolForm.controls[key].markAsTouched();
+    });
     if (this.toolForm.valid) {
       this.dialogRef.close(this.toolForm.value);
     }

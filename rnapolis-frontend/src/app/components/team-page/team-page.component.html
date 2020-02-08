@@ -1,21 +1,43 @@
 <app-header content="RNApolis team" imagePath="assets/team.png"></app-header>
 
-<button mat-raised-button (click)="addElement()" *ngIf="user" class="add-button">
-  <mat-icon>add</mat-icon> Add team member
-</button>
+<div class="button-section" *ngIf="user">
+  <button (click)="addElement()" mat-raised-button>
+    <mat-icon>add</mat-icon>
+    Add team member
+  </button>
 
-<section class="board">
-  <div class="box" *ngFor="let teamMember of teamMembers" [ngStyle]="{'paddingTop': user ? '70px':'default'}">
+  <button (click)="changeTeamOrder()" *ngIf="!changeOrder" mat-raised-button>
+    <mat-icon>reorder</mat-icon>
+    Change order
+  </button>
+
+  <button (click)="saveTeamOrder()" *ngIf="changeOrder" color="warn" mat-raised-button>
+    <mat-icon>save</mat-icon>
+    Save order
+  </button>
+</div>
+
+<div (cdkDropListDropped)="drop($event)" *ngIf="changeOrder" cdkDropList class="member-order-list">
+  <div *ngFor="let member of teamMembers" cdkDrag class="order-list-item">
+    <div *cdkDragPlaceholder class="team-placeholder"></div>
+    {{member.name}} {{member.surname}}
+  </div>
+</div>
+
+
+<section *ngIf="!changeOrder" class="board">
+  <div *ngFor="let teamMember of teamMembers" [ngStyle]="{'paddingTop': user ? '70px':'default'}" class="box">
     <div *ngIf="user" class="edit-manager">
-      <button id="edit" (click)="editElement(teamMember)" mat-fab>
+      <button (click)="editElement(teamMember)" id="edit" mat-fab>
         <mat-icon>edit</mat-icon>
       </button>
-      <button id="delete" (click)="deleteElement(teamMember)" color="warn" mat-fab>
+      <button (click)="deleteElement(teamMember)" color="warn" id="delete" mat-fab>
         <mat-icon>delete</mat-icon>
       </button>
     </div>
 
-    <img class="member-image" src="{{teamMember.imagePath}}" alt="Team member picture" (error)="setDefaultImage(teamMember)">
+    <img (error)="setDefaultImage(teamMember)" alt="Team member picture" class="member-image"
+         src="{{teamMember.imagePath}}">
     <h3>{{teamMember.name.toUpperCase()}} {{teamMember.surname.toUpperCase()}}</h3>
     <h3>{{teamMember.position}}</h3>
     <p>{{teamMember.description}}</p>

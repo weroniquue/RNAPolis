@@ -81,8 +81,8 @@ export class AwardsTimelineComponent implements OnInit {
     addAwardDialogRef.afterClosed().subscribe(newAward => {
       if (newAward) {
         this.awardsService.addAward(newAward).subscribe(
-          () => {
-            this.shuffleAwards(newAward);
+          response => {
+            this.shuffleAwards(response);
             this.notifier.notify('success', 'Successfully added the award!');
           },
           () => {

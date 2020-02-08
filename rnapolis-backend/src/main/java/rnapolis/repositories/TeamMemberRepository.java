@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface TeamMemberRepository extends MongoRepository<TeamMember, String> {
 
-  List<TeamMember> findAllByOrderBySurnameDesc();
+  List<TeamMember> findAllByOrderByOrderAsc();
 
 }

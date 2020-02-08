@@ -47,7 +47,7 @@
   }
 }
 
-#tools{
+#tools {
   width: 75vw;
   margin: 0 auto;
 
@@ -56,13 +56,12 @@
     max-width: 20vw;
   }
 
-  button
-  {
+  button {
     margin: 1em 1em 1em 0;
   }
 }
 
-.tool-list{
+.tool-list {
   overflow: hidden;
 
   app-tool {
@@ -84,7 +83,6 @@
   }
 
 }
-
 
 @media screen and (max-width: $medium-screen) {
   .details-section {
@@ -132,7 +130,7 @@
       }
     }
   }
-  #tools{
+  #tools {
     width: 100vw;
     mat-form-field {
       padding: 0.5em;

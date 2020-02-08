@@ -8,6 +8,7 @@ import Utils from '../../services/utils';
 import {NotifierService} from 'angular-notifier';
 import {User} from '../../entity/user';
 import {TeamMembersService} from '../../services/team-members.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-team-page',
@@ -18,6 +19,7 @@ export class TeamPageComponent implements OnInit {
   teamMembers: TeamMember[];
   notifier: NotifierService;
   user: User;
+  changeOrder = false;
 
   constructor(public authenticationService: AuthenticationService,
               public dialog: MatDialog,
@@ -83,7 +85,8 @@ export class TeamPageComponent implements OnInit {
       name: '',
       surname: '',
       position: '',
-      description: ''
+      description: '',
+      order: -this.teamMembers.length
     });
     addTeamMemberDialogRef.afterClosed().subscribe(newTeamMember => {
       if (newTeamMember) {
@@ -106,5 +109,20 @@ export class TeamPageComponent implements OnInit {
       width: '80vw',
       data: member
     });
+  }
+
+  changeTeamOrder(): void {
+    this.changeOrder = true;
+  }
+
+  drop(event: CdkDragDrop<TeamMember[]>) {
+    moveItemInArray(this.teamMembers, event.previousIndex, event.currentIndex);
+  }
+
+  saveTeamOrder(): void {
+    this.teamMembersService.updateTeamMembersOrder(this.teamMembers).subscribe(
+      () => this.notifier.notify('success', 'Successfully ordered the team members!'),
+      () => this.notifier.notify('error', 'Failed to order the team members!'));
+    this.changeOrder = false;
   }
 }

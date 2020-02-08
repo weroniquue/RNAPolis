@@ -33,17 +33,23 @@ export class MemberManagerComponent implements OnInit {
       name: [this.member.name, [Validators.required, Utils.noWhitespaceValidator]],
       surname: [this.member.surname, [Validators.required, Utils.noWhitespaceValidator]],
       position: [this.member.position, Utils.noWhitespaceValidator],
-      description: [this.member.description, Utils.noWhitespaceValidator]
+      description: [this.member.description, Utils.noWhitespaceValidator],
+      order: this.member.order
     });
   }
 
   saveClicked() {
+    Object.keys(this.form.controls).forEach(key => {
+      this.form.controls[key].markAsTouched();
+    });
+
     if (this.form.valid) {
       this.member.imagePath = this.imageSrc;
       this.member.name = this.form.value.name;
       this.member.surname = this.form.value.surname;
       this.member.position = this.form.value.position;
       this.member.description = this.form.value.description;
+      this.member.order = this.form.value.order;
       this.dialogRef.close(this.member);
     }
   }
@@ -59,15 +65,12 @@ export class MemberManagerComponent implements OnInit {
   onChange(event) { // called each time file input changes
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-
-      this.reader.onload = e => this.imageSrc = this.reader.result.toString();
-
+      this.reader.onload = () => this.imageSrc = this.reader.result.toString();
       this.reader.readAsDataURL(file);
     }
   }
 
-  setDefaultImage(member: TeamMember) {
+  setDefaultImage(): void {
     this.imageSrc = 'assets/not-found.jpg';
   }
-
 }

@@ -31,7 +31,7 @@ public class TeamMemberController {
   @GetMapping("")
   @ResponseStatus(HttpStatus.OK)
   public List<TeamMember> allTeamMember() {
-    return repository.findAllByOrderBySurnameDesc()
+    return repository.findAllByOrderByOrderAsc()
         .stream()
         .filter(teamMember -> StringUtils.isNotEmpty(teamMember.getName()))
         .filter(teamMember -> StringUtils.isNotEmpty(teamMember.getSurname()))
@@ -60,9 +60,25 @@ public class TeamMemberController {
     teamMember.setSurname(updatedTeamMember.getSurname());
     teamMember.setDescription(updatedTeamMember.getDescription());
     teamMember.setPosition(updatedTeamMember.getPosition());
-    //todo - handle images
     teamMember.setImagePath(updatedTeamMember.getImagePath());
     return repository.save(teamMember);
+  }
+
+  @PutMapping()
+  @ResponseStatus(HttpStatus.OK)
+  public void updateAll(@Valid @RequestBody List<TeamMember> updatedTeamMembers) {
+    updatedTeamMembers.forEach(
+        updatedTeamMember -> {
+          repository
+              .findById(updatedTeamMember.getId())
+              .map(
+                  teamMember -> {
+                    teamMember.setOrder(updatedTeamMember.getOrder());
+                    return teamMember;
+                  })
+              .map(teamMember -> repository.save(teamMember))
+              .orElseThrow(() -> new ResourceNotFoundException("TeamMember", updatedTeamMember.getId()));
+        });
   }
 
   @DeleteMapping(value = "/{id}")

@@ -6,6 +6,6 @@ import rnapolis.models.Publication;
 
 public interface PublicationRepository extends MongoRepository<Publication, String> {
 
-    List<Publication> findAllByOrderByYearDesc();
+    List<Publication> findAllByOrderByOrderAsc();
 
 }

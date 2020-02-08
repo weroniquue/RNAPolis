@@ -25,6 +25,7 @@ public class Publication {
   private Integer year;
   private String pages;
   private String link;
+  private Integer order;
 
   @CreatedDate private Instant createdDate;
 

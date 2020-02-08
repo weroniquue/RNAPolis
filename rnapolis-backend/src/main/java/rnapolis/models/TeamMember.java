@@ -20,6 +20,7 @@ public class TeamMember {
   private String position;
   private String description;
   private String imagePath;
+  private Integer order;
 
   @CreatedDate private Instant createdDate;
 

@@ -37,6 +37,9 @@ export class PublicationFormComponent implements OnInit {
   }
 
   saveClicked() {
+    Object.keys(this.form.controls).forEach(key => {
+      this.form.controls[key].markAsTouched();
+    });
     if (this.form.valid) {
       this.publication.authors = this.form.value.authors;
       this.publication.title = this.form.value.title;

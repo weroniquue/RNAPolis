@@ -1,31 +1,44 @@
 <app-header content="Publications" imagePath="assets/publications.png"></app-header>
 
 <section class="board">
-  <button mat-raised-button (click)="addElement()" *ngIf="user" class="add-button">
+  <button (click)="addElement()" *ngIf="user" class="menu-button" mat-raised-button>
     <mat-icon>add</mat-icon>
     Add publication
   </button>
+  <button (click)="changeOrderFlag()" *ngIf="user && !changeOrder" class="menu-button" mat-raised-button>
+    <mat-icon>reorder</mat-icon>
+    Change order
+  </button>
+  <button (click)="saveOrder()" *ngIf="user && changeOrder" class="menu-button" mat-raised-button>
+    <mat-icon>save</mat-icon>
+    Save order
+  </button>
 
-  <mat-card *ngFor="let publication of publications">
-    <div *ngIf="user" class="edit-manager">
-      <button (click)="deleteElement(publication)" color="warn" mat-fab>
-        <mat-icon>delete</mat-icon>
-      </button>
-      <button (click)="editElement(publication)" mat-fab>
-        <mat-icon>edit</mat-icon>
-      </button>
-    </div>
+  <div (cdkDropListDropped)="drop($event)" [class.publication-order-list]="changeOrder" cdkDropList>
+    <mat-card *ngFor="let publication of publications" [cdkDragDisabled]="!changeOrder" [class.order-list-item]="changeOrder"
+              cdkDrag>
+      <div *cdkDragPlaceholder class="publication-placeholder"></div>
 
-    <p>
-      {{publication.authors}} ({{publication.year.toString()}}) {{publication.title}},
-      <span *ngIf="publication.editors">{{publication.editors}},</span>
-      <span style="font-style: italic"> {{publication.journal}}</span>
-      <span *ngIf="publication.volumeIssue"> {{publication.volumeIssue}}</span>
-      <span *ngIf="publication.publishers">,  {{publication.publishers}}</span>
-      <span *ngIf="publication.pages">, {{publication.pages}}</span>.
-      <button *ngIf="publication.link" (click)="redirectToUrl(publication.link)" mat-button>
-        <mat-icon>link</mat-icon>
-      </button>
-    </p>
-  </mat-card>
+      <div *ngIf="user" class="edit-manager">
+        <button (click)="deleteElement(publication)" color="warn" mat-fab>
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button (click)="editElement(publication)" mat-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <p>
+        {{publication.authors}} ({{publication.year.toString()}}) {{publication.title}},
+        <span *ngIf="publication.editors">{{publication.editors}},</span>
+        <span style="font-style: italic"> {{publication.journal}}</span>
+        <span *ngIf="publication.volumeIssue"> {{publication.volumeIssue}}</span>
+        <span *ngIf="publication.publishers">,  {{publication.publishers}}</span>
+        <span *ngIf="publication.pages">, {{publication.pages}}</span>.
+        <button (click)="redirectToUrl(publication.link)" *ngIf="publication.link" mat-button>
+          <mat-icon>link</mat-icon>
+        </button>
+      </p>
+    </mat-card>
+  </div>
 </section>

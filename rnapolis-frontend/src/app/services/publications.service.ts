@@ -27,4 +27,8 @@ export class PublicationsService {
   deletePublication(id: any): Observable<Publication> {
     return this.http.delete<Publication>(apiUrl + '/' + id);
   }
+
+  updatePublicationsOrder(publications: Publication[]) {
+    return this.http.put<Publication[]>(apiUrl, publications);
+  }
 }

@@ -12,6 +12,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {MatCardModule} from '@angular/material';
 import {NotifierService} from 'angular-notifier';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 describe('PublicationsPageComponent', () => {
   let component: PublicationsPageComponent;
@@ -33,7 +34,8 @@ describe('PublicationsPageComponent', () => {
         MatDialogModule,
         HttpClientTestingModule,
         RouterTestingModule,
-        MatCardModule
+        MatCardModule,
+        DragDropModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

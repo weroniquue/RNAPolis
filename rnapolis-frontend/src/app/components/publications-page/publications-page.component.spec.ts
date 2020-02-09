@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {PublicationsPageComponent} from './publications-page.component';
 import {MenuComponent} from '../basic-components/menu/menu.component';
 import {HeaderComponent} from '../basic-components/header/header.component';
@@ -12,7 +11,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {MatCardModule} from '@angular/material';
 import {NotifierService} from 'angular-notifier';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {DragDropModule} from "@angular/cdk/drag-drop";
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 describe('PublicationsPageComponent', () => {
   let component: PublicationsPageComponent;

@@ -32,7 +32,7 @@ public class PublicationController {
   @GetMapping("")
   @ResponseStatus(HttpStatus.OK)
   public List<Publication> allPublication() {
-    return repository.findAllByOrderByYearDesc().stream()
+    return repository.findAllByOrderByOrderAsc().stream()
         .filter(publication -> StringUtils.isNotEmpty(publication.getTitle()))
         .filter(publication -> StringUtils.isNotEmpty(publication.getAuthors()))
         .filter(publication -> StringUtils.isNotBlank(publication.getJournal()))
@@ -52,6 +52,23 @@ public class PublicationController {
   @ResponseStatus(HttpStatus.CREATED)
   public Publication create(@Valid @RequestBody Publication newPublication) {
     return repository.save(newPublication);
+  }
+
+  @PutMapping()
+  @ResponseStatus(HttpStatus.OK)
+  public void updateAll(@Valid @RequestBody List<Publication> updatedPublications) {
+    updatedPublications.forEach(
+        updatedPublication -> {
+          repository
+              .findById(updatedPublication.getId())
+              .map(
+                  tool -> {
+                    tool.setOrder(updatedPublication.getOrder());
+                    return tool;
+                  })
+              .map(tool -> repository.save(tool))
+              .orElseThrow(() -> new ResourceNotFoundException("Publication", updatedPublication.getId()));
+        });
   }
 
   @PutMapping("/{id}")

@@ -8,6 +8,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {NotifierService} from 'angular-notifier';
 import {User} from '../../entity/user';
 import {PublicationsService} from '../../services/publications.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-publications-page',
@@ -18,7 +19,7 @@ export class PublicationsPageComponent implements OnInit {
   publications: Publication[];
   notifier: NotifierService;
   user: User;
-
+  changeOrder = false;
 
   constructor(public authenticationService: AuthenticationService,
               public dialog: MatDialog,
@@ -84,7 +85,8 @@ export class PublicationsPageComponent implements OnInit {
       publishers: '',
       year: null,
       pages: '',
-      link: ''
+      link: '',
+      order: 0
     });
     addPublicationDialogRef.afterClosed().subscribe(newPublication => {
       if (newPublication) {
@@ -112,5 +114,21 @@ export class PublicationsPageComponent implements OnInit {
   redirectToUrl(url: string): void {
     url = !url.match(/^https?:/) ? '//' + url : url;
     window.open(url, '_blank');
+  }
+
+  drop($event: CdkDragDrop<any, any>) {
+    moveItemInArray(this.publications, $event.previousIndex, $event.currentIndex);
+  }
+
+  changeOrderFlag() {
+    this.changeOrder = !this.changeOrder;
+  }
+
+  saveOrder() {
+    this.publications.forEach((publication, idx) => publication.order = idx);
+    this.publicationsService.updatePublicationsOrder(this.publications).subscribe(
+      () => this.notifier.notify('success', 'Successfully ordered publications!'),
+      () => this.notifier.notify('error', 'Failed to order publications!'));
+    this.changeOrder = false;
   }
 }

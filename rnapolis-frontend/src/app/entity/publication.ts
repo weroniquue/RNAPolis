@@ -9,4 +9,5 @@ export interface Publication {
   year: number;
   pages: string;
   link: string;
+  order: number;
 }

@@ -33,7 +33,7 @@
   }
 
   p {
-    font-size: $paragraph-size;
+    font-size: $title-size;
     font-weight: $font-medium;
     letter-spacing: 0.5px;
   }
@@ -95,6 +95,7 @@
 
     p {
       margin: 0 1em;
+      font-size: $normal-size;
     }
   }
 }

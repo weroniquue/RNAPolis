@@ -1,5 +1,4 @@
 @import "../../style-utils/consts";
-
 .details-section {
   display: flex;
   align-items: center;
@@ -42,7 +41,7 @@
       p {
         margin-top: 2em;
         padding-right: 1em;
-        font-size: $paragraph-size;
+        font-size: $title-size;
       }
     }
   }
@@ -133,7 +132,6 @@
   }
   #tools {
     width: 100vw;
-
     mat-form-field {
       padding: 0.5em;
     }

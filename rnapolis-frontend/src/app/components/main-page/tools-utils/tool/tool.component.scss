@@ -3,8 +3,8 @@
 @import "../../../../style-utils/consts";
 
 .tool {
-  margin: 0 auto 5em auto;
-  padding: 2em 0;
+  margin: 0 auto 3em auto;
+  padding: 1.5em 0;
   border: 3px solid $primary-color;
   background: url(~src/assets/tool_1.jpg) no-repeat center center scroll;
   background-size: cover;
@@ -25,10 +25,10 @@
 
   p {
     width: 50vw;
-    padding: 2em;
+    padding: 1.25em;
     margin: 0 auto;
     text-align: center;
-    font-size: $paragraph-size;
+    font-size: $normal-size;
   }
 
   app-generic-button {

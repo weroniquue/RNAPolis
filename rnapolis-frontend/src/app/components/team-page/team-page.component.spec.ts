@@ -11,6 +11,8 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef, MatIconModule} from '@an
 import {RouterTestingModule} from '@angular/router/testing';
 import {NotifierService} from 'angular-notifier';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 describe('TeamPageComponent', () => {
   let component: TeamPageComponent;
@@ -34,7 +36,8 @@ describe('TeamPageComponent', () => {
         MatDialogModule,
         MatFormFieldModule,
         RouterTestingModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MatProgressSpinnerModule
       ],
       providers: [
         {provide: MatDialogRef, useValue: {}},

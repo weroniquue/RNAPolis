@@ -1,13 +1,23 @@
 .member-image {
-  width: 15vw;
-  height: 15vw;
+  width: 25vw;
+  height: 25vw;
   object-fit: cover;
   border-radius: 50%;
   margin: 0 auto;
   display: block;
 }
 
-.select-image-btn{
+.select-image-btn {
   display: block;
   margin: 1em auto;
+}
+
+.alert-danger {
+  padding: 10px;
+  margin-bottom: 1em;
+  text-align: center;
+  background-color: #f2dede;
+  border: 1px solid #ebcccc;
+  border-radius: .25em;
+  color: #a94442;
 }

@@ -19,6 +19,7 @@ export class TeamPageComponent implements OnInit {
   teamMembers: TeamMember[];
   notifier: NotifierService;
   user: User;
+  loading = false;
   changeOrder = false;
 
   constructor(public authenticationService: AuthenticationService,
@@ -57,6 +58,9 @@ export class TeamPageComponent implements OnInit {
           },
           () => {
             this.notifier.notify('error', 'Failed to delete a team member!');
+          },
+          () => {
+            this.loading = false;
           });
       }
     });
@@ -90,14 +94,17 @@ export class TeamPageComponent implements OnInit {
     });
     addTeamMemberDialogRef.afterClosed().subscribe(newTeamMember => {
       if (newTeamMember) {
-        this.teamMembersService.addTeamMember(newTeamMember).subscribe(
-          createdTeamMember => {
-            this.teamMembers.unshift(createdTeamMember);
-            this.notifier.notify('success', 'Successfully added a team member!');
-          },
-          () => {
-            this.notifier.notify('error', 'Failed to add a team member!');
-          });
+        this.loading = true;
+        this.teamMembersService.addTeamMember(newTeamMember)
+          .subscribe(
+            createdTeamMember => {
+              this.teamMembers.unshift(createdTeamMember);
+              this.notifier.notify('success', 'Successfully added a team member!');
+            },
+            () => {
+              this.notifier.notify('error', 'Failed to add a team member!');
+            })
+          .add(() => this.loading = false);
       }
     });
   }

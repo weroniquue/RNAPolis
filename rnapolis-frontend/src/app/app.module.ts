@@ -37,7 +37,6 @@ import {PublicationFormComponent} from './components/publications-page/publicati
 import {JwtInterceptor} from './interceptors/jwt.interceptor';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {Ng2FileSizeModule} from 'ng2-file-size';
 
 @NgModule({
   declarations: [
@@ -75,7 +74,6 @@ import {Ng2FileSizeModule} from 'ng2-file-size';
     HttpClientModule,
     MatSelectModule,
     MatDialogModule,
-    Ng2FileSizeModule,
     ReactiveFormsModule,
     MatIconModule,
     MatProgressSpinnerModule,

@@ -67,7 +67,7 @@ export class MemberManagerComponent implements OnInit {
   onChange(event) { // called each time file input changes
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-      this.imgSizeValid = event.target.files[0].size < 5*1024*1024;
+      this.imgSizeValid = event.target.files[0].size < 5 * 1024 * 1024;
       this.reader.onload = () => this.imageSrc = this.reader.result.toString();
       this.reader.readAsDataURL(file);
     }

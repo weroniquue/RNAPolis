@@ -51,17 +51,16 @@ export class TeamPageComponent implements OnInit {
 
     confirmationDialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.teamMembersService.deleteTeamMember(teamMember.id).subscribe(
-          () => {
-            this.teamMembers.splice(this.teamMembers.indexOf(teamMember), 1);
-            this.notifier.notify('success', 'Successfully deleted a team member!');
-          },
-          () => {
-            this.notifier.notify('error', 'Failed to delete a team member!');
-          },
-          () => {
-            this.loading = false;
-          });
+        this.teamMembersService.deleteTeamMember(teamMember.id)
+          .subscribe(
+            () => {
+              this.teamMembers.splice(this.teamMembers.indexOf(teamMember), 1);
+              this.notifier.notify('success', 'Successfully deleted the team member!');
+            },
+            () => {
+              this.notifier.notify('error', 'Failed to delete the team member!');
+            }
+          );
       }
     });
   }
@@ -70,14 +69,17 @@ export class TeamPageComponent implements OnInit {
     const editDialogRef = this.openMemberDialog(member);
     editDialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.teamMembersService.updateTeamMember(result.id, result).subscribe(
-          editedTeamMember => {
-            this.teamMembers[this.teamMembers.indexOf(editedTeamMember)] = editedTeamMember;
-            this.notifier.notify('success', 'Successfully edited a team member!');
-          },
-          () => {
-            this.notifier.notify('error', 'Failed to edit a team member!');
-          });
+        this.loading = true;
+        this.teamMembersService.updateTeamMember(result.id, result)
+          .subscribe(
+            editedTeamMember => {
+              this.teamMembers[this.teamMembers.indexOf(editedTeamMember)] = editedTeamMember;
+              this.notifier.notify('success', 'Successfully edited the team member!');
+            },
+            () => {
+              this.notifier.notify('error', 'Failed to edit the team member!');
+            }
+          ).add(() => this.loading = false);
       }
     });
   }
@@ -99,12 +101,12 @@ export class TeamPageComponent implements OnInit {
           .subscribe(
             createdTeamMember => {
               this.teamMembers.unshift(createdTeamMember);
-              this.notifier.notify('success', 'Successfully added a team member!');
+              this.notifier.notify('success', 'Successfully added the team member!');
             },
             () => {
-              this.notifier.notify('error', 'Failed to add a team member!');
-            })
-          .add(() => this.loading = false);
+              this.notifier.notify('error', 'Failed to add the team member!');
+            }
+          ).add(() => this.loading = false);
       }
     });
   }
@@ -127,9 +129,12 @@ export class TeamPageComponent implements OnInit {
   }
 
   saveTeamOrder(): void {
-    this.teamMembersService.updateTeamMembersOrder(this.teamMembers).subscribe(
-      () => this.notifier.notify('success', 'Successfully ordered the team members!'),
-      () => this.notifier.notify('error', 'Failed to order the team members!'));
+    this.loading = true;
+    this.teamMembersService.updateTeamMembersOrder(this.teamMembers)
+      .subscribe(
+        () => this.notifier.notify('success', 'Successfully ordered the team members!'),
+        () => this.notifier.notify('error', 'Failed to order the team members!')
+      ).add(() => this.loading = false);
     this.changeOrder = false;
   }
 }

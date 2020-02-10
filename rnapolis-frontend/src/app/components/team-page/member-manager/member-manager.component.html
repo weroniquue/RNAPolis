@@ -2,11 +2,9 @@
 
 <div [formGroup]="form" mat-dialog-content>
   <img class="member-image" src="{{imageSrc}}" alt="Team member picture" (error)="setDefaultImage()">
-<!--  <div class="form-group">-->
-    <input #file id="input-image" [hidden]="true" type='file' accept="image/*" (change)="onChange($event)">
-    <button class="select-image-btn" mat-stroked-button (click)="file.click()">Select image</button>
-    <div *ngIf="!imgSizeValid" class="alert-danger">Image size exceeds 5Mb</div>
-<!--  </div>-->
+  <input #file id="input-image" [hidden]="true" type='file' accept="image/*" (change)="onChange($event)">
+  <button class="select-image-btn" mat-stroked-button (click)="file.click()">Select image</button>
+  <div *ngIf="!imgSizeValid" class="alert-danger">Image size exceeds 5Mb</div>
 
   <mat-form-field>
     <input formControlName="name" matInput placeholder="Name"/>

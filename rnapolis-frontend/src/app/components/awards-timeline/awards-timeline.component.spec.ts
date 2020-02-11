@@ -15,11 +15,14 @@ import {HeaderComponent} from '../basic-components/header/header.component';
 import {EditAwardsComponent} from './edit-awards/edit-awards.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NotifierService} from 'angular-notifier';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {Award} from '../../entity/award';
+import {from} from 'rxjs';
 
 describe('AwardsTimelineComponent', () => {
   let component: AwardsTimelineComponent;
   let fixture: ComponentFixture<AwardsTimelineComponent>;
+  let httpMock: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -44,8 +47,9 @@ describe('AwardsTimelineComponent', () => {
         {provide: MAT_DIALOG_DATA, useValue: []},
         {provide: NotifierService}
       ]
-    })
-      .compileComponents();
+    }).compileComponents();
+
+    httpMock = TestBed.get(HttpTestingController);
   }));
 
   beforeEach(() => {
@@ -57,4 +61,18 @@ describe('AwardsTimelineComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+
+  it('should set award data', () => {
+    const number = 1;
+    const award: Award[] = [{id: '', description: '', year: 2020}];
+    spyOn(component.awardsService, 'getAwards').and.returnValue(from(new Map<number, Award[]>().set(number, award)));
+
+    component.ngOnInit();
+
+    expect(component.awards.set(number, award)).toBeTruthy();
+    expect(component.awards.size).toEqual(1);
+    expect(component.awards.get(number)).toEqual(award);
+
+  });
+})
+;

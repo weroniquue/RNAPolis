@@ -5,6 +5,7 @@ import {TeamMember} from '../../../entity/team-member';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import Utils from '../../../services/utils';
 
+
 @Component({
   selector: 'app-member-manager',
   templateUrl: './member-manager.component.html',
@@ -16,6 +17,7 @@ export class MemberManagerComponent implements OnInit {
   member: TeamMember;
   imageSrc: string;
   reader: FileReader;
+  imgSizeValid = true;
 
   @ViewChild('autosize', {static: false}) autosize: CdkTextareaAutosize;
 
@@ -43,7 +45,7 @@ export class MemberManagerComponent implements OnInit {
       this.form.controls[key].markAsTouched();
     });
 
-    if (this.form.valid) {
+    if (this.form.valid && this.imgSizeValid) {
       this.member.imagePath = this.imageSrc;
       this.member.name = this.form.value.name;
       this.member.surname = this.form.value.surname;
@@ -65,6 +67,7 @@ export class MemberManagerComponent implements OnInit {
   onChange(event) { // called each time file input changes
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
+      this.imgSizeValid = event.target.files[0].size < 5 * 1024 * 1024;
       this.reader.onload = () => this.imageSrc = this.reader.result.toString();
       this.reader.readAsDataURL(file);
     }

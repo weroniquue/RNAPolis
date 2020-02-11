@@ -1,13 +1,27 @@
+@import '../../../style-utils/consts.scss';
+
 .member-image {
-  width: 15vw;
-  height: 15vw;
+  width: 25vw;
+  height: 25vw;
+  max-width: 300px;
+  max-height: 300px;
   object-fit: cover;
   border-radius: 50%;
   margin: 0 auto;
   display: block;
 }
 
-.select-image-btn{
+.select-image-btn {
   display: block;
   margin: 1em auto;
+}
+
+.alert-danger {
+  padding: 10px;
+  margin-bottom: 1em;
+  text-align: center;
+  background-color: $alert-background-color;
+  border: 1px solid $alert-border-color;
+  border-radius: .25em;
+  color: $alert-text-color;
 }

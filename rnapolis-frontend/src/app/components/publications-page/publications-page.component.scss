@@ -80,9 +80,18 @@
     }
     mat-card {
       margin: 1em;
+      flex-direction: column-reverse;
+
+      .edit-manager {
+        flex-direction: row;
+
+        button {
+          margin-right: 0.5em;
+        }
+      }
 
       p {
-        text-align: left;
+        text-align: justify;
       }
     }
   }
